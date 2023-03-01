@@ -1,0 +1,40 @@
+.products_list {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  min-height: 600px;
+}
+
+.products_list .error {
+  padding: 20px 16px;
+  font-size: 21px;
+  color: var(--error-color);
+  text-align: center;
+}
+
+/* adding 100% width for the infinite scroll div to prevent commulative layout shifts */
+.products_list > div {
+  width: 100% !important;
+}
+
+.products_list ul {
+  height: fit-content;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  width: 100%;
+  padding: 24px;
+}
+
+@media (max-width: 991.8px) {
+  .products_list ul {
+    grid-template-columns: 1fr 1fr;
+    padding: 16px;
+  }
+}
+
+.products_list .load_more {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}

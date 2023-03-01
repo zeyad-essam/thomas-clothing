@@ -1,0 +1,17 @@
+.slider_arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-150%);
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  background-color: #fff;
+  border: none;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.slider_arrow.next_arrow {
+  right: 0;
+}

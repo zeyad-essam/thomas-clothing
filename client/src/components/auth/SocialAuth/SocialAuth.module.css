@@ -1,0 +1,26 @@
+.social_auth {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.social_auth div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 65px;
+  height: 65px;
+  border: 2px solid #d6dcdc;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.social_auth div:hover {
+  opacity: 0.8;
+  border-color: #212121;
+}
+
+.social_auth img {
+  max-width: 40px;
+}

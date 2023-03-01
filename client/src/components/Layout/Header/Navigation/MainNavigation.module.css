@@ -1,0 +1,41 @@
+.main_navigation {
+  flex: 1;
+  padding-left: 30px;
+}
+
+@media (max-width: 1199.98px) {
+  .main_navigation {
+    padding-left: 25px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .main_navigation {
+    display: none;
+  }
+}
+
+.main_navigation ul {
+  display: flex;
+  align-items: center;
+}
+
+.main_navigation ul li a {
+  padding: 20px 15px;
+  color: #212121;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1199.98px) {
+  .main_navigation ul li a {
+    padding: 20px 10px;
+  }
+}
+
+.main_navigation ul li a:hover {
+  color: #757575;
+  text-decoration: underline;
+}

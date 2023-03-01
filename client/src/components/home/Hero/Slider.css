@@ -1,0 +1,30 @@
+.slick-slide > div {
+  display: flex;
+}
+
+.navigation_slider .slick-dots {
+  display: flex !important;
+  position: absolute;
+  right: 16px;
+  bottom: 20px;
+  display: flex;
+  align-items: center;
+  transform: translateY(50%);
+  width: fit-content;
+  color: #fff;
+}
+
+.navigation_slider .slick-dots li {
+  width: 30px !important;
+  display: flex !important;
+  justify-content: center;
+  margin: 0 !important;
+}
+
+.navigation_slider .slick-dots li button {
+  position: relative !important;
+}
+
+.navigation_slider .slick-dots li button:before {
+  color: #fff;
+}

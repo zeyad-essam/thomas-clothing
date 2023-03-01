@@ -1,0 +1,26 @@
+.products_filters_wrapper {
+  position: sticky;
+  top: calc(var(--header-height) + 60px);
+  bottom: 0;
+  width: 100%;
+  max-width: 0;
+  height: calc(100vh - (var(--header-height) + 60px));
+  overflow-x: hidden;
+  overflow-y: auto;
+  transition: max-width 0.3s ease;
+}
+
+.products_filters_wrapper.is_expanded {
+  max-width: 348px;
+}
+
+.products_filters_wrapper .products_filters_inner {
+  width: 100%;
+  height: 100%;
+  transform: translateX(-348px);
+  transition: transform 0.3s ease;
+}
+
+.products_filters_wrapper.is_expanded .products_filters_inner {
+  transform: translate(0);
+}

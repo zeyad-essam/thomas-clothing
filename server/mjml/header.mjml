@@ -1,0 +1,50 @@
+<mjml>
+  <mj-head>
+    <mj-style>
+      .header {
+      padding: 40px 0
+      }
+      .logo {
+      color: #fff;
+      font-size: 28px;
+      letter-spacing: 3px
+      }
+			.navigation-bar {
+      	padding: 15px 0 0
+      }
+      .navigation-bar a {
+      	letter-spacing: 1px
+      }
+      @media (max-width: 480px) {
+      .header {
+      padding: 17px 15px
+      }
+      .logo {
+      	font-size: 17px
+      }
+      .navigation {
+      display: none !important
+      }
+      }
+
+    </mj-style>
+  </mj-head>
+  <mj-body background-color="#F2F2F2">
+    <mj-section padding="0" background-color="#1b1b1b" css-class="header">
+      <mj-column width="100%">
+        <mj-text align="center" padding="0">
+          <span class="logo">SALEHUB</span>
+        </mj-text>
+      </mj-column>
+      <mj-column css-class="navigation" width="100%">
+        <mj-navbar css-class="navigation-bar">
+          <mj-navbar-link color="#fff" font-size="12px" padding="10px 7px" href="http://localhost:3000/shop/jackets-and-coats">JACKETS</mj-navbar-link>
+          <mj-navbar-link color="#fff" font-size="12px" padding="10px 7px" href="http://localhost:3000/shop/shirts">SHIRTS</mj-navbar-link>
+          <mj-navbar-link color="#fff" font-size="12px" padding="10px 7px" href="http://localhost:3000/shop/denim">DENIM</mj-navbar-link>
+          <mj-navbar-link color="#fff" font-size="12px" padding="10px 7px" href="http://localhost:3000/shop/sweatshirts">SWEATSHIRTS</mj-navbar-link>
+          <mj-navbar-link color="#fff" font-size="12px" padding="10px 7px" href="http://localhost:3000/shop/blazers-and-suits">SUITS</mj-navbar-link>
+        </mj-navbar>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

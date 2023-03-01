@@ -1,0 +1,37 @@
+.utility_navigation {
+  padding-left: 20px;
+}
+
+.utility_navigation ul {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.utility_navigation ul li a,
+.utility_navigation ul li.logout {
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  font-weight: 600;
+  font-size: 15px;
+  gap: 5px;
+}
+
+.utility_navigation ul li a:hover,
+.utility_navigation ul li.logout:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@media (max-width: 991.98px) {
+  .utility_navigation ul .account_link,
+  .utility_navigation ul li.logout {
+    display: none;
+  }
+}
+
+.utility_navigation ul span {
+  display: flex;
+  align-items: center;
+}

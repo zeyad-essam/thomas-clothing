@@ -1,0 +1,85 @@
+<mjml>
+  <mj-head>
+    <mj-style>
+      @media (max-width: 480px) {
+				.pc-only {
+      		display: none
+      }
+      }
+      @media (min-width: 480px) {
+      	.mobile-only {
+      		display: none
+      }
+      }
+    </mj-style>
+  </mj-head>
+  <mj-body>
+    <mj-section css-class="mobile-only" background-color="#ffffff" padding="40px 0">
+      <mj-column width="100%">
+      	<mj-text padding="0 15px" letter-spacing="1px" align="center" font-size="16px" color="#1b1b1b">Discover more:</mj-text>
+      </mj-column>
+      <mj-column width="100%">
+      	<mj-spacer height="25px"/>
+      </mj-column>
+      <mj-column width="100%">
+      	<mj-text padding="0" align="center" letter-spacing="1px">
+        	<a href="http://localhost:3000/shop/jackets-and-coats" style="display:block;color:#1b1b1b;text-decoration:none;font-weight:400">JACKETS</a>
+        </mj-text>
+        <mj-spacer height="25px"/>
+        <mj-text padding="0" align="center" letter-spacing="1px">
+        	<a href="http://localhost:3000/shop/shirts" style="display:block;color:#1b1b1b;text-decoration:none;font-weight:400">SHIRTS</a>
+        </mj-text>
+        <mj-spacer height="25px"/>
+        <mj-text padding="0" align="center" letter-spacing="1px">
+        	<a href="http://localhost:3000/shop/denim" style="display:block;color:#1b1b1b;text-decoration:none;font-weight:400">DENIM</a>
+        </mj-text>
+        <mj-spacer height="25px"/>
+        <mj-text padding="0" align="center" letter-spacing="1px">
+        	<a href="http://localhost:3000/shop/sweatshirts" style="display:block;color:#1b1b1b;text-decoration:none;font-weight:400">SWEATSHIRTS</a>
+        </mj-text>
+        <mj-spacer height="25px"/>
+        <mj-text padding="0" align="center" letter-spacing="1px">
+        	<a href="http://localhost:3000/shop/blazers-and-suits" style="display:block;color:#1b1b1b;text-decoration:none;font-weight:400">SUITS</a>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section background-color="#1B1B1B" padding="25px 15px">
+      <mj-column>
+        <mj-navbar>
+          <mj-navbar-link
+            href="http://localhost:3000/"
+            font-size="12px"
+            text-transform="capitalize"
+            padding="0 8px 0 0"
+            color="#e5dfd9"
+            >Home</mj-navbar-link
+          >
+          <mj-navbar-link
+            href="http://localhost:3000/faqs"
+            font-size="12px"
+            text-transform="capitalize"
+            padding="0 8px"
+            color="#e5dfd9"
+            >FAQS</mj-navbar-link
+          >
+          <mj-navbar-link
+            href="http://localhost:3000/account"
+            font-size="12px"
+            text-transform="capitalize"
+            padding="0 8px"
+            color="#e5dfd9"
+            >My Account</mj-navbar-link
+          >
+          <mj-navbar-link
+            href="http://localhost:3000/contact"
+            font-size="12px"
+            text-transform="capitalize"
+            padding="0 0 0 8px"
+            color="#e5dfd9"
+            >Contact</mj-navbar-link
+          >
+        </mj-navbar>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

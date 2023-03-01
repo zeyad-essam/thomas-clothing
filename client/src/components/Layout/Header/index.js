@@ -1,0 +1,78 @@
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+
+import MainNavigation from "./Navigation/MainNavigation";
+import MobileNavigation from "./Navigation/MobileNavigation";
+import UtilityNavigation from "./Navigation/UtilityNavigation";
+
+import MenuSharpIcon from "@mui/icons-material/MenuSharp";
+
+import pcLogo from "../../../images/logo-pc.png";
+import mobileLogo from "../../../images/logo-mobile.png";
+
+import classes from "./Header.module.css";
+
+const Header = () => {
+  const [openMobileNav, setOpenMobileNav] = useState(false);
+  const location = useLocation();
+
+  const toggleMobileNav = () => {
+    setOpenMobileNav(!openMobileNav);
+  };
+
+  const closeMobileNav = () => {
+    setOpenMobileNav(false);
+  };
+
+  // close mobile navigation on screens bigger than 991.8 pixels
+  const handleResize = () => {
+    if (window.innerWidth >= 992) {
+      setOpenMobileNav(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  // disable scroll when mobile nav is opened
+  useEffect(() => {
+    if (openMobileNav) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "visible";
+    }
+  }, [openMobileNav]);
+
+  // close mobile navigation on route change
+  useEffect(() => {
+    setOpenMobileNav(false);
+  }, [location]);
+
+  return (
+    <header className={classes.header}>
+      <div className={classes.header_left}>
+        <button onClick={toggleMobileNav}>
+          <MenuSharpIcon style={{ fontSize: 34 }} />
+        </button>
+        <div className={classes.logo}>
+          <Link to="/">
+            <picture>
+              <source srcSet={mobileLogo} media="(max-width : 959px)" />
+              <source srcSet={pcLogo} media="(min-width : 960px)" />
+              <img src={pcLogo} alt="logo" />
+            </picture>
+          </Link>
+        </div>
+      </div>
+      <MainNavigation />
+      <MobileNavigation isOpened={openMobileNav} onClose={closeMobileNav} />
+      <UtilityNavigation />
+    </header>
+  );
+};
+
+export default Header;

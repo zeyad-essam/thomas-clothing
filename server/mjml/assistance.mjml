@@ -1,0 +1,76 @@
+<mjml>
+  <mj-head>
+    <mj-style>
+			.assistance {
+      	box-sizing: border-box;
+      	padding: 45px 0
+      }
+      .mobile-link a{
+      	display:block;
+      	font-size: 12px;
+      	line-height: 20px;
+        color: #1b1b1b;
+        text-decoration: none;
+      	text-transform: uppercase;
+      	text-align: center;
+      	letter-spacing: 0.5px;
+      	padding-top:10px;
+      	padding-bottom: 10px;
+      	border: 1px solid #4b4b4b;
+      }
+      @media (max-width: 480px) {
+				.pc-only {
+      		display: none
+      }
+      }
+      @media (min-width: 480px) {
+      	.mobile-only {
+      		display: none
+      }
+      }
+    </mj-style>
+  </mj-head>
+  <mj-body background-color="#F2F2F2">
+    <mj-section css-class="assistance" background-color="#e7e7e7" padding="0">
+    	<mj-column width="100%" padding="0 15px">
+      	<mj-text font-size="26px" line-height="29px" padding="0" letter-spacing="0.5px" font-weight="500" color="#1b1b1b" align="center" css-class="pc-only">For additional assistance</mj-text>
+      </mj-column>
+      <mj-column padding="0 15px" width="100%">
+      	<mj-text font-size="16px" line-height="22px" padding="0" letter-spacing="0.5px" font-weight="300" color="#1b1b1b" align="center" css-class="mobile-only">For additional assistance</mj-text>
+      </mj-column>
+      <mj-column width="100%">
+            <mj-spacer css-class="pc-only" height="20px" />
+      </mj-column>
+      <mj-column width="100%">
+            <mj-spacer css-class="mobile-only" height="15px" />
+      </mj-column>
+      <mj-column padding="0 15px" width="500px">
+      	<mj-text css-class="pc-only" padding="0" font-size="16px" line-height="25px" align="center" font-weight="300" color="#4b4b4b" letter-spacing="0.5px">
+        	Please do not reply to this email. If you have further questions please contact us at <a style="color: #000000;font-weight:300" href="tel:+201143210887">+201143210887</a> or email us at <a style="color: #000000;font-weight:300;text-decoration:none" href="mailto:ziadessam162@gmail.com">ziadessam162@gmail.com</a>. Our online Client Advisors are available Monday through Saturday, 09:00AM - 11:00PM (EST) and Sunday, 10:00AM - 09:00PM (EST), excluding holidays.
+        </mj-text>
+      </mj-column>
+      <mj-column padding="0 15px" width="480px">
+      	<mj-text css-class="mobile-only" color="#4b4b4b" padding="0" font-size="14px" line-height="18px" font-weight="300" align="center" letter-spacing="0.5px">
+        	Please do not reply to this email, if further assistance is needed please contact us by
+        </mj-text>
+      </mj-column>
+      <mj-column width="100%">
+            <mj-spacer css-class="mobile-only" height="25px" />
+      </mj-column>
+      <mj-group>
+      	<mj-column width="10%"></mj-column>
+        <mj-column width="40%">
+        	<mj-text padding="0" css-class="mobile-link mobile-only">
+          	<a href="tel:+201143210887">Phone</a>
+          </mj-text>
+        </mj-column>
+        <mj-column width="40%">
+        	<mj-text padding="0" css-class="mobile-link mobile-only">
+          	<a href="mailto:ziadessam162@gmail.com" style="border-left: none">mail</a>
+          </mj-text>
+        </mj-column>
+        <mj-column width="10%"></mj-column>
+      </mj-group>
+    </mj-section>
+  </mj-body>
+</mjml>
