@@ -44,7 +44,7 @@ const NewPassword = () => {
     try {
       await axios({
         method: "post",
-        url: "http://localhost:8000/auth/new-password",
+        url: `${process.env.REACT_APP_API_URL}/auth/new-password`,
         data: {
           password: passwordValue,
           passwordConfirm: passwordConfirmValue,

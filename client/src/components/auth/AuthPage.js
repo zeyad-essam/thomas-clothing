@@ -73,7 +73,7 @@ const AuthPage = ({ signup }) => {
             username: userNameValue,
             password: passwordValue,
           },
-          url: "http://localhost:8000/auth/signup",
+          url: `${process.env.REACT_APP_API_URL}/auth/signup`,
           withCredentials: true,
         });
       } else {
@@ -84,7 +84,7 @@ const AuthPage = ({ signup }) => {
             password: passwordValue,
           },
           withCredentials: true,
-          url: "http://localhost:8000/auth/login",
+          url: `${process.env.REACT_APP_API_URL}/auth/login`,
         });
       }
       window.location.href = "/";

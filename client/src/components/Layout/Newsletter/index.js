@@ -36,7 +36,7 @@ const Newsletter = () => {
     try {
       const response = await axios({
         method: "post",
-        url: "http://localhost:8000/news-subscribe",
+        url: `${process.env.REACT_APP_API_URL}/news-subscribe`,
         data: {
           email: emailValue,
         },

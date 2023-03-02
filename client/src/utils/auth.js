@@ -17,7 +17,7 @@ export const validatePassword = (value) =>
 export const validateUserName = (value) => value.trim().length >= 6;
 
 export const logoutHandler = async () => {
-  await axios.get("http://localhost:8000/auth/logout", {
+  await axios.get(`${process.env.REACT_APP_API_URL}/auth/logout`, {
     withCredentials: true,
   });
   window.location.href = "/";

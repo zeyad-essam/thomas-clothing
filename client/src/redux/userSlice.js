@@ -2,9 +2,12 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const getUser = createAsyncThunk("/user/getUser", async () => {
-  const response = await axios.get("http://localhost:8000/auth/getuser", {
-    withCredentials: true,
-  });
+  const response = await axios.get(
+    `${process.env.REACT_APP_API_URL}/auth/getuser`,
+    {
+      withCredentials: true,
+    }
+  );
   console.log(response.data);
   return response.data.user;
 });

@@ -37,7 +37,7 @@ const ProductsView = ({ category }) => {
     }
     try {
       const response = await axios.get(
-        "http://localhost:8000/products/get-products/",
+        `${process.env.REACT_APP_API_URL}/products/get-products/`,
         {
           params: queryObject,
         }
@@ -60,7 +60,7 @@ const ProductsView = ({ category }) => {
     }
     try {
       const response = await axios.get(
-        "http://localhost:8000/products/get-more-products/",
+        `${process.env.REACT_APP_API_URL}/products/get-more-products/`,
         {
           params: queryObject,
         }

@@ -40,6 +40,7 @@ export const getProducts = async (req, res, next) => {
 
     res.json({ success: true, products, productsCount, maxPrice });
   } catch (err) {
+    console.log(err);
     if (!err.statusCode) {
       err.statusCode = 500;
     }
