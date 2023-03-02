@@ -29,7 +29,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static("puplic"));
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://thomasclothing.netlify.app"],
+    origin: ["http://localhost:3000", "https://thomas-clothing.netlify.app"],
     credentials: true,
   })
 );

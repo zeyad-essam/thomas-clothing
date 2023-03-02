@@ -44,7 +44,10 @@ const Newsletter = () => {
       setStatus({ type: "success", message: response.data.message });
       emailReset();
     } catch (error) {
-      setStatus({ type: "error", message: error.response.data.message });
+      setStatus({
+        type: "error",
+        message: error.response.data.message || "something went wrong",
+      });
     }
     setIsLoading(false);
   };

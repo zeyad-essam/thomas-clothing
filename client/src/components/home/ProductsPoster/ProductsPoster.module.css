@@ -16,7 +16,7 @@
 .ProductsPoster .image_wrapper a img {
   width: 100%;
   object-fit: cover;
-  /* filter: brightness(90%); */
+  filter: brightness(0.95);
 }
 
 .ProductsPoster .content_wrapper {
@@ -62,6 +62,9 @@
   text-align: center;
   line-height: 50px;
   color: #fff;
+  text-shadow: 1px 1px 2px #000;
+  /* -webkit-text-stroke-width: 0.05rem;
+  -webkit-text-stroke-color: rgba(0, 0, 0, 0.8); */
 }
 
 .ProductsPoster .content_wrapper .content h3.dark {
@@ -88,7 +91,7 @@
   }
 }
 
-@media (max-width: 349.8px) {
+@media (max-width: 400px) {
   .ProductsPoster .content_wrapper .content h3 {
     flex-direction: column;
     gap: 0;
