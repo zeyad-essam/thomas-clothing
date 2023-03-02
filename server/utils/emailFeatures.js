@@ -9,11 +9,14 @@ import path from "path";
 import fs from "fs/promises";
 const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 
+import dotenv from "dotenv";
+
+dotenv.config();
+
 const transporter = nodemailer.createTransport(
   sendgridTransport({
     auth: {
-      api_key:
-        "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",
+      api_key: process.env.SENDGRID_API_KEY,
     },
   })
 );
