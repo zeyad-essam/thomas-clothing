@@ -36,6 +36,7 @@ const CategoryView = ({ data, reverse }) => {
     slidesToShow: 1,
     draggable: false,
     pauseOnHover: true,
+    waitForAnimate: false,
     nextArrow: <SliderArrowNext />,
     prevArrow: <SliderArrowPrev />,
   };

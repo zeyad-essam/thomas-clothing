@@ -11,11 +11,13 @@ import "slick-carousel/slick/slick-theme.css";
 import "./Slider.css";
 
 import classes from "./Hero.module.css";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 let progressBarUpdateInterval;
 const sliderAutoPlaySpeed = 10000;
 
 const Hero = () => {
+  const isPc = useMediaQuery("(min-width:991.8px)");
   const [timeRemaining, setTimeRemaining] = useState(sliderAutoPlaySpeed);
   const [isPaused, setIsPaused] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
@@ -80,10 +82,16 @@ const Hero = () => {
   };
 
   const handleMouseEnter = () => {
+    if (!isPc) {
+      return;
+    }
     setIsPaused(true);
   };
 
   const handleMouseLeave = () => {
+    if (!isPc) {
+      return;
+    }
     setIsPaused(false);
   };
 

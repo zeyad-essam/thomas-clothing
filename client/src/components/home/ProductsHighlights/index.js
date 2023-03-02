@@ -22,6 +22,7 @@ const index = () => {
     slidesToShow: 6,
     draggable: false,
     pauseOnHover: true,
+    waitForAnimate: false,
     responsive: [
       {
         breakpoint: 1024,

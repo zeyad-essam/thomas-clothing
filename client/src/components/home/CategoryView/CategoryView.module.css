@@ -128,6 +128,7 @@
 
 .category_view .slider_view {
   background-color: #fff;
+  box-shadow: 0 5px #fff;
 }
 
 .category_view .slider_view .slider_wrapper {
@@ -153,7 +154,7 @@
 
 @media (max-width: 991.8px) {
   .category_view .slider_view {
-    padding: 32px 0 50px;
+    padding: 32px 0 42px;
   }
 
   .category_view .slider_view .aspect_ratio_holder {
