@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 import { SliderArrowNext, SliderArrowPrev } from "../../UI/Slider/SliderArrows";
 
-import { productsHighlights } from "../../../utils/productHighlights";
+import { productsHighlights } from "../../../utils/UI/productHighlights";
 import SliderProductItem from "../../UI/Slider/SliderProductItem";
 
 import classes from "./ProductHighlights.module.css";

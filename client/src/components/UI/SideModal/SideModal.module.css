@@ -1,0 +1,43 @@
+.side_modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: min(100%, 405px);
+  transition: width 0.3s ease;
+  overflow: hidden;
+  z-index: 999;
+  display: flex;
+}
+
+@media (min-width: 992px) {
+  .side_modal.onlyMobile {
+    display: none;
+  }
+}
+
+.side_modal .close_navigation {
+  order: 1;
+  display: flex;
+}
+
+.side_modal .close_navigation button {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background: #212121;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 1px 8px rgb(255 255 255 / 20%);
+}
+
+.side_modal .children_wrapper {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+}

@@ -7,9 +7,9 @@ import ProductHighlights from "../components/home/ProductsHighlights";
 import {
   shirtsViewData,
   jacketsAndCoatsViewData,
-} from "../utils/categoryViewsData";
+} from "../utils/UI/categoryViewsData";
 
-import { sweatShirtsPoster } from "../utils/productsPoster";
+import { sweatShirtsPoster } from "../utils/UI/productsPoster";
 
 const HomePage = () => {
   return (

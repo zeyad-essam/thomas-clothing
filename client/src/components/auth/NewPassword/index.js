@@ -57,8 +57,8 @@ const NewPassword = () => {
       passwordConfirmReset();
       window.location.href = "/auth/new-password/new-password-confirmed";
     } catch (err) {
-      setError(err.response.data.message || "something went wrong!");
-      console.log(err.response.data.message);
+      const error = err.response.data.message || "something went wrong";
+      setError(error);
     } finally {
       setIsLoading(false);
     }

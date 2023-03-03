@@ -89,7 +89,8 @@ const AuthPage = ({ signup }) => {
       }
       window.location.href = "/";
     } catch (err) {
-      setFormError(err.response.data.message);
+      const error = err.response.data.message || "something went wrong";
+      setFormError(error);
     } finally {
       setIsLoading(false);
     }

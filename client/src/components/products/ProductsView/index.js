@@ -44,7 +44,6 @@ const ProductsView = ({ category }) => {
       setProductsCount(response.data.productsCount);
     } catch (error) {
       setError(true);
-      console.log(error.response.data.message);
     } finally {
       setLoading(false);
     }
@@ -70,7 +69,6 @@ const ProductsView = ({ category }) => {
         ]);
       } catch (error) {
         setError(true);
-        console.log(error.response.data.message);
       }
     },
     [queryParams, category]

@@ -54,7 +54,7 @@ const Footer = () => {
         >
           <h3 onClick={handleExpandedTap.bind(null, "legal-area")}>
             <InfoOutlinedIcon />
-            <span>OUR COMPANY</span>
+            <span>Our Company</span>
           </h3>
           <div className={classes.section_collapse}>
             <ul>

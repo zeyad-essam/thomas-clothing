@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import LinkButton from "../../UI/LinkButton.js";
 
-import { heroSlides } from "../../../utils/heroSlides.js";
+import { heroSlides } from "../../../utils/UI/heroSlides.js";
 
 import Slider from "react-slick";
 

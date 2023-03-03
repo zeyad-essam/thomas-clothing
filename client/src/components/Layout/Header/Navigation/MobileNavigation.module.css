@@ -1,45 +1,8 @@
-.mobile_navigation {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: min(100%, 405px);
-  transition: width 0.3s ease;
-  overflow: auto;
-  z-index: 999;
-  display: flex;
-}
-
-@media (min-width: 992px) {
-  .mobile_navigation {
-    display: none;
-  }
-}
-
-.mobile_navigation .close_navigation {
-  order: 2;
-  display: flex;
-}
-
-.mobile_navigation .close_navigation button {
-  width: 60px;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  background: #212121;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0px 1px 8px rgb(255 255 255 / 20%);
-}
-
-.mobile_navigation .navigation_menu {
-  flex: 1;
+.navigation_menu {
   background: #e0e0e0;
 }
 
-.mobile_navigation .navigation_menu header {
+.navigation_menu header {
   height: 60px;
   display: flex;
   align-items: center;
@@ -48,8 +11,8 @@
   border-bottom: 1px solid #ddd;
 }
 
-.mobile_navigation .navigation_menu ul a,
-.mobile_navigation .navigation_menu ul .logout {
+.navigation_menu ul a,
+.navigation_menu ul .logout {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -60,12 +23,12 @@
   font-weight: 700;
 }
 
-.mobile_navigation .navigation_menu ul.product_links a {
+.navigation_menu ul.product_links a {
   padding: 14px 24px;
 }
 
-.mobile_navigation .navigation_menu ul a i,
-.mobile_navigation .navigation_menu ul .logout i {
+.navigation_menu ul a i,
+.navigation_menu ul .logout i {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -73,16 +36,16 @@
   height: 24px;
 }
 
-.mobile_navigation .navigation_menu ul.product_links {
+.navigation_menu ul.product_links {
   background: #f5f5f5;
   text-transform: uppercase;
   padding-bottom: 10px;
 }
 
-.mobile_navigation .navigation_menu ul.product_links li:first-of-type a {
+.navigation_menu ul.product_links li:first-of-type a {
   padding-top: 20px;
 }
 
-.mobile_navigation .navigation_menu ul:last-of-type li:first-of-type a {
+.navigation_menu ul:last-of-type li:first-of-type a {
   padding-top: 15px;
 }
