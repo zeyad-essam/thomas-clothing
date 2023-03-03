@@ -13,7 +13,7 @@ export const heroSlides = [
   {
     link: "/products/jackets-and-coats",
     pictures: {
-      sm: "https://res.cloudinary.com/drru4lsys/image/upload/ui%20images/hero-jackets-mobile.webp",
+      sm: "https://res.cloudinary.com/drru4lsys/image/upload/v1677799614/ui%20images/hero-mobile-jackets.jpg",
       md: "https://res.cloudinary.com/drru4lsys/image/upload/ui%20images/hero-image-2-lg.jpg",
       lg: "https://res.cloudinary.com/drru4lsys/image/upload/ui%20images/hero-image-2-lg.jpg",
       default:

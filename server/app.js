@@ -7,9 +7,29 @@ import passport from "passport";
 import passportConfig from "./passport.js";
 import dotenv from "dotenv";
 
+import { createClient } from "redis";
+
 import authRoutes from "./routes/auth.js";
 import productRoutes from "./routes/products.js";
 import subscribeRoutes from "./routes/subscribe.js";
+
+export const redisClient = createClient({
+  password: "NoddlYcNNkMOHvDPgJLRetW0841UhQwA",
+  socket: {
+    host: "redis-15447.c55.eu-central-1-1.ec2.cloud.redislabs.com",
+    port: 15447,
+  },
+});
+
+redisClient.connect();
+
+redisClient.on("connect", async function () {
+  console.log("Redis client connected");
+});
+
+redisClient.on("error", function (err) {
+  console.log("Something went wrong " + err);
+});
 
 dotenv.config();
 
@@ -70,9 +90,32 @@ app.use((error, req, res, next) => {
 
 const port = process.env.port || 8000;
 
+async function scanAndDelete(pattern) {
+  let cursor = "0";
+
+  const reply = await redisClient.scan(cursor, { MATCH: pattern, COUNT: 1000 });
+  for (let key of reply.keys) {
+    cursor = reply.cursor;
+    await redisClient.del(key);
+  }
+}
+
 mongoose
   .connect(MONGODB_URI)
   .then((result) => {
+    const productsCollection = mongoose.connection.collection("products");
+    const changeStream = productsCollection.watch();
+
+    changeStream.on("change", (change) => {
+      if (
+        change.operationType === "insert" ||
+        change.operationType === "update" ||
+        change.operationType === "replace"
+      ) {
+        scanAndDelete("/products*"); // delete all cashed products data on redis
+      }
+    });
+
     const server = app.listen(port);
   })
   .catch((err) => console.log(err));

@@ -1,36 +1,33 @@
 import React, { useEffect, useState, useCallback } from "react";
 
-import ProductsList from "./ProductsList";
-
 import TuneRoundedIcon from "@mui/icons-material/TuneRounded";
 
 import axios from "axios";
 
-import classes from "./ProductsView.module.css";
+import { useQueryParams, ArrayParam } from "use-query-params";
 
-import { useQueryParams, ArrayParam, NumberParam } from "use-query-params";
+import ProductsList from "./ProductsList";
 import ProductsFilters from "./ProductsFilters";
+
+import classes from "./ProductsView.module.css";
 
 const ProductsView = ({ category }) => {
   const [showFilters, setShowFilters] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [products, setProducts] = useState([]);
   const [productsCount, setProductsCount] = useState(0);
-  const [error, setError] = useState(null);
-  const [page, setPage] = useState(1);
 
   const [queryParams, setQueryParams] = useQueryParams(
     {
       colors: ArrayParam,
       sizes: ArrayParam,
-      min_price: NumberParam,
-      max_price: NumberParam,
+      priceRange: ArrayParam /* [minPrice, maxPrice] */,
     },
     { arrayFormat: "repeat" }
   );
 
   const fetchProducts = useCallback(async () => {
-    setPage(1);
     let queryObject = { ...queryParams };
     if (category) {
       queryObject.category = category;
@@ -53,40 +50,35 @@ const ProductsView = ({ category }) => {
     }
   }, [queryParams, category]);
 
-  const fetchMoreProducts = useCallback(async () => {
-    let queryObject = { ...queryParams, page };
-    if (category) {
-      queryObject.category = category;
-    }
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/products/get-more-products/`,
-        {
-          params: queryObject,
-        }
-      );
+  const fetchMoreProducts = useCallback(
+    async (page) => {
+      let queryObject = { ...queryParams, page };
+      if (category) {
+        queryObject.category = category;
+      }
+      try {
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_URL}/products/get-more-products/`,
+          {
+            params: queryObject,
+          }
+        );
 
-      setProducts((prevProducts) => [
-        ...prevProducts,
-        ...response.data.products,
-      ]);
-    } catch (error) {
-      setError(true);
-      console.log(error.response.data.message);
-    }
-  }, [page, queryParams, category]);
-
-  const nextPage = () => {
-    setPage((prevPage) => prevPage + 1);
-  };
+        setProducts((prevProducts) => [
+          ...prevProducts,
+          ...response.data.products,
+        ]);
+      } catch (error) {
+        setError(true);
+        console.log(error.response.data.message);
+      }
+    },
+    [queryParams, category]
+  );
 
   useEffect(() => {
     fetchProducts();
   }, [queryParams, fetchProducts]);
-
-  useEffect(() => {
-    fetchMoreProducts();
-  }, [page, fetchMoreProducts]);
 
   return (
     <div className="container">
@@ -114,7 +106,7 @@ const ProductsView = ({ category }) => {
           loading={loading}
           products={products}
           productsCount={productsCount}
-          nextPage={nextPage}
+          fetchMoreProducts={fetchMoreProducts}
         />
       </div>
     </div>

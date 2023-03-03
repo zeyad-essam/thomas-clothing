@@ -1,6 +1,14 @@
 import Product from "../models/Product.js";
 
-import ApiFeatures from "../utils/apiFeatures.js";
+import { cacheResponse } from "../middleware/casheMiddleware.js";
+
+import {
+  getFilteredProducts,
+  getProductsColorsArray,
+  getProductsCount,
+  getProductsMaxPrice,
+  getProductsAvailabeSizes,
+} from "../utils/productsFunctions.js";
 
 export const postAddProduct = async (req, res, next) => {
   const product = new Product(req.body);
@@ -12,33 +20,38 @@ export const getProducts = async (req, res, next) => {
   const category = req.query.category;
   let findObject = category ? { category } : {};
   try {
-    const products = await new ApiFeatures(Product.find(findObject), req.query)
-      .filter()
-      .pagination(10)
-      .query.select({
-        _id: 1,
-        title: 1,
-        images: 1,
-        price: 1,
-        slug: 1,
-      });
+    const products = await getFilteredProducts(findObject, req.query);
 
-    const productsCount = await new ApiFeatures(
-      Product.find(findObject),
+    const productsCount = await getProductsCount(findObject, req.query);
+
+    const maxPrice = await getProductsMaxPrice(findObject, req.query);
+
+    const productsColorArray = await getProductsColorsArray(
+      findObject,
       req.query
-    )
-      .filter()
-      .query.countDocuments();
+    );
 
-    const maxPrice = (
-      await new ApiFeatures(Product.find(findObject), req.query)
-        .filter()
-        .query.sort({ price: -1 })
-        .limit(1)
-        .select({ price: 1, _id: 0 })
-    )[0].price;
+    const productsAvailableSizes = await getProductsAvailabeSizes(
+      findObject,
+      req.query
+    );
 
-    res.json({ success: true, products, productsCount, maxPrice });
+    const responseData = {
+      success: true,
+      products,
+      productsCount,
+      maxPrice,
+      colors: productsColorArray,
+      sizes: productsAvailableSizes,
+    };
+
+    const casheValue = JSON.stringify(responseData);
+    const casheKey = req.originalUrl || req.url;
+    const cacheExpirationTime = 7200;
+
+    cacheResponse(casheKey, casheValue, cacheExpirationTime);
+
+    res.json(responseData);
   } catch (err) {
     console.log(err);
     if (!err.statusCode) {
@@ -52,18 +65,17 @@ export const getMoreProducts = async (req, res, next) => {
   const category = req.query.category;
   let findObject = category ? { category } : {};
   try {
-    const products = await new ApiFeatures(Product.find(findObject), req.query)
-      .filter()
-      .pagination(10)
-      .query.select({
-        _id: 1,
-        title: 1,
-        images: 1,
-        price: 1,
-        slug: 1,
-      });
+    const products = await getFilteredProducts(findObject, req.query);
 
-    res.json({ success: true, products });
+    const responseData = { success: true, products };
+
+    const casheValue = JSON.stringify(responseData);
+    const casheKey = req.originalUrl || req.url;
+    const cacheExpirationTime = 7200;
+
+    cacheResponse(casheKey, casheValue, cacheExpirationTime);
+
+    res.json(responseData);
   } catch (err) {
     if (!err.statusCode) {
       err.statusCode = 500;

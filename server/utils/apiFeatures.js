@@ -31,15 +31,12 @@ export default class ApiFeatures {
       });
     }
 
-    if (this.queryStr.min_price !== undefined) {
+    if (this.queryStr.price !== undefined) {
       this.query = this.query.find({
-        price: { $gt: Number(this.queryStr.min_price) },
-      });
-    }
-
-    if (this.queryStr.max_price !== undefined) {
-      this.query = this.query.find({
-        price: { $lt: Number(this.queryStr.max_price) },
+        price: {
+          $gt: Number(this.queryStr.priceRange[0]),
+          $lt: Number(this.queryStr.priceRange[1]),
+        },
       });
     }
 
