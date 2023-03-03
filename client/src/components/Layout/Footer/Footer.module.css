@@ -13,6 +13,7 @@
 .footer .footer_inner {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  row-gap: 20px;
   max-width: 1440px;
   margin: auto;
   padding: 0 24px 64px;
@@ -21,6 +22,7 @@
 @media (max-width: 991.98px) {
   .footer .footer_inner {
     grid-template-columns: 1fr;
+    row-gap: 0;
     padding: 0 16px 40px;
   }
 }

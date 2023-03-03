@@ -93,10 +93,17 @@ const port = process.env.port || 8000;
 async function scanAndDelete(pattern) {
   let cursor = "0";
 
-  const reply = await redisClient.scan(cursor, { MATCH: pattern, COUNT: 1000 });
-  for (let key of reply.keys) {
-    cursor = reply.cursor;
-    await redisClient.del(key);
+  try {
+    const reply = await redisClient.scan(cursor, {
+      MATCH: pattern,
+      COUNT: 1000,
+    });
+    for (let key of reply.keys) {
+      cursor = reply.cursor;
+      await redisClient.del(key);
+    }
+  } catch (error) {
+    console.log();
   }
 }
 
@@ -115,6 +122,10 @@ mongoose
         changedDocument.operationType === "replace"
       ) {
         const documentCategory = changedDocument.fullDocument.category;
+
+        if (!documentCategory) {
+          return;
+        }
 
         const pattern = "/products/*" + documentCategory + "*"; // a pattern to select all the keys that starts with /products and contains the product category in them
 

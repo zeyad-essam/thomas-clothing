@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import classes from "./Footer.module.css";
 
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import ContactSupportOutlinedIcon from "@mui/icons-material/ContactSupportOutlined";
 import NewspaperOutlinedIcon from "@mui/icons-material/NewspaperOutlined";
 
@@ -43,6 +44,29 @@ const Footer = () => {
                   <Link to={link.path}>{link.text}</Link>
                 </li>
               ))}
+            </ul>
+          </div>
+        </div>
+        <div
+          className={`${classes.footer_section} ${classes.mobile_tab} ${
+            expanded === "legal-area" ? classes.is_expanded : ""
+          }`}
+        >
+          <h3 onClick={handleExpandedTap.bind(null, "legal-area")}>
+            <InfoOutlinedIcon />
+            <span>OUR COMPANY</span>
+          </h3>
+          <div className={classes.section_collapse}>
+            <ul>
+              <li>
+                <Link to="/terms-and-conditions">Terms and conditions</Link>
+              </li>
+              <li>
+                <Link to="/privacy-policy">Privacy policy</Link>
+              </li>
+              <li>
+                <Link to="/about-us">About us</Link>
+              </li>
             </ul>
           </div>
         </div>
