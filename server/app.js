@@ -14,10 +14,10 @@ import productRoutes from "./routes/products.js";
 import subscribeRoutes from "./routes/subscribe.js";
 
 export const redisClient = createClient({
-  password: "NoddlYcNNkMOHvDPgJLRetW0841UhQwA",
+  password: process.env.REDIS_PASSWORD,
   socket: {
-    host: "redis-15447.c55.eu-central-1-1.ec2.cloud.redislabs.com",
-    port: 15447,
+    host: process.env.REDIS_HOST,
+    port: process.env.REDIS_PORT,
   },
 });
 
@@ -104,15 +104,21 @@ mongoose
   .connect(MONGODB_URI)
   .then((result) => {
     const productsCollection = mongoose.connection.collection("products");
-    const changeStream = productsCollection.watch();
+    const changeStream = productsCollection.watch([], {
+      fullDocument: "updateLookup",
+    });
 
-    changeStream.on("change", (change) => {
+    changeStream.on("change", (changedDocument) => {
       if (
-        change.operationType === "insert" ||
-        change.operationType === "update" ||
-        change.operationType === "replace"
+        changedDocument.operationType === "insert" ||
+        changedDocument.operationType === "update" ||
+        changedDocument.operationType === "replace"
       ) {
-        scanAndDelete("/products*"); // delete all cashed products data on redis
+        const documentCategory = changedDocument.fullDocument.category;
+
+        const pattern = "/products/*" + documentCategory + "*"; // a pattern to select all the keys that starts with /products and contains the product category in them
+
+        scanAndDelete(pattern); // delete all cashed keys with the given pattern
       }
     });
 
