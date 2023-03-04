@@ -8,6 +8,8 @@ const router = Router();
 
 router.post("/add-product", productsController.postAddProduct);
 
-router.get("/get-products", cacheMiddleware, productsController.getProducts);
+router.get("/get-products", productsController.getProducts);
+
+cacheMiddleware;
 
 export default router;

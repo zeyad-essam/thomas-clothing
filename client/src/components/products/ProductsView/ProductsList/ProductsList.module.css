@@ -1,39 +1,99 @@
-.products_list {
+.products_list_wrapper {
+  position: relative;
   flex: 1;
   display: flex;
   justify-content: center;
   min-height: 600px;
 }
 
-.products_list .error {
+.products_list_wrapper .loading_wrapper {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding-top: 100px;
+  z-index: 2;
+}
+
+.products_list_wrapper .notify {
   padding: 20px 16px;
   font-size: 21px;
-  color: var(--error-color);
   text-align: center;
 }
 
+.products_list_wrapper .notify.error {
+  color: var(--error-color);
+}
+
 /* adding 100% width for the infinite scroll div to prevent commulative layout shifts */
-.products_list > div {
+.products_list_wrapper > div {
   width: 100% !important;
 }
 
-.products_list ul {
+.products_list_wrapper .products_list {
   height: fit-content;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 4px;
   width: 100%;
-  padding: 24px;
+  padding: 24px 24px;
 }
 
-.products_list .load_more {
+.products_list_wrapper .products_list.filters_selected {
+  padding-top: 0;
+}
+
+.products_list_wrapper .load_more {
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
 }
 
+.products_list_wrapper .selected_filters {
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.products_list_wrapper .selected_filters ul {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.products_list_wrapper .selected_filters ul li {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  font-family: "Petrona", serif;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.products_list_wrapper .selected_filters ul .clear_all {
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.products_list_wrapper .selected_filters ul .remove_filter {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 0 8px;
+  font-size: 13px;
+  background-color: #f5f5f5;
+}
+
+.products_list_wrapper .selected_filters ul .remove_filter span {
+  display: flex;
+}
+
 @media (max-width: 991.8px) {
-  .products_list ul {
+  .products_list_wrapper .products_list {
     grid-template-columns: 1fr 1fr;
     padding: 16px;
   }

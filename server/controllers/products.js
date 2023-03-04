@@ -37,19 +37,12 @@ export const getProducts = async (req, res, next) => {
       responseData.productsCount = productsCount;
 
       const maxPrice = await getProductsMaxPrice(findObject, query);
-      responseData.maxPrice = maxPrice;
 
-      const productsColorArray = await getProductsColorsArray(
-        findObject,
-        query
-      );
-      responseData.productsColorArray = productsColorArray;
+      const colors = await getProductsColorsArray(findObject, query);
 
-      const productsAvailableSizes = await getProductsAvailabeSizes(
-        findObject,
-        query
-      );
-      responseData.productsAvailableSizes = productsAvailableSizes;
+      const sizes = await getProductsAvailabeSizes(findObject, query);
+
+      responseData.filterData = { maxPrice, colors, sizes };
     }
 
     const casheValue = JSON.stringify(responseData);

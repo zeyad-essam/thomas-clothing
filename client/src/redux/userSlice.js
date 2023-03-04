@@ -8,7 +8,6 @@ export const getUser = createAsyncThunk("/user/getUser", async () => {
       withCredentials: true,
     }
   );
-  console.log(response.data);
   return response.data.user;
 });
 

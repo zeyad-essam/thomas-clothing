@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState, memo } from "react";
 import { Link } from "react-router-dom";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -133,4 +133,4 @@ const ProductItem = ({ product }) => {
   );
 };
 
-export default ProductItem;
+export default memo(ProductItem);

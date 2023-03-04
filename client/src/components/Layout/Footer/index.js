@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 
 import classes from "./Footer.module.css";
@@ -15,7 +15,7 @@ import NewsForm from "./NewsForm";
 const Footer = () => {
   const [expanded, setExpanded] = useState(null);
 
-  const handleExpandedTap = (value) => {
+  const handleExpandedTap = useCallback((value) => {
     setExpanded((prevExpanded) => {
       if (prevExpanded === value) {
         return null;
@@ -23,7 +23,7 @@ const Footer = () => {
         return value;
       }
     });
-  };
+  }, []);
 
   return (
     <footer className={classes.footer}>

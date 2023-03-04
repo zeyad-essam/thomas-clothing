@@ -26,6 +26,7 @@
 
 .products_view_header button:disabled {
   cursor: not-allowed;
+  color: #000;
 }
 
 .products_view_header button .mobile_only {

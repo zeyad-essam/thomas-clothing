@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 
 import useInput from "../../../utils/hooks/useInput";
 import { validateEmail } from "../../../utils/auth";
@@ -75,4 +75,4 @@ const NewsForm = () => {
   );
 };
 
-export default NewsForm;
+export default memo(NewsForm);

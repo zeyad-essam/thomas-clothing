@@ -25,9 +25,8 @@ export const getProductsCount = async (findObject, query) => {
 
 export const getProductsMaxPrice = async (findObject, query) => {
   const maxPrice = (
-    await new ApiFeatures(Product.find(findObject), query)
-      .filter()
-      .query.sort({ price: -1 })
+    await Product.find(findObject)
+      .sort({ price: -1 })
       .limit(1)
       .select({ price: 1, _id: 0 })
   )[0].price;
@@ -35,16 +34,11 @@ export const getProductsMaxPrice = async (findObject, query) => {
   return maxPrice;
 };
 
-export const getProductsColorsArray = async (findObject, query) => {
-  const productsColorObjects = await new ApiFeatures(
-    Product.find(findObject),
-    query
-  )
-    .filter()
-    .query.select({
-      _id: 0,
-      color: 1,
-    });
+export const getProductsColorsArray = async (findObject) => {
+  const productsColorObjects = await Product.find(findObject).select({
+    _id: 0,
+    color: 1,
+  });
 
   const productsColorSet = new Set();
 
@@ -61,13 +55,11 @@ export const getProductsColorsArray = async (findObject, query) => {
   return productsColorsArray;
 };
 
-export const getProductsAvailabeSizes = async (findObject, query) => {
-  const productsAvailabeSizes = await new ApiFeatures(
-    Product.find(findObject),
-    query
-  )
-    .filter()
-    .query.select({ availableSizes: 1, _id: 0 });
+export const getProductsAvailabeSizes = async (findObject) => {
+  const productsAvailabeSizes = await Product.find(findObject).select({
+    availableSizes: 1,
+    _id: 0,
+  });
 
   const allProductsAvailableSizesArray = [];
 
