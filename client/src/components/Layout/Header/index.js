@@ -7,8 +7,7 @@ import UtilityNavigation from "./Navigation/UtilityNavigation";
 
 import MenuSharpIcon from "@mui/icons-material/MenuSharp";
 
-import pcLogo from "../../../images/logo-pc.png";
-import mobileLogo from "../../../images/logo-mobile.png";
+import { ReactComponent as BlackLogo } from "../../../images/logo-black.svg";
 
 import classes from "./Header.module.css";
 
@@ -60,11 +59,7 @@ const Header = () => {
         </button>
         <div className={classes.logo}>
           <Link to="/">
-            <picture>
-              <source srcSet={mobileLogo} media="(max-width : 959px)" />
-              <source srcSet={pcLogo} media="(min-width : 960px)" />
-              <img src={pcLogo} alt="logo" />
-            </picture>
+            <BlackLogo />
           </Link>
         </div>
       </div>

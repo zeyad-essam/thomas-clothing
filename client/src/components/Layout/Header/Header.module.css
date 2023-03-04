@@ -51,23 +51,17 @@
 .header .header_left .logo a {
   display: flex;
   align-items: center;
-  width: 150px;
-}
-
-.header .header_left .logo img {
-  display: block;
-  width: 100%;
-  image-rendering: -webkit-optimize-contrast;
+  width: 148.38px;
 }
 
 @media (max-width: 1600px) {
   .header .header_left .logo a {
-    width: 125px;
+    width: 140px;
   }
 }
 
 @media (max-width: 991.98px) {
   .header .header_left .logo a {
-    width: 100px;
+    width: 110px;
   }
 }

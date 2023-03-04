@@ -11,7 +11,7 @@ import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import { logoutHandler } from "../../../../utils/auth";
 import ClipLoader from "react-spinners/ClipLoader";
 
-import mobileLogo from "../../../../images/logo-mobile.png";
+import { ReactComponent as BlackLogo } from "../../../../images/logo-black.svg";
 
 import classes from "./MobileNavigation.module.css";
 import SideModal from "../../../UI/SideModal";
@@ -38,7 +38,9 @@ const MobileNavigation = ({ isOpened, onClose }) => {
     <SideModal isOpened={isOpened} onClose={onClose} onlyMobile>
       <div className={classes.navigation_menu}>
         <header>
-          <img src={mobileLogo} alt="logo" />
+          <Link to="/">
+            <BlackLogo />
+          </Link>
         </header>
         <ul className={classes.product_links}>
           {navLinks.map((link) => (

@@ -11,6 +11,11 @@
   border-bottom: 1px solid #ddd;
 }
 
+.navigation_menu header a {
+  display: flex;
+  width: 120px;
+}
+
 .navigation_menu ul a,
 .navigation_menu ul .logout {
   display: flex;
@@ -39,13 +44,9 @@
 .navigation_menu ul.product_links {
   background: #f5f5f5;
   text-transform: uppercase;
-  padding-bottom: 10px;
+  padding: 10px 0;
 }
 
-.navigation_menu ul.product_links li:first-of-type a {
-  padding-top: 20px;
-}
-
-.navigation_menu ul:last-of-type li:first-of-type a {
-  padding-top: 15px;
+.navigation_menu ul:not(.product_links) {
+  padding-top: 10px;
 }

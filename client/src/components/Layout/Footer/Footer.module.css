@@ -101,9 +101,15 @@
 
 .footer .footer_section ul a {
   margin-left: 5px;
-  font-size: 1rem;
+  font-size: 0.95rem;
   letter-spacing: 0.5px;
   font-family: "Petrona", serif;
+}
+
+@media (max-width: 991.8px) {
+  .footer .footer_section ul a {
+    font-size: 1rem;
+  }
 }
 
 .footer .footer_section > p {
