@@ -1,4 +1,4 @@
-import { redisClient } from "../app.js";
+import redisClient from "../utils/redis.js";
 
 export const cacheMiddleware = async (req, res, next) => {
   const cacheKey = req.originalUrl || req.url;

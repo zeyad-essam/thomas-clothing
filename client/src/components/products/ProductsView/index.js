@@ -15,6 +15,7 @@ const ProductsView = ({ category }) => {
   const [showFilters, setShowFilters] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [page, setPage] = useState(1);
   const [products, setProducts] = useState([]);
   const [productsCount, setProductsCount] = useState(0);
 
@@ -28,7 +29,7 @@ const ProductsView = ({ category }) => {
   );
 
   const fetchProducts = useCallback(async () => {
-    let queryObject = { ...queryParams };
+    let queryObject = { ...queryParams, page };
     if (category) {
       queryObject.category = category;
     }
@@ -40,39 +41,26 @@ const ProductsView = ({ category }) => {
         }
       );
 
-      setProducts(response.data.products);
-      setProductsCount(response.data.productsCount);
+      console.log(response);
+
+      setProducts((prevProducts) => [
+        ...prevProducts,
+        ...response.data.products,
+      ]);
+
+      if (page === 1) {
+        setProductsCount(response.data.productsCount);
+      }
     } catch (error) {
       setError(true);
     } finally {
       setLoading(false);
     }
-  }, [queryParams, category]);
+  }, [queryParams, page, category]);
 
-  const fetchMoreProducts = useCallback(
-    async (page) => {
-      let queryObject = { ...queryParams, page };
-      if (category) {
-        queryObject.category = category;
-      }
-      try {
-        const response = await axios.get(
-          `${process.env.REACT_APP_API_URL}/products/get-more-products/`,
-          {
-            params: queryObject,
-          }
-        );
-
-        setProducts((prevProducts) => [
-          ...prevProducts,
-          ...response.data.products,
-        ]);
-      } catch (error) {
-        setError(true);
-      }
-    },
-    [queryParams, category]
-  );
+  const nextPageHandler = () => {
+    setPage((prevPage) => prevPage + 1);
+  };
 
   useEffect(() => {
     fetchProducts();
@@ -104,7 +92,7 @@ const ProductsView = ({ category }) => {
           loading={loading}
           products={products}
           productsCount={productsCount}
-          fetchMoreProducts={fetchMoreProducts}
+          onNextPage={nextPageHandler}
         />
       </div>
     </div>

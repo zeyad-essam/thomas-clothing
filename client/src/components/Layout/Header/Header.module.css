@@ -54,6 +54,10 @@
   width: 148.38px;
 }
 
+.header .header_left .logo a svg {
+  width: 100%;
+}
+
 @media (max-width: 1600px) {
   .header .header_left .logo a {
     width: 140px;

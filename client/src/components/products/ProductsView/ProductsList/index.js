@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PageLoading from "../../../UI/PageLoading";
 import ProductItem from "./ProductItem";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -11,16 +11,8 @@ const ProductsList = ({
   error,
   products,
   productsCount,
-  fetchMoreProducts,
+  onNextPage,
 }) => {
-  // starting with page two cause page one content already fetched and we want to fetch page 2 when the infinite scroll function gets invoked
-  const [page, setPage] = useState(2);
-
-  const loadMore = () => {
-    fetchMoreProducts(page);
-    setPage((prevPage) => prevPage + 1);
-  };
-
   return (
     <div className={classes.products_list}>
       {loading && <PageLoading />}
@@ -31,7 +23,7 @@ const ProductsList = ({
         <InfiniteScroll
           className={classes.infinite_scroll}
           hasMore={products.length !== productsCount}
-          next={loadMore}
+          next={onNextPage}
           dataLength={products.length}
           scrollThreshold={0.6}
           loader={

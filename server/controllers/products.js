@@ -17,33 +17,40 @@ export const postAddProduct = async (req, res, next) => {
 };
 
 export const getProducts = async (req, res, next) => {
-  const category = req.query.category;
+  const query = req.query;
+  const category = query.category;
   let findObject = category ? { category } : {};
+  const requestedPage = Number(query.page);
+
+  let responseData = {
+    success: true,
+  };
+
   try {
-    const products = await getFilteredProducts(findObject, req.query);
+    const products = await getFilteredProducts(findObject, query);
 
-    const productsCount = await getProductsCount(findObject, req.query);
+    responseData.products = products;
 
-    const maxPrice = await getProductsMaxPrice(findObject, req.query);
+    // only get these information if it is the first page being requested
+    if (requestedPage === 1) {
+      const productsCount = await getProductsCount(findObject, query);
+      responseData.productsCount = productsCount;
 
-    const productsColorArray = await getProductsColorsArray(
-      findObject,
-      req.query
-    );
+      const maxPrice = await getProductsMaxPrice(findObject, query);
+      responseData.maxPrice = maxPrice;
 
-    const productsAvailableSizes = await getProductsAvailabeSizes(
-      findObject,
-      req.query
-    );
+      const productsColorArray = await getProductsColorsArray(
+        findObject,
+        query
+      );
+      responseData.productsColorArray = productsColorArray;
 
-    const responseData = {
-      success: true,
-      products,
-      productsCount,
-      maxPrice,
-      colors: productsColorArray,
-      sizes: productsAvailableSizes,
-    };
+      const productsAvailableSizes = await getProductsAvailabeSizes(
+        findObject,
+        query
+      );
+      responseData.productsAvailableSizes = productsAvailableSizes;
+    }
 
     const casheValue = JSON.stringify(responseData);
     const casheKey = req.originalUrl || req.url;
@@ -54,29 +61,6 @@ export const getProducts = async (req, res, next) => {
     res.json(responseData);
   } catch (err) {
     console.log(err);
-    if (!err.statusCode) {
-      err.statusCode = 500;
-    }
-    next(err);
-  }
-};
-
-export const getMoreProducts = async (req, res, next) => {
-  const category = req.query.category;
-  let findObject = category ? { category } : {};
-  try {
-    const products = await getFilteredProducts(findObject, req.query);
-
-    const responseData = { success: true, products };
-
-    const casheValue = JSON.stringify(responseData);
-    const casheKey = req.originalUrl || req.url;
-    const cacheExpirationTime = 7200;
-
-    cacheResponse(casheKey, casheValue, cacheExpirationTime);
-
-    res.json(responseData);
-  } catch (err) {
     if (!err.statusCode) {
       err.statusCode = 500;
     }
