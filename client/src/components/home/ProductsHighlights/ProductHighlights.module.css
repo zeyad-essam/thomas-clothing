@@ -2,12 +2,6 @@
   padding: 40px 25px 50px;
 }
 
-@media (max-width: 991px) {
-  .products_highlights {
-    padding: 30px 16px;
-  }
-}
-
 .products_highlights > h2 {
   margin-bottom: 20px;
   text-transform: uppercase;
@@ -18,6 +12,10 @@
 }
 
 @media (max-width: 991px) {
+  .products_highlights {
+    padding: 30px 16px;
+  }
+
   .products_highlights > h2 {
     font-size: 26px;
   }

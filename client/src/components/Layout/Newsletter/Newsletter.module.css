@@ -3,12 +3,6 @@
   background-color: #f5f5f5;
 }
 
-@media (max-width: 567px) {
-  .newsletter {
-    padding: 50px 16px;
-  }
-}
-
 .newsletter h3 {
   font-size: 22px;
   font-weight: 500;
@@ -17,25 +11,11 @@
   text-transform: uppercase;
 }
 
-@media (max-width: 567px) {
-  .newsletter h3 {
-    font-size: 18px;
-  }
-}
-
 .newsletter p {
   font-size: 14px;
   font-weight: 600;
   margin-bottom: 25px;
   text-align: center;
-}
-
-@media (max-width: 567px) {
-  .newsletter p {
-    font-size: 13.5px;
-    font-weight: 500;
-    margin-bottom: 20px;
-  }
 }
 
 .newsletter form {
@@ -103,4 +83,20 @@
   bottom: -25px;
   font-size: 14px;
   font-weight: 500;
+}
+
+@media (max-width: 567px) {
+  .newsletter {
+    padding: 50px 16px;
+  }
+
+  .newsletter h3 {
+    font-size: 18px;
+  }
+
+  .newsletter p {
+    font-size: 13.5px;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
 }

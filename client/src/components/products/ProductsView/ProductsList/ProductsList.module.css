@@ -26,15 +26,15 @@
   padding: 24px;
 }
 
+.products_list .load_more {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
 @media (max-width: 991.8px) {
   .products_list ul {
     grid-template-columns: 1fr 1fr;
     padding: 16px;
   }
-}
-
-.products_list .load_more {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 30px;
 }

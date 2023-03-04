@@ -24,14 +24,14 @@
   cursor: pointer;
 }
 
+.utility_navigation ul span {
+  display: flex;
+  align-items: center;
+}
+
 @media (max-width: 991.98px) {
   .utility_navigation ul .account_link,
   .utility_navigation ul li.logout {
     display: none;
   }
-}
-
-.utility_navigation ul span {
-  display: flex;
-  align-items: center;
 }

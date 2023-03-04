@@ -3,13 +3,6 @@
   margin: 0 0 30px;
 }
 
-@media (min-width: 768px) {
-  .ProductsPoster .image_wrapper {
-    aspect-ratio: 16 / 9;
-    margin: 50px 0;
-  }
-}
-
 .ProductsPoster .image_wrapper picture {
   display: flex;
 }
@@ -31,13 +24,6 @@
   align-items: flex-end;
 }
 
-@media (max-width: 767px) {
-  .ProductsPoster .content_wrapper {
-    justify-content: center;
-    align-items: flex-end;
-  }
-}
-
 .ProductsPoster .content_wrapper .content {
   position: sticky;
   bottom: 0;
@@ -45,12 +31,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-@media (max-width: 767px) {
-  .ProductsPoster .content_wrapper .content {
-    padding: 30px 15px;
-  }
 }
 
 .ProductsPoster .content_wrapper .content h3 {
@@ -79,7 +59,23 @@
   }
 }
 
+@media (min-width: 768px) {
+  .ProductsPoster .image_wrapper {
+    aspect-ratio: 16 / 9;
+    margin: 50px 0;
+  }
+}
+
 @media (max-width: 767px) {
+  .ProductsPoster .content_wrapper {
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  .ProductsPoster .content_wrapper .content {
+    padding: 30px 15px;
+  }
+
   .ProductsPoster .content_wrapper .content h3 {
     flex-direction: row;
     gap: 6px;
