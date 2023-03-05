@@ -103,6 +103,20 @@ const ProductsView = ({ category }) => {
     [queryParams, setQueryParams]
   );
 
+  const handlePriceRandeChange = (value) => {
+    if (value[0] === 0 && value[1] === filterData.maxPrice) {
+      setQueryParams({
+        ...queryParams,
+        priceRange: undefined,
+      });
+      return;
+    }
+    setQueryParams({
+      ...queryParams,
+      priceRange: value,
+    });
+  };
+
   const handleSizeChange = useCallback(
     (size) => {
       if (!queryParams.sizes) {
@@ -123,6 +137,10 @@ const ProductsView = ({ category }) => {
     },
     [queryParams, setQueryParams]
   );
+
+  const resetPriceRange = () => {
+    setQueryParams({ ...queryParams, priceRange: undefined });
+  };
 
   const resetQueryParams = useCallback(() => {
     console.log("test");
@@ -173,12 +191,15 @@ const ProductsView = ({ category }) => {
       <div className={classes.list_wrapper}>
         <ProductsFilters
           showFilters={showFilters}
-          onHideFilters={hideFilters}
           loading={loading}
-          filterData={filterData}
+          productsCount={productsCount}
           queryParams={queryParams}
+          onHideFilters={hideFilters}
+          filterData={filterData}
           onColorSelect={handleColorChange}
+          onPriceRangeSelect={handlePriceRandeChange}
           onSizeSelect={handleSizeChange}
+          onQueryReset={resetQueryParams}
         />
         <ProductsList
           error={error}
@@ -189,6 +210,7 @@ const ProductsView = ({ category }) => {
           queryParams={{ ...queryParams }}
           onColorRemove={handleColorChange}
           onSizeRemove={handleSizeChange}
+          onPriceRangeReset={resetPriceRange}
           onQueryReset={resetQueryParams}
         />
       </div>

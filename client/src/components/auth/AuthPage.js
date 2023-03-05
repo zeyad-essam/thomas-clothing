@@ -110,6 +110,10 @@ const AuthPage = ({ signup }) => {
     } else {
       document.body.style.overflow = "visible";
     }
+
+    return () => {
+      document.body.style.overflow = "visible";
+    };
   }, [showForgetPassword]);
 
   useEffect(() => {

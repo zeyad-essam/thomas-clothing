@@ -18,14 +18,21 @@ const ProductsList = ({
   queryParams,
   onColorRemove,
   onSizeRemove,
+  onPriceRangeReset,
   onQueryReset,
 }) => {
   const nextPageHandler = () => {
     onNextPage();
   };
 
+  const selectedColors = queryParams.colors;
+
+  const selectedSizes = queryParams.sizes;
+
+  const selectedPriceRange = queryParams.priceRange;
+
   const hasSelectedFilters =
-    queryParams.colors || queryParams.sizes || queryParams.priceRange;
+    selectedColors || selectedSizes || selectedPriceRange;
 
   return (
     <div className={classes.products_list_wrapper}>
@@ -64,6 +71,22 @@ const ProductsList = ({
                 >
                   Clear All
                 </li>
+                {selectedPriceRange && (
+                  <li
+                    className={classes.remove_filter}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onPriceRangeReset();
+                    }}
+                  >
+                    <span>
+                      <CloseRoundedIcon
+                        style={{ fontSize: 17, color: "#242328" }}
+                      />
+                    </span>
+                    From {selectedPriceRange[0]}$ to {selectedPriceRange[1]}$
+                  </li>
+                )}
                 {queryParams.colors &&
                   queryParams.colors.map((color) => (
                     <li

@@ -5,10 +5,9 @@
   width: 100%;
   max-width: 0;
   height: calc(100vh - (var(--header-height) + 60px));
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: overlay;
   background-color: #fff;
-  transition: max-width 0.3s ease;
+  transition: max-width 0.3s ease, transform 0.5s ease;
 }
 
 .products_filters_wrapper::-webkit-scrollbar {
@@ -16,12 +15,45 @@
 }
 
 .products_filters_wrapper::-webkit-scrollbar-thumb {
-  background-color: #b0b0b0;
+  background-color: #eeeeee;
 }
 
 .products_filters_wrapper.is_expanded {
   max-width: 348px;
   border-right: 1px solid #bdbdbd;
+}
+
+.products_filters_wrapper .filters_header {
+  position: sticky;
+  top: 0;
+  height: 70px;
+  line-height: 70px;
+  padding: 0 20px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #f5f5f5;
+  background-color: #fff;
+  z-index: 1;
+}
+
+.products_filters_wrapper .filters_header h4 {
+  font-weight: 500;
+  text-decoration: underline;
+  font-size: 14px;
+}
+
+.products_filters_wrapper .filters_header button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  background-color: #fff;
+  color: #000;
+  border: none;
+  outline: none;
 }
 
 .products_filters_wrapper .products_filters_inner {
@@ -37,12 +69,18 @@
 }
 
 .products_filters_inner .filters_section {
-  margin-bottom: 30px;
+  padding-bottom: 20px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.products_filters_inner .filters_section:last-of-type {
+  border: none;
 }
 
 .filters_section h3 {
   font-size: 20px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .filters_section .colors_list {
@@ -73,9 +111,33 @@
   outline-offset: 2.5px;
 }
 
+.filters_section .slider_wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  max-width: 350px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.filters_section .slider_wrapper .range_titles {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #5a5a5a;
+}
+
+.filters_section .slider_wrapper span {
+  font-family: "Petrona", serif !important;
+}
+
 .filters_section .sizes_list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 50px);
+  grid-template-columns: repeat(auto-fill, 50px);
+  column-gap: 10px;
   row-gap: 20px;
   justify-content: space-between;
 }
@@ -91,4 +153,86 @@
 
 .filters_section .sizes_list li.selected {
   background-color: #acacac;
+}
+
+.products_filters_wrapper .view_products {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  background-color: #212121;
+  color: #fff;
+  font-family: "Petrona", serif;
+  font-weight: 700;
+  transition: background 0.3s ease;
+}
+
+.products_filters_wrapper .view_products.loading {
+  background-color: #fcfcfc;
+  color: #d2d2d2;
+  border-top: 1px solid #d2d2d2;
+}
+
+@media (min-width: 992px) {
+  .products_filters_wrapper .filters_header {
+    display: none;
+  }
+}
+
+@media (max-width: 991.8px) {
+  .products_filters_wrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 350px;
+    transform: translateX(100%);
+    z-index: 999;
+  }
+
+  .products_filters_wrapper.is_expanded {
+    max-width: 100%;
+    border-right: none;
+    border-left: 1px solid #bdbdbd;
+    transform: translateX(0);
+  }
+
+  .products_filters_wrapper .products_filters_inner {
+    transform: translateX(0);
+    width: 100%;
+    padding: 0 20px;
+    height: auto;
+  }
+}
+
+@media (min-width: 767.8px) {
+  .products_filters_wrapper .view_products {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .products_filters_wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .products_filters_wrapper::-webkit-scrollbar-thumb {
+    background-color: rgba(238, 238, 238, 0.5);
+  }
+
+  .products_filters_wrapper.is_expanded {
+    border: none;
+  }
+
+  .products_filters_wrapper .products_filters_inner {
+    flex: 1;
+  }
+
+  .filters_section h3 {
+    font-size: 18px;
+  }
 }
