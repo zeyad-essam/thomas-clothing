@@ -11,10 +11,10 @@ export const scanAndDelete = async (pattern) => {
 
   try {
     const reply = await redisClient.scan(cursor, {
-      MATCH: "/products*",
+      MATCH: pattern,
       COUNT: 1000,
     });
-    console.log(reply);
+
     for (let key of reply.keys) {
       cursor = reply.cursor;
       await redisClient.del(key);

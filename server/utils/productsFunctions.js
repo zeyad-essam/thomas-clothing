@@ -1,6 +1,45 @@
 import Product from "../models/Product.js";
 import ApiFeatures from "../utils/apiFeatures.js";
 
+const sizesOrder = [
+  "xxs",
+  "xs",
+  "s",
+  "m",
+  "l",
+  "xl",
+  "2xl",
+  "xxl",
+  "3xl",
+  "xxxl",
+];
+
+const sizesFilteringFunction = (a, b) => {
+  a = a.toLowerCase();
+  b = b.toLowerCase();
+
+  let nra = parseInt(a);
+  let nrb = parseInt(b);
+
+  if (sizesOrder.indexOf(a) != -1) nra = NaN;
+  if (sizesOrder.indexOf(b) != -1) nrb = NaN;
+
+  if (nrb === 0) return 1;
+  if ((nra && !nrb) || nra === 0) return -1;
+  if (!nra && nrb) return 1;
+  if (nra && nrb) {
+    if (nra == nrb) {
+      return a
+        .substr(("" + nra).length)
+        .localeCompare(a.substr(("" + nra).length));
+    } else {
+      return nra - nrb;
+    }
+  } else {
+    return sizesOrder.indexOf(a) - sizesOrder.indexOf(b);
+  }
+};
+
 export const getFilteredProducts = async (findObject, query) => {
   const products = await new ApiFeatures(Product.find(findObject), query)
     .filter()
@@ -71,7 +110,9 @@ export const getProductsAvailabeSizes = async (findObject) => {
     ...allProductsAvailableSizesArray,
   ]);
 
-  const uniqueSizesArray = [...productsAvailableSizesSet].sort();
+  const uniqueSizesArray = [...productsAvailableSizesSet].sort(
+    sizesFilteringFunction
+  );
 
   return uniqueSizesArray;
 };
