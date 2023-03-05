@@ -30,7 +30,7 @@ const ProductsView = ({ category }) => {
       sizes: ArrayParam,
       priceRange: ArrayParam /* [minPrice, maxPrice] */,
     },
-    { arrayFormat: "repeat" }
+    { updateType: "replace" }
   );
 
   const fetchProducts = useCallback(
@@ -139,16 +139,22 @@ const ProductsView = ({ category }) => {
   );
 
   const resetPriceRange = () => {
-    setQueryParams({ ...queryParams, priceRange: undefined });
+    setQueryParams(
+      { ...queryParams, priceRange: undefined },
+      { replaceInHistory: true }
+    );
   };
 
   const resetQueryParams = useCallback(() => {
     console.log("test");
-    setQueryParams({
-      colors: undefined,
-      sizes: undefined,
-      priceRange: undefined,
-    });
+    setQueryParams(
+      {
+        colors: undefined,
+        sizes: undefined,
+        priceRange: undefined,
+      },
+      "replace"
+    );
   }, [setQueryParams]);
 
   const showFiltersHandler = useCallback((e) => {
