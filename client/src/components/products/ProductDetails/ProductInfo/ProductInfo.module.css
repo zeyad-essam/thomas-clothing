@@ -42,9 +42,9 @@
 }
 
 .product_info_inner .product_sizes ul li {
-  height: 64px;
+  height: 60px;
   text-align: center;
-  line-height: 64px;
+  line-height: 60px;
   border: 1px solid #e0e0e0;
   font-family: "Petrona", serif;
   font-weight: 600;
@@ -116,9 +116,5 @@
 
   .product_info_inner .product_sizes ul {
     grid-template-columns: repeat(auto-fill, minmax(65px, 1fr));
-  }
-
-  .product_info_inner .product_sizes ul li {
-    height: 60px;
   }
 }

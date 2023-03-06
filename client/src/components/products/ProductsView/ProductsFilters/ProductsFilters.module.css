@@ -35,10 +35,11 @@
   z-index: 1;
 }
 
-.products_filters_wrapper .filters_header h4 {
+.products_filters_wrapper .filters_header span {
   font-weight: 500;
   text-decoration: underline;
   font-size: 14px;
+  padding: 10px 10px 10px 0;
 }
 
 .products_filters_wrapper .filters_header button {
@@ -166,7 +167,7 @@
   color: #fff;
   font-family: "Petrona", serif;
   font-weight: 700;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .products_filters_wrapper .view_products.loading {

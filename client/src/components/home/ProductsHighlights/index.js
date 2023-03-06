@@ -41,6 +41,7 @@ const index = () => {
         settings: {
           slidesToShow: 2,
           speed: 500,
+          autoplay: false,
         },
       },
       {

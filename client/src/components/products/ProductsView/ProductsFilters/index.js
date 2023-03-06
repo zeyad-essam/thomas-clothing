@@ -39,7 +39,7 @@ const ProductsFilters = ({
       setPriceRange([0, filterData.maxPrice]);
     }
     if (queryPriceRange) {
-      setPriceRange(queryPriceRange);
+      setPriceRange([Number(queryPriceRange[0]), Number(queryPriceRange[1])]);
     }
   }, [filterData.maxPrice, queryParams.priceRange]);
 
@@ -86,7 +86,7 @@ const ProductsFilters = ({
         }`}
       >
         <header className={classes.filters_header}>
-          <h4 onClick={onQueryReset}>Clear All</h4>
+          <span onClick={onQueryReset}>Clear All</span>
           <button onClick={onHideFilters}>
             <CloseRoundedIcon />
           </button>

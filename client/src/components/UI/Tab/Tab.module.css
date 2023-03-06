@@ -18,38 +18,17 @@
   cursor: pointer;
 }
 
-.tab h3::after {
-  content: "";
+.tab h3 span {
+  display: flex;
   position: absolute;
-  right: 5px;
-  width: 14px;
-  height: 1.5px;
-  background-color: #212121;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-.tab h3::before {
-  content: "";
-  position: absolute;
-  right: 5px;
-  width: 14px;
-  height: 1.5px;
-  background-color: #212121;
-  transform: rotate(-90deg);
-  transition: transform 0.4s ease;
-}
-
-@media (max-width: 767px) {
-  .tab h3::after {
-    height: 2px;
-  }
-
-  .tab h3::before {
-    height: 2px;
-  }
-}
-
-.tab.expanded h3::before {
-  transform: rotate(0);
+.tab.expanded h3 span {
+  transform: translateY(-50%) rotateX(180deg);
+  transform-origin: center;
 }
 
 .tab .content_wrapper {
@@ -60,7 +39,7 @@
 
 .tab.expanded .content_wrapper {
   max-height: 1500px;
-  transition: max-height 1s ease-in;
+  transition: max-height 1s ease-in-out;
 }
 
 .tab .content_inner {

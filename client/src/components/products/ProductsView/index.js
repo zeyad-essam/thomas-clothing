@@ -146,7 +146,6 @@ const ProductsView = ({ category }) => {
   };
 
   const resetQueryParams = useCallback(() => {
-    console.log("test");
     setQueryParams(
       {
         colors: undefined,
