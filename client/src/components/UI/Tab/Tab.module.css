@@ -1,7 +1,11 @@
 .tab {
   border-top: 1px solid #e0e0e0;
   border-bottom: 1px solid #e0e0e0;
-  margin-top: -1px; /* collapse the borders if there was another tab on top */
+}
+
+.tab + div {
+  border-top: none !important;
+  /* prevent the next tab from having border top incase there was more than one tap stacked over each other */
 }
 
 .tab h3 {
@@ -19,7 +23,7 @@
   position: absolute;
   right: 5px;
   width: 14px;
-  height: 2px;
+  height: 1.5px;
   background-color: #212121;
 }
 
@@ -28,10 +32,20 @@
   position: absolute;
   right: 5px;
   width: 14px;
-  height: 2px;
+  height: 1.5px;
   background-color: #212121;
   transform: rotate(-90deg);
   transition: transform 0.4s ease;
+}
+
+@media (max-width: 767px) {
+  .tab h3::after {
+    height: 2px;
+  }
+
+  .tab h3::before {
+    height: 2px;
+  }
 }
 
 .tab.expanded h3::before {
@@ -46,7 +60,7 @@
 
 .tab.expanded .content_wrapper {
   max-height: 1500px;
-  transition: max-height 1s ease-in-out;
+  transition: max-height 1s ease-in;
 }
 
 .tab .content_inner {

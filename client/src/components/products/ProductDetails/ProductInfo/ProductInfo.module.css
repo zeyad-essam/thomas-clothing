@@ -117,4 +117,8 @@
   .product_info_inner .product_sizes ul {
     grid-template-columns: repeat(auto-fill, minmax(65px, 1fr));
   }
+
+  .product_info_inner .product_sizes ul li {
+    height: 60px;
+  }
 }

@@ -25,9 +25,7 @@ const ProductItem = ({ product }) => {
     grabCursor: false,
     allowTouchMove: true,
     speed: 500,
-    onSwiper: (swiperRef) => {
-      setSwiperRef(swiperRef);
-    },
+    onSwiper: (swiperRef) => setSwiperRef(swiperRef),
     breakpoints: {
       992: {
         speed: 1500,
@@ -60,7 +58,7 @@ const ProductItem = ({ product }) => {
     if (intervalId) {
       clearInterval(intervalId);
     }
-    swiperRef.slideTo(0);
+    swiperRef.slideToLoop(0);
   };
 
   const handleClick = () => {
