@@ -1,0 +1,37 @@
+.product_details_wrapper {
+  max-width: 1440px;
+  margin: auto;
+  padding: 24px;
+}
+
+.loading_wrapper {
+  min-height: calc(100vh - var(--header-height));
+}
+
+.error {
+  padding: 50px 16px 20px;
+  font-size: 21px;
+  text-align: center;
+  color: var(--error-color);
+}
+
+.loading_wrapper,
+.error {
+  min-height: 600px;
+}
+
+.product_details {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 450px;
+}
+
+@media (max-width: 991px) {
+  .product_details_wrapper {
+    padding: 0;
+  }
+
+  .product_details {
+    display: block;
+  }
+}

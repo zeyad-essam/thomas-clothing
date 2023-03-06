@@ -1,0 +1,54 @@
+.tab {
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+  margin-top: -1px; /* collapse the borders if there was another tab on top */
+}
+
+.tab h3 {
+  position: relative;
+  padding: 15px 0;
+  font-weight: 600;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.tab h3::after {
+  content: "";
+  position: absolute;
+  right: 5px;
+  width: 14px;
+  height: 2px;
+  background-color: #212121;
+}
+
+.tab h3::before {
+  content: "";
+  position: absolute;
+  right: 5px;
+  width: 14px;
+  height: 2px;
+  background-color: #212121;
+  transform: rotate(-90deg);
+  transition: transform 0.4s ease;
+}
+
+.tab.expanded h3::before {
+  transform: rotate(0);
+}
+
+.tab .content_wrapper {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 1s cubic-bezier(0, 1, 0, 1);
+}
+
+.tab.expanded .content_wrapper {
+  max-height: 1500px;
+  transition: max-height 1s ease-in-out;
+}
+
+.tab .content_inner {
+  padding-bottom: 20px;
+}

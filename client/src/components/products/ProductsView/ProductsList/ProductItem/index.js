@@ -108,7 +108,7 @@ const ProductItem = ({ product }) => {
           onMouseLeave={handleMouseLeave}
           onClick={handleClick}
         >
-          <Link to={`/product-details/${product.slug}`}>
+          <Link to={`/products/product-details/${product.slug}`}>
             <Swiper
               className="mySwiper"
               {...swiperSettings}
@@ -125,7 +125,9 @@ const ProductItem = ({ product }) => {
       </div>
       <div className={classes.product_info}>
         <h3>
-          <Link to={`/product-details/${product.slug}`}>{product.title}</Link>
+          <Link to={`/products/product-details/${product.slug}`}>
+            {product.title}
+          </Link>
         </h3>
         <span>${product.price}</span>
       </div>

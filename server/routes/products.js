@@ -10,4 +10,6 @@ router.post("/add-product", productsController.postAddProduct);
 
 router.get("/get-products", cacheMiddleware, productsController.getProducts);
 
+router.get("/product-details", productsController.getProductDetails);
+
 export default router;

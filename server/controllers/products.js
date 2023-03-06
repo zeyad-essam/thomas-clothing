@@ -60,3 +60,27 @@ export const getProducts = async (req, res, next) => {
     next(err);
   }
 };
+
+export const getProductDetails = async (req, res, next) => {
+  const { slug } = req.query;
+  try {
+    const product = await Product.findOne({ slug });
+
+    const responseData = {
+      success: true,
+      product: product,
+    };
+
+    const casheValue = JSON.stringify(responseData);
+    const casheKey = req.originalUrl || req.url;
+    const cacheExpirationTime = 7200;
+
+    cacheResponse(casheKey, casheValue, cacheExpirationTime);
+    res.json(responseData);
+  } catch (error) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+};
