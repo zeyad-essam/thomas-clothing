@@ -44,7 +44,9 @@ const ForgetPassword = ({ onCancel }) => {
       emailReset();
       setSuccess(true);
     } catch (err) {
-      const error = err.response.data.message || "something went wrong";
+      const error = err.response
+        ? err.response.data.message
+        : "something went wrong";
       setError(error);
       console.log(err.response.data.message);
     } finally {

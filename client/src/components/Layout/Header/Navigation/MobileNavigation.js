@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import SideModal from "../../../UI/SideModal";
 
 import { navLinks } from "../../../../utils/navlinks";
 
@@ -8,26 +8,33 @@ import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 
-import { logoutHandler } from "../../../../utils/auth";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { userLogout } from "../../../../redux/userSlice";
+
 import ClipLoader from "react-spinners/ClipLoader";
 
 import { ReactComponent as BlackLogo } from "../../../../images/logo-black.svg";
 
+import { useNavigate } from "react-router-dom";
+
 import classes from "./MobileNavigation.module.css";
-import SideModal from "../../../UI/SideModal";
 
 const MobileNavigation = ({ isOpened, onClose }) => {
   const userState = useSelector((state) => state.user);
   const [logoutLoading, setLogoutLoading] = useState();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const userLogout = async () => {
+  const logoutHandler = async () => {
     if (logoutLoading) {
       return;
     }
     setLogoutLoading(true);
     try {
-      await logoutHandler();
+      await dispatch(userLogout()).unwrap();
       setLogoutLoading(false);
+      navigate("/");
     } catch (error) {
       console.log(error);
       setLogoutLoading(false);
@@ -63,7 +70,7 @@ const MobileNavigation = ({ isOpened, onClose }) => {
             </Link>
           </li>
           {userState.isAuthenticated && (
-            <li className={classes.logout} onClick={userLogout}>
+            <li className={classes.logout} onClick={logoutHandler}>
               <i>
                 {logoutLoading ? (
                   <ClipLoader color="#000" size={22} />

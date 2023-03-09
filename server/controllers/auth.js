@@ -27,7 +27,8 @@ export const putSignup = async (req, res, next) => {
       password: hashedPw,
       username: username,
     });
-    const result = await user.save();
+    const savedUser = await user.save();
+
     req.login(user, function (err) {
       if (err) {
         return next(err);
@@ -35,7 +36,11 @@ export const putSignup = async (req, res, next) => {
       return res.status(201).json({
         success: true,
         message: "User created!",
-        userData: { id: result._id, name: result.username },
+        user: {
+          _id: savedUser._id,
+          username: savedUser.username,
+          cart: savedUser.cart,
+        },
       });
     });
   } catch (err) {
@@ -60,27 +65,11 @@ export const postLogin = (req, res, next) => {
         res.status(200).json({
           success: true,
           message: "Successfully Authenticated",
-          user: { username: user.username, _id: user._id },
+          user: { username: user.username, _id: user._id, cart: user.cart },
         });
       });
     }
   })(req, res, next);
-};
-
-export const getUser = (req, res) => {
-  if (req.user) {
-    const userData = {
-      _id: req.user._id,
-      username: req.user.username,
-    };
-    res.status(200).json({
-      success: true,
-      message: "User Fetched Successfully",
-      user: userData,
-    });
-  } else {
-    res.status(404).json({ message: "No logged in user" });
-  }
 };
 
 export const postReset = async (req, res, next) => {
@@ -161,12 +150,29 @@ export const postNewPasword = async (req, res, next) => {
   }
 };
 
+export const getUser = (req, res) => {
+  if (req.user) {
+    const userData = {
+      _id: req.user._id,
+      username: req.user.username,
+      cart: req.user.cart,
+    };
+    res.status(200).json({
+      success: true,
+      message: "User Fetched Successfully",
+      user: userData,
+    });
+  } else {
+    res.status(404).json({ message: "No logged in user" });
+  }
+};
+
 export const getLogout = (req, res, next) => {
   if (req.user) {
     req.session.destroy();
     req.logout();
     res.status(200).json({ message: "User logged out successfully." });
   } else {
-    res.status(400).json({ message: "User already logged out" });
+    res.status(400).json({ message: "No logged in user." });
   }
 };

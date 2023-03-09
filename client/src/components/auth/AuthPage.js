@@ -10,7 +10,9 @@ import {
   validateUserName,
 } from "../../utils/auth";
 
-import axios from "axios";
+import { useDispatch } from "react-redux";
+import { userLogin, userSignup } from "../../redux/userSlice";
+
 import FormButton from "../UI/FormButton";
 import SocialAuth from "./SocialAuth";
 import ForgetPassword from "./ForgetPassword";
@@ -21,6 +23,7 @@ const AuthPage = ({ signup }) => {
   const [formError, setFormError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [showForgetPassword, setShowForgetPassword] = useState(false);
+  const dispatch = useDispatch();
 
   const {
     value: emailValue,
@@ -66,31 +69,20 @@ const AuthPage = ({ signup }) => {
     setFormError(null);
     try {
       if (signup) {
-        await axios({
-          method: "PUT",
-          data: {
+        await dispatch(
+          userSignup({
             email: emailValue,
             username: userNameValue,
             password: passwordValue,
-          },
-          url: `${process.env.REACT_APP_API_URL}/auth/signup`,
-          withCredentials: true,
-        });
+          })
+        ).unwrap();
       } else {
-        await axios({
-          method: "POST",
-          data: {
-            email: emailValue,
-            password: passwordValue,
-          },
-          withCredentials: true,
-          url: `${process.env.REACT_APP_API_URL}/auth/login`,
-        });
+        await dispatch(
+          userLogin({ email: emailValue, password: passwordValue })
+        ).unwrap();
       }
-      window.location.href = "/";
     } catch (err) {
-      const error = err.response.data.message || "something went wrong";
-      setFormError(error);
+      setFormError(err);
     } finally {
       setIsLoading(false);
     }

@@ -12,18 +12,13 @@ const ImageModal = ({ images, start, onClose }) => {
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = "visible";
-    };
-  }, []);
-
-  useEffect(() => {
     if (startImageRef) {
       startImageRef.current.scrollIntoView({
         behavior: "smooth",
       });
     }
     return () => {
+      document.body.style.overflow = "visible";
       startImageRef.current = null;
     };
   }, [startImageRef]);

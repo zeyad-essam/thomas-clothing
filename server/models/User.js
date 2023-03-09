@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+import Product from "../models/Product.js";
+
 const user = new mongoose.Schema({
   googleId: {
     required: false,
@@ -27,16 +29,19 @@ const user = new mongoose.Schema({
   },
   resetToken: String,
   resetTokenExpiration: Date,
-  cart: [
-    {
-      productId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Product",
-        required: true,
+  cart: {
+    totalPrice: { type: Number, required: true, default: 0 },
+    products: [
+      {
+        product: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Product",
+          required: true,
+        },
+        size: { type: String, required: true },
       },
-      quantity: { type: Number, required: true },
-    },
-  ],
+    ],
+  },
   orders: [
     {
       type: mongoose.Schema.Types.ObjectId,
@@ -51,41 +56,37 @@ const user = new mongoose.Schema({
   ],
 });
 
-user.methods.addToCart = function (product) {
-  const cartProductIndex = this.cart.findIndex((cp) => {
-    return cp.productId.toString() == product._id.toString();
-  });
-
-  let newQuantity = 1;
-  const updatedCartItems = [...this.cart];
-
-  if (cartProductIndex >= 0) {
-    newQuantity = this.cart[cartProductIndex].quantity + 1;
-    updatedCartItems[cartProductIndex].quantity = newQuantity;
-  } else {
-    updatedCartItems.push({
-      productId: product._id,
-      quantity: newQuantity,
-    });
-  }
-
-  const updatedCart = updatedCartItems;
-
-  this.cart = updatedCart;
+user.methods.addToCart = function (productId, size, productPrice) {
+  this.cart.totalPrice = this.cart.totalPrice + productPrice;
+  this.cart.products.push({ product: productId, size });
 
   return this.save();
 };
 
-user.methods.removeFromCart = function (productId) {
-  const updatedCartItems = this.cart.filter((item) => {
-    return item.productId.toString() !== productId.toString();
+user.methods.removeFromCart = async function (productId) {
+  const productDoc = this.cart.products.find(
+    (doc) => doc._id.toString() == productId.toString()
+  );
+
+  const product = await Product.findOne({ _id: productDoc.product }).select({
+    _id: 0,
+    price: 1,
   });
-  this.cart = updatedCartItems;
+
+  this.cart.totalPrice = this.cart.totalPrice - product.price;
+
+  this.cart.products = this.cart.products.filter(
+    (product) => product._id.toString() != productId.toString()
+  );
+
   return this.save();
 };
 
 user.methods.clearCart = function () {
-  this.cart = [];
+  this.cart = {
+    totalPrice: 0,
+    products: [],
+  };
   return this.save();
 };
 

@@ -3,7 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 
-import { logoutHandler } from "../../../utils/auth";
+import { useDispatch } from "react-redux";
+import { userLogout } from "../../../redux/userSlice";
 
 import classes from "./PasswordChanged.module.css";
 import PageLoading from "../../UI/PageLoading";
@@ -11,6 +12,15 @@ import PageLoading from "../../UI/PageLoading";
 const PasswordChanged = () => {
   const userState = useSelector((state) => state.user);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const logoutHandler = async () => {
+    try {
+      await dispatch(userLogout()).unwrap();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     if (userState.isLoading) {

@@ -24,7 +24,6 @@ const ProductDetails = ({ slug }) => {
           }
         );
         setProduct(response.data.product);
-        console.log(response.data.product);
       } catch (err) {
         setError(true);
       } finally {

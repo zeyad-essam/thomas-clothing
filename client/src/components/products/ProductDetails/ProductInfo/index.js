@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Tab from "../../../UI/Tab";
 
 import classes from "./ProductInfo.module.css";
 
 const ProductInfo = ({ product }) => {
+  const [selectedSize, setSelectedSize] = useState();
+
+  const selectSizeHandler = (size) => {
+    setSelectedSize(size);
+  };
+
   return (
     <div className={classes.product_info_wrapper}>
       <div className={classes.product_info_inner}>
@@ -15,7 +21,13 @@ const ProductInfo = ({ product }) => {
           </h4>
           <ul>
             {product.availableSizes.map((size) => (
-              <li key={size}>{size}</li>
+              <li
+                key={size}
+                className={size === selectedSize ? classes.selected : ""}
+                onClick={selectSizeHandler.bind(null, size)}
+              >
+                {size}
+              </li>
             ))}
           </ul>
         </div>

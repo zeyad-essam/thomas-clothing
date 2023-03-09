@@ -237,3 +237,9 @@
     font-size: 18px;
   }
 }
+
+@media (max-width: 567px) {
+  .filters_section .slider_wrapper {
+    max-width: 100%;
+  }
+}

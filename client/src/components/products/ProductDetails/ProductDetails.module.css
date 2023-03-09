@@ -9,14 +9,10 @@
 }
 
 .error {
-  padding: 50px 16px 20px;
+  padding: 60px 16px 20px;
   font-size: 21px;
   text-align: center;
   color: var(--error-color);
-}
-
-.loading_wrapper,
-.error {
   min-height: 600px;
 }
 

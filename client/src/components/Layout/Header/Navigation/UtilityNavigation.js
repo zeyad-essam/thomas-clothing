@@ -8,20 +8,23 @@ import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 
 import classes from "./UtilityNavigation.module.css";
 
-import { logoutHandler } from "../../../../utils/auth";
+import { useDispatch } from "react-redux";
+import { userLogout } from "../../../../redux/userSlice";
+
 import ClipLoader from "react-spinners/ClipLoader";
 
 const UtilityNavigation = () => {
   const userState = useSelector((state) => state.user);
   const [logoutLoading, setLogoutLoading] = useState(false);
+  const dispatch = useDispatch();
 
-  const userLogout = async () => {
+  const logoutHandler = async () => {
     if (logoutLoading) {
       return;
     }
     setLogoutLoading(true);
     try {
-      await logoutHandler();
+      await dispatch(userLogout()).unwrap();
       setLogoutLoading(false);
     } catch (error) {
       console.log(error);
@@ -45,7 +48,7 @@ const UtilityNavigation = () => {
           </Link>
         </li>
         {userState.isAuthenticated && (
-          <li className={classes.logout} onClick={userLogout}>
+          <li className={classes.logout} onClick={logoutHandler}>
             {logoutLoading ? (
               <ClipLoader color="#000" size={22} />
             ) : (
