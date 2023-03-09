@@ -11,6 +11,7 @@ import { watchProducts } from "./utils/redis.js";
 
 import authRoutes from "./routes/auth.js";
 import productRoutes from "./routes/products.js";
+import cartRoutes from "./routes/cart.js";
 import subscribeRoutes from "./routes/subscribe.js";
 
 dotenv.config();
@@ -55,6 +56,7 @@ passportConfig(passport);
 
 app.use("/auth", authRoutes);
 app.use("/products", productRoutes);
+app.use("/cart", cartRoutes);
 app.use(subscribeRoutes);
 
 app.get("/", (req, res, next) => {

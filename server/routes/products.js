@@ -17,8 +17,4 @@ router.get(
   productsController.getProductDetails
 );
 
-router.post("/add-to-cart", isAuth, productsController.postAddToCart);
-
-router.delete("/remove-from-cart", isAuth, productsController.removeFromCart);
-
 export default router;
