@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { resetCart } from "./cartSlice";
 
 export const getUser = createAsyncThunk("/user/getUser", async () => {
   const response = await axios.get(
@@ -61,7 +62,7 @@ export const userSignup = createAsyncThunk(
 
 export const userLogout = createAsyncThunk(
   "/user/logout",
-  async (__, { rejectWithValue }) => {
+  async (__, { rejectWithValue, dispatch }) => {
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/auth/logout`,
@@ -69,6 +70,7 @@ export const userLogout = createAsyncThunk(
           withCredentials: true,
         }
       );
+      dispatch(resetCart());
       return response.data.message;
     } catch (err) {
       const error = err.response
@@ -115,7 +117,5 @@ const userSlice = createSlice({
       });
   },
 });
-
-export const { setState } = userSlice.actions;
 
 export default userSlice.reducer;

@@ -1,13 +1,32 @@
 import React, { useState } from "react";
 import Tab from "../../../UI/Tab";
 
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../../../redux/cartSlice";
+
+import ClipLoader from "react-spinners/ClipLoader";
+
 import classes from "./ProductInfo.module.css";
 
 const ProductInfo = ({ product }) => {
-  const [selectedSize, setSelectedSize] = useState();
+  const [selectedSize, setSelectedSize] = useState(null);
+  const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
 
   const selectSizeHandler = (size) => {
     setSelectedSize(size);
+  };
+
+  const addToCartHandler = async () => {
+    if (!selectedSize) {
+      return;
+    } else {
+      try {
+        await dispatch(addToCart({ product, size: selectedSize })).unwrap();
+      } catch (error) {
+        console.log(error);
+      }
+    }
   };
 
   return (
@@ -31,7 +50,9 @@ const ProductInfo = ({ product }) => {
             ))}
           </ul>
         </div>
-        <button>Add to bag</button>
+        <button onClick={addToCartHandler} disabled={cart.loading}>
+          {cart.loading ? <ClipLoader color="#fff" size={24} /> : "Add to bag"}
+        </button>
         <div className={classes.product_tabs}>
           <Tab title="Details">
             <p>{product.details}</p>

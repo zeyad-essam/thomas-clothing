@@ -29,19 +29,20 @@ const user = new mongoose.Schema({
   },
   resetToken: String,
   resetTokenExpiration: Date,
-  cart: {
-    totalPrice: { type: Number, required: true, default: 0 },
-    products: [
-      {
-        product: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "Product",
-          required: true,
-        },
-        size: { type: String, required: true },
+  cart: [
+    {
+      product: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Product",
+        required: true,
       },
-    ],
-  },
+      size: {
+        type: String,
+        required: true,
+      },
+      quantity: { type: Number, required: true },
+    },
+  ],
   orders: [
     {
       type: mongoose.Schema.Types.ObjectId,
@@ -56,37 +57,45 @@ const user = new mongoose.Schema({
   ],
 });
 
-user.methods.addToCart = function (productId, size, productPrice) {
-  this.cart.totalPrice = this.cart.totalPrice + productPrice;
-  this.cart.products.push({ product: productId, size });
+user.methods.addToCart = function (productId, size) {
+  const cartProductIndex = this.cart.findIndex((cp) => {
+    return cp.product.toString() == productId.toString() && cp.size == size;
+  });
+
+  let quantity = 1;
+  const updatedCartItems = [...this.cart];
+
+  if (cartProductIndex >= 0) {
+    quantity = this.cart[cartProductIndex].quantity + 1;
+    updatedCartItems[cartProductIndex].quantity = quantity;
+  } else {
+    updatedCartItems.push({
+      product: productId,
+      size,
+      quantity,
+    });
+  }
+
+  const updatedCart = updatedCartItems;
+
+  this.cart = updatedCart;
 
   return this.save();
 };
 
-user.methods.removeFromCart = async function (productId) {
-  const productDoc = this.cart.products.find(
-    (doc) => doc._id.toString() == productId.toString()
-  );
-
-  const product = await Product.findOne({ _id: productDoc.product }).select({
-    _id: 0,
-    price: 1,
+user.methods.removeFromCart = async function (productId, size) {
+  const updatedCartItems = this.cart.filter((item) => {
+    return (
+      item.product.toString() !== productId.toString() && item.size !== size
+    );
   });
 
-  this.cart.totalPrice = this.cart.totalPrice - product.price;
-
-  this.cart.products = this.cart.products.filter(
-    (product) => product._id.toString() != productId.toString()
-  );
-
+  this.cart = updatedCartItems;
   return this.save();
 };
 
 user.methods.clearCart = function () {
-  this.cart = {
-    totalPrice: 0,
-    products: [],
-  };
+  this.cart = [];
   return this.save();
 };
 

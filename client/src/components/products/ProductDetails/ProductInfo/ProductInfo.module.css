@@ -11,6 +11,7 @@
 .product_info_inner h2 {
   font-size: 18px;
   margin-bottom: 10px;
+  font-weight: 600;
 }
 
 .product_info_inner > span {
