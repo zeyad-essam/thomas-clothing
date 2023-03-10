@@ -84,3 +84,26 @@ export const getProductDetails = async (req, res, next) => {
     next(err);
   }
 };
+
+export const getCheckAvailability = async (req, res, next) => {
+  const { productId, size } = req.query;
+  try {
+    const product = await Product.findOne({
+      _id: productId,
+      availableSizes: { $in: size },
+    });
+
+    if (!product) {
+      return res
+        .status(404)
+        .json({ success: false, message: "No product found" });
+    }
+
+    res.json({ success: true, message: "product is available" });
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+};

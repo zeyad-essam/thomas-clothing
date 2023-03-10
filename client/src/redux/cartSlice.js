@@ -88,6 +88,16 @@ export const addToCart = createAsyncThunk(
         });
         cartItems = response.data.cart;
       } else {
+        await axios.get(
+          `${process.env.REACT_APP_API_URL}/products/check-availability`,
+          {
+            params: {
+              productId: product._id,
+              size: size,
+            },
+          }
+        );
+
         const localCart = localStorage.getItem("cart")
           ? JSON.parse(localStorage.getItem("cart"))
           : [];
@@ -214,6 +224,9 @@ const cartSlice = createSlice({
         state.totalPrice = payload.totalPrice;
         state.loading = false;
       })
+      .addCase(getUserCart.rejected, (state) => {
+        state.loading = false;
+      })
       .addCase(addToCart.pending, (state) => {
         state.loading = true;
       })
@@ -222,12 +235,18 @@ const cartSlice = createSlice({
         state.totalPrice = payload.totalPrice;
         state.loading = false;
       })
+      .addCase(addToCart.rejected, (state) => {
+        state.loading = false;
+      })
       .addCase(removeFromCart.pending, (state) => {
         state.loading = true;
       })
       .addCase(removeFromCart.fulfilled, (state, { payload }) => {
         state.items = payload.items;
         state.totalPrice = payload.totalPrice;
+        state.loading = false;
+      })
+      .addCase(removeFromCart.rejected, (state) => {
         state.loading = false;
       });
   },
