@@ -28,7 +28,7 @@
 .header .header_left button {
   border: 0;
   padding: 0;
-  margin-right: 10px;
+  margin-right: 15px;
   background: none;
   width: 32px;
   height: 32px;
@@ -71,6 +71,6 @@
   }
 
   .header .header_left .logo a {
-    width: 110px;
+    width: 115px;
   }
 }

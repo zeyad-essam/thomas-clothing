@@ -43,9 +43,7 @@ const TopSlider = () => {
       <Swiper {...swiperSettings}>
         <SwiperSlide>
           <div className={classes.link_wrapper}>
-            <Link to="/auth/login">
-              Log in to your account to get free standard shipping
-            </Link>
+            <Link to="/auth/login">Log in to get free standard shipping</Link>
           </div>
         </SwiperSlide>
         <SwiperSlide>

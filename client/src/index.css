@@ -34,7 +34,7 @@ ul {
   --error-color: #df5858;
   --success-color: #5cb85c;
   --header-height: 80px;
-  --top-slider-height: 34px;
+  --top-slider-height: 32px;
 }
 
 @media (max-width: 1600px) {
