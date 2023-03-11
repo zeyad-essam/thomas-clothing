@@ -32,9 +32,9 @@
 
 .footer .footer_section ul a {
   margin-left: 5px;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   letter-spacing: 0.5px;
-  font-family: "Petrona", serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .footer .footer_section > p {
@@ -103,7 +103,7 @@
     height: 1.5px;
     background-color: #fff;
     transform: rotate(-90deg);
-    transition: transform 0.4s ease;
+    transition: transform 0.5s ease;
   }
 
   .footer .footer_section.mobile_tab.is_expanded h3::before {
@@ -117,16 +117,12 @@
   .footer .footer_section .section_collapse {
     overflow: hidden;
     max-height: 0;
-    transition: all 1s cubic-bezier(0, 1, 0, 1);
+    transition: all 1.2s cubic-bezier(0, 1, 0, 1);
   }
 
   .footer .footer_section.is_expanded .section_collapse {
     max-height: 1500px;
-    transition: all 1s ease-in-out;
-  }
-
-  .footer .footer_section ul a {
-    font-size: 1rem;
+    transition: all 1.2s ease-in-out;
   }
 
   .footer .footer_copyright p {

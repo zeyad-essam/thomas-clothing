@@ -38,6 +38,15 @@
   flex-direction: column;
 }
 
+.image_modal .images_wrapper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.image_modal .images_wrapper::-webkit-scrollbar-thumb {
+  background-color: rgba(200, 200, 200, 0.8);
+  border-radius: 8px;
+}
+
 .image_modal .images_wrapper .image_wrapper {
   display: flex;
   justify-content: center;

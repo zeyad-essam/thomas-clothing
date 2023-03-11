@@ -7,7 +7,7 @@ const Shirts = () => {
     <>
       <PageHeader
         title="Men's Shirts"
-        text="Crafted from smooth silk or cotton, Thomas shirts for men bring elegance and personality. Crisp formal button shirts complete a business formal or casual look"
+        text="Crafted from smooth silk or cotton, Thomas shirts for men bring elegance and personality"
       />
       <ProductsView category="shirts" />
     </>

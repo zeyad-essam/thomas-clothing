@@ -31,6 +31,7 @@ const SideModal = ({ children, isOpened, onClose, onlyMobile }) => {
           initial="hidden"
           animate={isOpened ? "show" : "hidden"}
           transition={{
+            delay: 0.2,
             duration: 0.5,
             type: "tween",
             ease: "easeInOut",

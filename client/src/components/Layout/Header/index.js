@@ -10,6 +10,7 @@ import MenuSharpIcon from "@mui/icons-material/MenuSharp";
 import { ReactComponent as BlackLogo } from "../../../images/logo-black.svg";
 
 import classes from "./Header.module.css";
+import TopSlider from "./TopSlider";
 
 const Header = () => {
   const [openMobileNav, setOpenMobileNav] = useState(false);
@@ -52,21 +53,28 @@ const Header = () => {
   }, [location]);
 
   return (
-    <header className={classes.header}>
-      <div className={classes.header_left}>
-        <button onClick={toggleMobileNav}>
-          <MenuSharpIcon style={{ fontSize: 34 }} />
-        </button>
-        <div className={classes.logo}>
-          <Link to="/">
-            <BlackLogo />
-          </Link>
+    <div
+      className={`${classes.header_wrapper} ${
+        openMobileNav ? classes.nav_open : ""
+      }`}
+    >
+      <TopSlider />
+      <header className={classes.header}>
+        <div className={classes.header_left}>
+          <button onClick={toggleMobileNav}>
+            <MenuSharpIcon style={{ fontSize: 30 }} />
+          </button>
+          <div className={classes.logo}>
+            <Link to="/">
+              <BlackLogo />
+            </Link>
+          </div>
         </div>
-      </div>
-      <MainNavigation />
-      <MobileNavigation isOpened={openMobileNav} onClose={closeMobileNav} />
-      <UtilityNavigation />
-    </header>
+        <MainNavigation />
+        <MobileNavigation isOpened={openMobileNav} onClose={closeMobileNav} />
+        <UtilityNavigation />
+      </header>
+    </div>
   );
 };
 

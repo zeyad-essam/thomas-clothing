@@ -6,7 +6,7 @@ const Sweatshirts = () => {
   return (
     <>
       <PageHeader
-        title="MEN'S SWEATSHIRTS AND HOODIES"
+        title="MEN'S SWEATSHIRTS"
         text="Our collection of luxury sweatshirts and hoodies for men featuring logo sweatshirts and signature printed hoodies."
       />
       <ProductsView category="sweatshirts" />

@@ -32,7 +32,7 @@
 @media (max-width: 991.8px) {
   .image_grid {
     display: flex;
-    overflow-y: auto;
+    overflow: overlay;
     margin-bottom: 20px;
   }
 

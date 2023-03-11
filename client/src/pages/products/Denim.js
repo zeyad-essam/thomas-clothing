@@ -7,7 +7,7 @@ const Denim = () => {
     <>
       <PageHeader
         title="MEN'S DENIM"
-        text="Explore Our selection of men's denim. Find casual or refined staple jeans, shirts and jackets embellished with seasonal prints or in classic palettes."
+        text="Explore Our selection of men's denim. Find casual or refined staple jeans"
       />
       <ProductsView category="denim" />
     </>

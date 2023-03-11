@@ -1,6 +1,15 @@
-.header {
+.header_wrapper {
   position: sticky;
   top: 0;
+  z-index: 997;
+  transition: transform 0.2s ease;
+}
+
+.header_wrapper.nav_open {
+  transform: translateY(calc(-1 * var(--top-slider-height)));
+}
+
+.header {
   width: 100%;
   height: var(--header-height);
   padding: 0 24px;
@@ -45,7 +54,7 @@
   }
 
   .header .header_left .logo a {
-    width: 150px;
+    width: 160px;
   }
 }
 

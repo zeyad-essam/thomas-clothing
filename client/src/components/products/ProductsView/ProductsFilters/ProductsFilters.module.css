@@ -1,6 +1,6 @@
 .products_filters_wrapper {
   position: sticky;
-  top: calc(var(--header-height) + 60px);
+  top: calc(var(--header-height) + var(--top-slider-height) + 60px);
   bottom: 0;
   width: 100%;
   max-width: 0;

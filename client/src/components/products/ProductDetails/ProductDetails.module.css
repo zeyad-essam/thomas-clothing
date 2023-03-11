@@ -19,7 +19,7 @@
 .product_details {
   position: relative;
   display: grid;
-  grid-template-columns: 1fr 450px;
+  grid-template-columns: 1fr 400px;
 }
 
 @media (max-width: 991px) {

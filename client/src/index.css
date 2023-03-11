@@ -2,6 +2,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap");
 /* Pertrona font */
 @import url("https://fonts.googleapis.com/css2?family=Petrona:wght@300;400;500;600;700&display=swap");
+/* poppins fonr */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 
 * {
   box-sizing: border-box;
@@ -32,11 +34,12 @@ ul {
   --error-color: #df5858;
   --success-color: #5cb85c;
   --header-height: 80px;
+  --top-slider-height: 34px;
 }
 
 @media (max-width: 1600px) {
   :root {
-    --header-height: 72px;
+    --header-height: 75px;
   }
 }
 

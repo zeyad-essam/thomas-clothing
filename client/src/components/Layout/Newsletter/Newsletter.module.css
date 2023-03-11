@@ -5,7 +5,7 @@
 
 .newsletter h3 {
   font-size: 22px;
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 8px;
   text-align: center;
   text-transform: uppercase;
@@ -87,7 +87,7 @@
 
 @media (max-width: 567px) {
   .newsletter {
-    padding: 50px 16px;
+    padding: 34px 16px;
   }
 
   .newsletter h3 {

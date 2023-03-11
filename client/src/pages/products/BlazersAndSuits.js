@@ -7,7 +7,7 @@ const BlazersAndSuits = () => {
     <>
       <PageHeader
         title="MEN'S BLAZERS"
-        text="Our blazers are a defining silhouette in classic wool to gabardine, for work, off-duty and evening looks."
+        text="Our blazers are a defining silhouette in classic wool to gabardine"
       />
       <ProductsView category="blazers-and-suits" />
     </>

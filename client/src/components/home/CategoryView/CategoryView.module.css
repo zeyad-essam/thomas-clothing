@@ -152,7 +152,7 @@
 @media (max-width: 991.8px) and (orientation: portrait) {
   .category_view .image_view {
     position: sticky;
-    top: 60px;
+    top: calc(var(--header-height) + var(--top-slider-height));
   }
 }
 

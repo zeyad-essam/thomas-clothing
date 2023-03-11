@@ -17,8 +17,8 @@ const index = () => {
     arrows: true,
     infinite: true,
     autoplay: true,
-    autoplaySpeed: 3000,
-    speed: 800,
+    autoplaySpeed: 7000,
+    speed: 1500,
     slidesToShow: 6,
     draggable: false,
     pauseOnHover: true,
@@ -28,6 +28,7 @@ const index = () => {
         breakpoint: 1024,
         settings: {
           slidesToShow: 4,
+          speed: 800,
         },
       },
       {

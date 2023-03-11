@@ -1,5 +1,5 @@
 .page_wrapper {
-  min-height: calc(100vh - 80px);
+  min-height: calc(100vh - var(--header-height) - var(--top-slider-height));
   display: grid;
   grid-template-columns: 1fr 1fr;
   background-color: #fff;
@@ -133,8 +133,12 @@
 }
 
 @media (max-width: 1600px) {
-  .page_wrapper {
-    min-height: calc(100vh - 72px);
+  .form_Wrapper .form_inner h2 {
+    margin-bottom: 8px;
+  }
+
+  .form_Wrapper .form_inner > p {
+    margin-bottom: 12px;
   }
 }
 

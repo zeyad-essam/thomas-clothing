@@ -27,7 +27,7 @@
 .product_item .product_info h3 {
   font-size: 12px;
   font-weight: 700;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
 }
 
 .product_item .product_info h3 a:hover {
@@ -37,5 +37,5 @@
 .product_item .product_info span {
   font-size: 14px;
   font-weight: 500;
-  font-family: "Petrona", serif;
+  font-family: "Poppins", sans-serif;
 }

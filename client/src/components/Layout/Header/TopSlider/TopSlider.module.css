@@ -1,0 +1,28 @@
+.slider_wrapper {
+  background-color: #292a2e;
+}
+
+.link_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: var(--top-slider-height);
+  text-align: center;
+  line-height: var(--top-slider-height);
+  padding: 0 8px;
+}
+
+.link_wrapper a {
+  display: block;
+  height: 100%;
+  font-size: 0.72rem;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  line-height: 1;
+}
+
+.link_wrapper a:hover {
+  text-decoration: underline;
+}
