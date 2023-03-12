@@ -6,9 +6,12 @@ export const getProducts = createAsyncThunk(
   async (args, { dispatch }) => {
     let { queryParams, page, category } = args;
 
-    if (!page || page === 1) {
+    if (!page) {
       page = 1;
-      dispatch(productsSlice.actions.setLoading(true));
+    }
+
+    if (page === 1) {
+      dispatch(productsSlice.actions.setLoading());
     }
 
     let queryObject = { ...queryParams, page };
@@ -57,9 +60,10 @@ const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
-    setLoading: (state, payload) => {
-      state.loading = payload;
+    setLoading: (state) => {
+      state.loading = true;
     },
+    resetProducts: () => initialState,
   },
   extraReducers: (builder) => {
     builder
@@ -79,5 +83,7 @@ const productsSlice = createSlice({
       });
   },
 });
+
+export const { resetProducts } = productsSlice.actions;
 
 export default productsSlice.reducer;

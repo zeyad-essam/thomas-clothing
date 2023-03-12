@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import { getProducts } from "../../../redux/productsSlice";
+import { getProducts, resetProducts } from "../../../redux/productsSlice";
 
 import { useQueryParams, ArrayParam } from "use-query-params";
 
@@ -122,6 +122,12 @@ const ProductsView = ({ category }) => {
     setPage(1);
     dispatch(getProducts({ queryParams, page: 1, category }));
   }, [queryParams, dispatch, category]);
+
+  useEffect(() => {
+    return () => {
+      dispatch(resetProducts());
+    };
+  }, [dispatch]);
 
   const hasSelectedFilters =
     queryParams.colors || queryParams.sizes || queryParams.priceRange;

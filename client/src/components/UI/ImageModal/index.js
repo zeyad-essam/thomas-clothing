@@ -8,12 +8,27 @@ import classes from "./ImageModal.module.css";
 const portalElement = document.getElementById("overlays");
 
 const ImageModal = ({ images, start, onClose }) => {
+  const imagesWrapperRef = useRef();
   const startImageRef = useRef();
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
     if (startImageRef) {
-      startImageRef.current.scrollIntoView({
+      const startImageBounding = startImageRef.current.getBoundingClientRect();
+      const imagesWrapperBounding =
+        imagesWrapperRef.current.getBoundingClientRect();
+
+      // this equation will make the image exactly in the middle of the images wrapper container
+      // the reason I used this method instead of scrollintoview is because scrollintoview doesnt work if you clicked
+      // on the image quickly after you were scrolling
+
+      const scrollValue =
+        startImageBounding.top -
+        (imagesWrapperBounding.height - startImageBounding.height) / 2 -
+        imagesWrapperBounding.top;
+
+      imagesWrapperRef.current.scrollTo({
+        top: scrollValue,
         behavior: "smooth",
       });
     }
@@ -31,7 +46,7 @@ const ImageModal = ({ images, start, onClose }) => {
           <CloseRoundedIcon style={{ fontSize: 28 }} />
         </span>
       </header>
-      <div className={classes.images_wrapper}>
+      <div ref={imagesWrapperRef} className={classes.images_wrapper}>
         {images.map((image, index) => (
           <div
             key={Math.random()}
