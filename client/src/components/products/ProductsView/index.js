@@ -1,28 +1,24 @@
 import React, { useEffect, useState, useCallback } from "react";
 
-import TuneRoundedIcon from "@mui/icons-material/TuneRounded";
-
-import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { getProducts } from "../../../redux/productsSlice";
 
 import { useQueryParams, ArrayParam } from "use-query-params";
 
 import ProductsList from "./ProductsList";
 import ProductsFilters from "./ProductsFilters";
 
+import TuneRoundedIcon from "@mui/icons-material/TuneRounded";
+
 import classes from "./ProductsView.module.css";
 
 const ProductsView = ({ category }) => {
+  const dispatch = useDispatch();
+  const { productsCount, filterData, error } = useSelector(
+    (state) => state.products
+  );
   const [showFilters, setShowFilters] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [nextPage, setNextPage] = useState(2);
-  const [products, setProducts] = useState([]);
-  const [productsCount, setProductsCount] = useState(0);
-  const [filterData, setFilterData] = useState({
-    maxPrice: 5000,
-    colors: [],
-    sizes: [],
-  });
+  const [page, setPage] = useState(1);
 
   const [queryParams, setQueryParams] = useQueryParams(
     {
@@ -32,51 +28,6 @@ const ProductsView = ({ category }) => {
     },
     { updateType: "replace" }
   );
-
-  const fetchProducts = useCallback(
-    async (page) => {
-      if (!page) {
-        page = 1;
-        setLoading(true);
-      }
-      let queryObject = { ...queryParams, page };
-      if (category) {
-        queryObject.category = category;
-      }
-      try {
-        const response = await axios.get(
-          `${process.env.REACT_APP_API_URL}/products/get-products/`,
-          {
-            params: queryObject,
-          }
-        );
-
-        if (page === 1) {
-          const { products, productsCount, filterData } = response.data;
-          setProducts(products);
-
-          setProductsCount(productsCount);
-
-          setFilterData(filterData);
-        } else {
-          setProducts((prevProducts) => [
-            ...prevProducts,
-            ...response.data.products,
-          ]);
-        }
-      } catch (error) {
-        setError(true);
-      } finally {
-        setLoading(false);
-      }
-    },
-    [queryParams, category]
-  );
-
-  const onNextPage = useCallback(() => {
-    fetchProducts(nextPage);
-    setNextPage((prevPage) => prevPage + 1);
-  }, [fetchProducts, nextPage]);
 
   const handleColorChange = useCallback(
     (color) => {
@@ -146,14 +97,11 @@ const ProductsView = ({ category }) => {
   };
 
   const resetQueryParams = useCallback(() => {
-    setQueryParams(
-      {
-        colors: undefined,
-        sizes: undefined,
-        priceRange: undefined,
-      },
-      "replace"
-    );
+    setQueryParams({
+      colors: undefined,
+      sizes: undefined,
+      priceRange: undefined,
+    });
   }, [setQueryParams]);
 
   const showFiltersHandler = useCallback((e) => {
@@ -165,10 +113,15 @@ const ProductsView = ({ category }) => {
     setShowFilters(false);
   }, []);
 
+  const onNextPage = () => {
+    dispatch(getProducts({ queryParams, page: page + 1, category }));
+    setPage((prevPage) => prevPage + 1);
+  };
+
   useEffect(() => {
-    setNextPage(2);
-    fetchProducts();
-  }, [queryParams, fetchProducts]);
+    setPage(1);
+    dispatch(getProducts({ queryParams, page: 1, category }));
+  }, [queryParams, dispatch, category]);
 
   const hasSelectedFilters =
     queryParams.colors || queryParams.sizes || queryParams.priceRange;
@@ -195,21 +148,14 @@ const ProductsView = ({ category }) => {
       <div className={classes.list_wrapper}>
         <ProductsFilters
           showFilters={showFilters}
-          loading={loading}
-          productsCount={productsCount}
           queryParams={queryParams}
           onHideFilters={hideFilters}
-          filterData={filterData}
           onColorSelect={handleColorChange}
           onPriceRangeSelect={handlePriceRandeChange}
           onSizeSelect={handleSizeChange}
           onQueryReset={resetQueryParams}
         />
         <ProductsList
-          error={error}
-          loading={loading}
-          products={products}
-          productsCount={productsCount}
           onNextPage={onNextPage}
           queryParams={{ ...queryParams }}
           onColorRemove={handleColorChange}

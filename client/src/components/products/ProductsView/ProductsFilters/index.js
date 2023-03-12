@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 
 import Slider from "@mui/material/Slider";
 
+import { useSelector } from "react-redux";
+
 import { useMediaQuery } from "@mui/material";
 import { AnimatePresence } from "framer-motion";
 import Backdrop from "../../../UI/Backdrop";
@@ -10,17 +12,17 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import classes from "./ProductsFilters.module.css";
 
 const ProductsFilters = ({
-  loading,
   showFilters,
   onHideFilters,
-  filterData,
   queryParams,
   onColorSelect,
   onPriceRangeSelect,
   onSizeSelect,
-  productsCount,
   onQueryReset,
 }) => {
+  const { loading, productsCount, filterData } = useSelector(
+    (state) => state.products
+  );
   const [priceRange, setPriceRange] = useState([0, 5000]);
   const isPc = useMediaQuery("(min-width:991.8px)");
   const productsFilterRef = useRef();

@@ -1,6 +1,8 @@
 import React, { memo } from "react";
 import ProductItem from "./ProductItem";
 
+import { useSelector } from "react-redux";
+
 import GridLoader from "react-spinners/GridLoader";
 import PuffLoader from "react-spinners/PuffLoader";
 
@@ -10,10 +12,6 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import classes from "./ProductsList.module.css";
 
 const ProductsList = ({
-  loading,
-  error,
-  products,
-  productsCount,
   onNextPage,
   queryParams,
   onColorRemove,
@@ -21,6 +19,9 @@ const ProductsList = ({
   onPriceRangeReset,
   onQueryReset,
 }) => {
+  const { loading, products, productsCount, error } = useSelector(
+    (state) => state.products
+  );
   const nextPageHandler = () => {
     onNextPage();
   };
