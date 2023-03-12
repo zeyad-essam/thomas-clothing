@@ -4,7 +4,7 @@ export const sweatShirtsPoster = {
     text: "shop sweatshirts",
   },
   pictures: {
-    sm: "https://res.cloudinary.com/drru4lsys/image/upload/products/medusa-hoodie-3.webp",
+    sm: "https://res.cloudinary.com/drru4lsys/image/upload/v1678591542/ui%20images/hoodies-mobile.webp",
     lg: "https://res.cloudinary.com/drru4lsys/image/upload/ui%20images/hoodies-pc.jpg",
     default:
       "https://res.cloudinary.com/drru4lsys/image/upload/ui%20images/hoodies-pc.jpg",

@@ -30,7 +30,7 @@
 .form_Wrapper .form_inner > p {
   text-align: center;
   font-weight: 500;
-  color: #606060;
+  color: #212121;
   margin-bottom: 20px;
 }
 
@@ -53,18 +53,18 @@
 .form_Wrapper .form_inner form .form_control input {
   padding: 12px 10px;
   border: 2px solid rgb(240, 240, 240);
-  border-radius: 4px;
+  border-radius: 0px;
   font-weight: 500;
   outline: none;
   transition: all 0.4s ease;
 }
 
 .form_Wrapper .form_inner form .form_control input:focus {
-  border-color: #20526d;
+  border-color: #212121;
 }
 
 .form_Wrapper .form_inner form button {
-  border-radius: 4px;
+  border-radius: 0px;
   font-weight: 600;
   background-color: #111727;
 }
@@ -128,8 +128,8 @@
 
 .page_wrapper .image_wrapper {
   background-size: cover;
-  background-position: 50% 90%;
-  box-shadow: 0 -10px 10px rgb(144, 144, 144);
+  background-position: 50% 0%;
+  box-shadow: 0 -10px 10px rgb(180, 180, 180);
 }
 
 @media (max-width: 1600px) {

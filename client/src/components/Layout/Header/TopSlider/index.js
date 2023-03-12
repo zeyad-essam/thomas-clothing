@@ -48,8 +48,8 @@ const TopSlider = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div className={classes.link_wrapper}>
-            <Link to="/products/blazers-and-suits">
-              FW 23 suits collection is out - shop now
+            <Link to="/products/denim">
+              FW 23 denim collection is out - shop now
             </Link>
           </div>
         </SwiperSlide>

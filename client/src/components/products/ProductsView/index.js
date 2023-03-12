@@ -168,7 +168,6 @@ const ProductsView = ({ category }) => {
   useEffect(() => {
     setNextPage(2);
     fetchProducts();
-    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [queryParams, fetchProducts]);
 
   const hasSelectedFilters =
