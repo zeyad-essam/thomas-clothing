@@ -24,7 +24,7 @@ const CategoryView = ({ data, reverse }) => {
   };
 
   const sliderWrapperVariants = {
-    initial: { scale: 2.22, x: "-50%", y: "-50%" }, //scale is set to 2.22 to make it take the full width on initial load. width after animation is 45%%
+    initial: { scale: 2.1, x: "-50%", y: "-50%" }, //scale is set to 2.21 to make it take the full width on initial load. width after animation is 47%
     animate: { scale: 1, x: "-50%", y: "-50%" },
   };
 
