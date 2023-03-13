@@ -146,7 +146,7 @@ export const removeFromCart = createAsyncThunk(
   async ({ product, size }, { rejectWithValue, getState }) => {
     let cartItems;
     try {
-      const user = getState().user;
+      const { user } = getState();
       if (user.isAuthenticated) {
         const response = await axios({
           url: `${process.env.REACT_APP_API_URL}/cart/remove-from-cart`,
@@ -164,9 +164,9 @@ export const removeFromCart = createAsyncThunk(
           : [];
 
         const updatedCartItems = localCart.filter((cp) => {
-          return (
-            cp.product._id.toString() !== product._id.toString() &&
-            cp.size !== size
+          return !(
+            cp.product._id.toString() === product._id.toString() &&
+            cp.size === size
           );
         });
 

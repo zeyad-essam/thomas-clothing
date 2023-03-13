@@ -1,0 +1,135 @@
+.cart_item {
+  position: relative;
+  display: flex;
+  gap: 15px;
+  border-top: 1px solid #dcdcdc;
+  padding: 24px 0;
+}
+
+.cart_item .image_wrapper {
+  width: 100px;
+}
+
+.cart_item img {
+  max-width: 100%;
+}
+
+.cart_item .product_info {
+  padding: 8px 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: space-between;
+}
+
+.cart_item .product_info h3 {
+  font-size: 13.5px;
+  font-weight: 500;
+}
+
+.cart_item .product_info h3:hover {
+  color: #666666;
+}
+
+.cart_item .product_info .product_details ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart_item .product_info .product_details ul li {
+  font-size: 13px;
+  font-family: "Poppins", sans-serif;
+}
+
+.cart_item .product_info .remove_item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  width: fit-content;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  background-color: transparent;
+  font-weight: 500;
+  font-size: 13px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.cart_item .product_info .remove_item i {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+
+.cart_item .product_price {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  color: #212121;
+}
+
+@media (max-width: 767px) {
+  .cart_item {
+    padding: 16px 0;
+    gap: 10px;
+  }
+
+  .cart_item .image_wrapper {
+    width: 90px;
+  }
+
+  .cart_item .product_info h3 {
+    font-weight: 600;
+  }
+
+  .cart_item .product_info .remove_item {
+    position: absolute;
+    top: 16px;
+    right: 0;
+  }
+
+  .cart_item .product_info .remove_item i {
+    width: 30px;
+    height: 30px;
+    box-shadow: 5px 5px 18px #e8e8e8, -5px -5px 18px #ffffff;
+  }
+
+  .cart_item .product_info .remove_item span {
+    display: none;
+  }
+
+  .cart_item .product_price {
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 5px;
+    font-weight: 500;
+  }
+}
+
+@media (max-width: 567px) {
+  .cart_item {
+    padding: 10px 0;
+    gap: 5px;
+  }
+
+  .cart_item .image_wrapper {
+    width: 80px;
+  }
+
+  .cart_item .product_info h3 {
+    font-size: 13px;
+  }
+
+  .cart_item .product_price {
+    font-size: 14px;
+  }
+
+  .cart_item .product_info .product_details ul li {
+    font-size: 12px;
+  }
+}

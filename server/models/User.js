@@ -85,11 +85,10 @@ user.methods.addToCart = function (productId, size) {
 
 user.methods.removeFromCart = async function (productId, size) {
   const updatedCartItems = this.cart.filter((item) => {
-    return (
-      item.product.toString() !== productId.toString() && item.size !== size
+    return !(
+      item.product.toString() === productId.toString() && item.size === size
     );
   });
-
   this.cart = updatedCartItems;
   return this.save();
 };

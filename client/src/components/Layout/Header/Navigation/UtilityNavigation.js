@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
@@ -8,13 +7,14 @@ import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 
 import classes from "./UtilityNavigation.module.css";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userLogout } from "../../../../redux/userSlice";
 
 import ClipLoader from "react-spinners/ClipLoader";
 
 const UtilityNavigation = () => {
   const userState = useSelector((state) => state.user);
+  const cart = useSelector((state) => state.cart);
   const [logoutLoading, setLogoutLoading] = useState(false);
   const dispatch = useDispatch();
 
@@ -31,6 +31,12 @@ const UtilityNavigation = () => {
       setLogoutLoading(false);
     }
   };
+
+  const cartItemsQuantity = cart.items.reduce((acc, cur) => {
+    return acc + cur.quantity;
+  }, 0);
+
+  const cartHasItems = cartItemsQuantity >= 1;
 
   return (
     <div className={classes.utility_navigation}>
@@ -57,9 +63,10 @@ const UtilityNavigation = () => {
             <span>Logout</span>
           </li>
         )}
-        <li>
+        <li className={classes.cart_icon}>
           <Link to="/cart">
             <ShoppingBagOutlinedIcon fontSize="small" />
+            {cartHasItems && <span>{cartItemsQuantity}</span>}
           </Link>
         </li>
       </ul>

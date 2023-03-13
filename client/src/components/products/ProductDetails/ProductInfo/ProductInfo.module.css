@@ -57,7 +57,8 @@
 }
 
 .product_info_inner .product_sizes ul li.selected {
-  background-color: #d6d6d6;
+  background-color: #e3e3e3;
+  border: 1px solid #212121;
 }
 
 .product_info_inner button {
@@ -135,6 +136,6 @@
   }
 
   .product_info_inner .product_sizes ul {
-    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
   }
 }

@@ -86,3 +86,14 @@ ul {
 .success {
   color: var(--success-color);
 }
+
+.btn-primary {
+  display: block;
+  padding: 13px 30px;
+  background-color: #212121;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+}

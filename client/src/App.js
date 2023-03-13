@@ -7,6 +7,7 @@ import { getUser } from "./redux/userSlice";
 import { getUserCart } from "./redux/cartSlice";
 
 import HomePage from "./pages/HomePage";
+import Cart from "./pages/Cart";
 
 import AuthRoutes from "./routes/AuthRoutes";
 import ProductsRoutes from "./routes/ProductsRoutes";
@@ -29,6 +30,7 @@ function App() {
     <Layout>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/auth/*" element={<AuthRoutes />} />
         <Route path="/products/*" element={<ProductsRoutes />} />
       </Routes>

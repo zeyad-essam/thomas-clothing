@@ -6,7 +6,7 @@ const PageHeader = ({ title, text }) => {
   return (
     <section className={classes.page_header}>
       <h1>{title}</h1>
-      <p>{text}</p>
+      {text && <p>{text}</p>}
     </section>
   );
 };
