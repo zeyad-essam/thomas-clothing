@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import Layout from "./components/Layout";
 import { Routes, Route } from "react-router-dom";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getUser } from "./redux/userSlice";
-import { getUserCart } from "./redux/cartSlice";
+import { getUserCart, setLoading } from "./redux/cartSlice";
 
 import HomePage from "./pages/HomePage";
 import Cart from "./pages/Cart";
@@ -14,17 +14,22 @@ import ProductsRoutes from "./routes/ProductsRoutes";
 
 function App() {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
 
-  useEffect(() => {
-    dispatch(getUser());
+  const getUserData = useCallback(async () => {
+    try {
+      // get the user data if the user is authenticated
+      await dispatch(getUser()).unwrap();
+      // get the user cart and combine it with the local storage cart
+      await dispatch(getUserCart()).unwrap();
+    } catch (error) {
+      // set the cart loading state to false if the user is not authenticated
+      dispatch(setLoading(false));
+    }
   }, [dispatch]);
 
   useEffect(() => {
-    if (user.isAuthenticated) {
-      dispatch(getUserCart());
-    }
-  }, [user.isAuthenticated, dispatch]);
+    getUserData();
+  }, [getUserData]);
 
   return (
     <Layout>

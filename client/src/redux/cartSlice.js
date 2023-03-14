@@ -201,13 +201,16 @@ const localCartTotalPrice = localCartItems.reduce((acc, cur) => {
 const initialState = {
   items: localCartItems,
   totalPrice: localCartTotalPrice,
-  loading: false,
+  loading: true,
 };
 
 const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
+    setLoading: (state, { payload }) => {
+      state.loading = payload;
+    },
     resetCart: (state) => {
       state.items = [];
       state.totalPrice = 0;
@@ -252,6 +255,6 @@ const cartSlice = createSlice({
   },
 });
 
-export const { resetCart } = cartSlice.actions;
+export const { resetCart, setLoading } = cartSlice.actions;
 
 export default cartSlice.reducer;

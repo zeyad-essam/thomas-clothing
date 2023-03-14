@@ -66,7 +66,7 @@ const UtilityNavigation = () => {
         <li className={classes.cart_icon}>
           <Link to="/cart">
             <ShoppingBagOutlinedIcon fontSize="small" />
-            {cartHasItems && <span>{cartItemsQuantity}</span>}
+            {cartHasItems && !cart.loading && <span>{cartItemsQuantity}</span>}
           </Link>
         </li>
       </ul>

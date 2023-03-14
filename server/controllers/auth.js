@@ -155,7 +155,6 @@ export const getUser = (req, res) => {
     const userData = {
       _id: req.user._id,
       username: req.user.username,
-      cart: req.user.cart,
     };
     res.status(200).json({
       success: true,

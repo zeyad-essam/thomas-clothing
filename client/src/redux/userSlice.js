@@ -2,15 +2,25 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { resetCart } from "./cartSlice";
 
-export const getUser = createAsyncThunk("/user/getUser", async () => {
-  const response = await axios.get(
-    `${process.env.REACT_APP_API_URL}/auth/getuser`,
-    {
-      withCredentials: true,
+export const getUser = createAsyncThunk(
+  "/user/getUser",
+  async (__, { rejectWithValue }) => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/auth/getuser`,
+        {
+          withCredentials: true,
+        }
+      );
+      return response.data.user;
+    } catch (err) {
+      const error = err.response
+        ? err.response.data.message
+        : "something went wrong";
+      return rejectWithValue(error);
     }
-  );
-  return response.data.user;
-});
+  }
+);
 
 export const userLogin = createAsyncThunk(
   "/user/login",
