@@ -6,17 +6,29 @@ import GithubIcon from "../../../images/github_icon.png";
 
 import classes from "./SocialAuth.module.css";
 
-const SocialAuth = () => {
+const SocialAuth = ({ isCheckingOut }) => {
   const googleLogin = () => {
-    window.open("http://localhost:8000/auth/google", "_self");
+    window.open(
+      `${process.env.REACT_APP_API_URL}/auth/google${
+        isCheckingOut ? "?checkout=true" : ""
+      }`,
+      "_self"
+    );
   };
 
   const githubLogin = () => {
-    window.open("http://localhost:8000/auth/github", "_self");
+    window.open(
+      `${process.env.REACT_APP_API_URL}/auth/github${
+        isCheckingOut ? "?checkout=true" : ""
+      }`,
+      "_self"
+    );
   };
 
   const twitterLogin = () => {
-    window.location.href = "http://localhost:8000/auth/twitter";
+    window.location.href = `${process.env.REACT_APP_API_URL}/auth/twitter${
+      isCheckingOut ? "?checkout=true" : ""
+    }`;
   };
 
   return (

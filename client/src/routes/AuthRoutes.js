@@ -23,18 +23,8 @@ const AuthRoutes = () => {
           )
         }
       />
-      <Route
-        path="login"
-        element={
-          !userState.isAuthenticated ? <LoginPage /> : <Navigate to="/" />
-        }
-      />
-      <Route
-        path="signup"
-        element={
-          !userState.isAuthenticated ? <SignupPage /> : <Navigate to="/" />
-        }
-      />
+      <Route path="login" element={<LoginPage />} />
+      <Route path="signup" element={<SignupPage />} />
       <Route
         path="new-password/:userId/:passwordToken"
         element={

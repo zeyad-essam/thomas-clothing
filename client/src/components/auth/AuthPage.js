@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 
 import Background from "../../images/background.jpg";
 
@@ -10,7 +10,7 @@ import {
   validateUserName,
 } from "../../utils/auth";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userLogin, userSignup } from "../../redux/userSlice";
 
 import FormButton from "../UI/FormButton";
@@ -23,7 +23,12 @@ const AuthPage = ({ signup }) => {
   const [formError, setFormError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [showForgetPassword, setShowForgetPassword] = useState(false);
+  const [searchParams] = useSearchParams();
+  const userState = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const isCheckingOut = searchParams.get("checkout") === "true" ? true : false;
 
   const {
     value: emailValue,
@@ -81,6 +86,9 @@ const AuthPage = ({ signup }) => {
           userLogin({ email: emailValue, password: passwordValue })
         ).unwrap();
       }
+      if (isCheckingOut) {
+        navigate("/checkout", { replace: true });
+      }
     } catch (err) {
       setFormError(err);
     } finally {
@@ -107,6 +115,12 @@ const AuthPage = ({ signup }) => {
       document.body.style.overflow = "visible";
     };
   }, [showForgetPassword]);
+
+  useEffect(() => {
+    if (userState.isAuthenticated) {
+      navigate("/", { replace: true });
+    }
+  }, [userState.isAuthenticated, navigate]);
 
   useEffect(() => {
     userNameReset();
@@ -219,16 +233,25 @@ const AuthPage = ({ signup }) => {
             <div className={classes.seperate}>
               <span>or log in with</span>
             </div>
-            <SocialAuth />
+            <SocialAuth isCheckingOut={isCheckingOut} />
             <div className={classes.swith_link}>
               {signup ? (
                 <p>
-                  Already have an account? <Link to="/auth/login">Login</Link>
+                  Already have an account?{" "}
+                  <Link
+                    to={`/auth/login${isCheckingOut ? "?checkout=true" : ""}`}
+                  >
+                    Login
+                  </Link>
                 </p>
               ) : (
                 <p>
                   Don't have an account yet?{" "}
-                  <Link to="/auth/signup">Sign up</Link>
+                  <Link
+                    to={`/auth/signup${isCheckingOut ? "?checkout=true" : ""}`}
+                  >
+                    Sign up
+                  </Link>
                 </p>
               )}
             </div>

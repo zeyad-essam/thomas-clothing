@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import PageLoading from "../../UI/PageLoading";
 
@@ -13,6 +13,17 @@ import classes from "./CartView.module.css";
 
 const CartView = () => {
   const cart = useSelector((state) => state.cart);
+  const userState = useSelector((state) => state.user);
+  const navigate = useNavigate();
+
+  const checkoutHandler = () => {
+    if (userState.isAuthenticated) {
+      navigate("/checkout");
+    } else {
+      navigate("/auth/login?checkout=true");
+    }
+  };
+
   return (
     <div className={classes.cart_view_wrapper}>
       <div className={classes.cart_view}>
@@ -39,14 +50,17 @@ const CartView = () => {
               <div className={classes.cart_actions}>
                 <Link to="/">Continue Shopping</Link>
                 <div className={classes.checkout}>
-                  <Link to="/checkout" className="btn-primary">
-                    Secure Checkout
-                  </Link>
+                  <button className="btn-primary" onClick={checkoutHandler}>
+                    Continue shopping
+                  </button>
                 </div>
               </div>
             </div>
             <div>
-              <CartCheckout totalPrice={cart.totalPrice} />
+              <CartCheckout
+                onCheckout={checkoutHandler}
+                totalPrice={cart.totalPrice}
+              />
               <Assistance />
             </div>
           </div>

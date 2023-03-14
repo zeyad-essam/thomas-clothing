@@ -5,12 +5,15 @@ import { Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 
+import { useSelector } from "react-redux";
+
 import classes from "./TopSlider.module.css";
 
 import { Link } from "react-router-dom";
 
 const TopSlider = () => {
   const [swiper, setSwiper] = useState();
+  const userState = useSelector((state) => state.user);
 
   const swiperSettings = {
     modules: [Autoplay],
@@ -43,7 +46,13 @@ const TopSlider = () => {
       <Swiper {...swiperSettings}>
         <SwiperSlide>
           <div className={classes.link_wrapper}>
-            <Link to="/auth/login">Log in to get free standard shipping</Link>
+            {userState.isAuthenticated ? (
+              <Link to="/products/shirts">
+                Check out the FW 23 shirts collection
+              </Link>
+            ) : (
+              <Link to="/auth/login">Log in to get free standard shipping</Link>
+            )}
           </div>
         </SwiperSlide>
         <SwiperSlide>

@@ -1,9 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 import classes from "./CartCheckout.module.css";
 
-const CartCheckout = ({ totalPrice }) => {
+const CartCheckout = ({ totalPrice, onCheckout }) => {
   return (
     <div className={classes.cart_checkout}>
       <h3>ORDER SUMMARY</h3>
@@ -21,9 +20,9 @@ const CartCheckout = ({ totalPrice }) => {
         <span>Estimated Total</span>
         <span>${(Number(totalPrice) + 20).toFixed(2)}</span>
       </div>
-      <Link className="btn-primary" to="/checkout">
-        Secure Checkout
-      </Link>
+      <button className="btn-primary" onClick={onCheckout}>
+        Continue shopping
+      </button>
     </div>
   );
 };

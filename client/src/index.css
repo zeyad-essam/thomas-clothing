@@ -89,6 +89,7 @@ ul {
 
 .btn-primary {
   display: block;
+  width: 100%;
   padding: 13px 30px;
   background-color: #212121;
   color: #fff;
@@ -96,4 +97,7 @@ ul {
   font-weight: 700;
   text-align: center;
   text-transform: uppercase;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }

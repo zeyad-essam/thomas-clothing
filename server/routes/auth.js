@@ -3,7 +3,11 @@ import passport from "passport";
 import { body } from "express-validator";
 import User from "../models/User.js";
 
+import dotenv from "dotenv";
+
 import * as authController from "../controllers/auth.js";
+
+dotenv.config();
 
 const router = Router();
 
@@ -28,45 +32,69 @@ router.put(
 
 router.post("/login", authController.postLogin);
 
-router.get(
-  "/google",
-  passport.authenticate("google", { scope: ["profile", "email"] })
-);
+router.get("/google", (req, res) => {
+  passport.authenticate("google", {
+    scope: ["profile", "email"],
+    passReqToCallback: true,
+    state: req.query.checkout === "true" ? "true" : "false",
+  })(req, res);
+});
 
 router.get(
   "/google/callback",
   passport.authenticate("google", {
-    failureRedirect: "http://localhost:3000",
+    failureRedirect: process.env.REACT_APP_URL,
     session: true,
   }),
   function (req, res) {
-    res.redirect("http://localhost:3000");
+    const redirectUrl =
+      req.query.state === "true"
+        ? `${process.env.REACT_APP_URL}/checkout`
+        : process.env.REACT_APP_URL;
+    res.redirect(redirectUrl);
   }
 );
 
-router.get("/twitter", passport.authenticate("twitter"));
+router.get("/twitter", (req, res) => {
+  passport.authenticate("twitter", {
+    state: req.query.checkout === "true" ? "true" : "false",
+    passReqToCallback: true,
+  })(req, res);
+});
 
 router.get(
   "/twitter/callback",
   passport.authenticate("twitter", {
-    failureRedirect: "http://localhost:3000",
+    failureRedirect: process.env.REACT_APP_URL,
     session: true,
   }),
   function (req, res) {
-    res.redirect("http://localhost:3000");
+    const redirectUrl = req.query.state
+      ? `${process.env.REACT_APP_URL}/checkout`
+      : process.env.REACT_APP_URL;
+    res.redirect(redirectUrl);
   }
 );
 
-router.get("/github", passport.authenticate("github"));
+router.get("/github", (req, res) => {
+  passport.authenticate("github", {
+    state: req.query.checkout === "true" ? "true" : "false",
+    passReqToCallback: true,
+  })(req, res);
+});
 
 router.get(
   "/github/callback",
   passport.authenticate("github", {
-    failureRedirect: "http://localhost:3000",
+    failureRedirect: process.env.REACT_APP_URL,
     session: true,
   }),
   function (req, res) {
-    res.redirect("http://localhost:3000");
+    const redirectUrl =
+      req.query.state === "true"
+        ? `${process.env.REACT_APP_URL}/checkout`
+        : process.env.REACT_APP_URL;
+    res.redirect(redirectUrl);
   }
 );
 
