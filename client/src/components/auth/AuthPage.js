@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import Background from "../../images/background.jpg";
 
@@ -23,12 +23,14 @@ const AuthPage = ({ signup }) => {
   const [formError, setFormError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [showForgetPassword, setShowForgetPassword] = useState(false);
-  const [searchParams] = useSearchParams();
   const userState = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const isCheckingOut = searchParams.get("checkout") === "true" ? true : false;
+  const isCheckingOut =
+    new URLSearchParams(window.location.search).get("checkout") === "true"
+      ? true
+      : false;
 
   const {
     value: emailValue,

@@ -21,7 +21,7 @@ const CartCheckout = ({ totalPrice, onCheckout }) => {
         <span>${(Number(totalPrice) + 20).toFixed(2)}</span>
       </div>
       <button className="btn-primary" onClick={onCheckout}>
-        Continue shopping
+        Secure Checkout
       </button>
     </div>
   );

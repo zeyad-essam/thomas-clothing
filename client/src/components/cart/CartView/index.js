@@ -51,7 +51,7 @@ const CartView = () => {
                 <Link to="/">Continue Shopping</Link>
                 <div className={classes.checkout}>
                   <button className="btn-primary" onClick={checkoutHandler}>
-                    Continue shopping
+                    Secure Checkout
                   </button>
                 </div>
               </div>
