@@ -8,9 +8,18 @@ import { getUserCart, setLoading } from "./redux/cartSlice";
 
 import HomePage from "./pages/HomePage";
 import Cart from "./pages/Cart";
+import CheckoutPage from "./pages/CheckoutPage";
 
 import AuthRoutes from "./routes/AuthRoutes";
 import ProductsRoutes from "./routes/ProductsRoutes";
+
+import { ToastContainer, Slide } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
 
 function App() {
   const dispatch = useDispatch();
@@ -32,14 +41,31 @@ function App() {
   }, [getUserData]);
 
   return (
-    <Layout>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/auth/*" element={<AuthRoutes />} />
-        <Route path="/products/*" element={<ProductsRoutes />} />
-      </Routes>
-    </Layout>
+    <Elements stripe={stripePromise}>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/auth/*" element={<AuthRoutes />} />
+          <Route path="/products/*" element={<ProductsRoutes />} />
+        </Routes>
+      </Layout>
+      <ToastContainer
+        position="top-right"
+        autoClose={4000}
+        limit={1}
+        hideProgressBar={false}
+        progressStyle={{ color: "#212121" }}
+        newestOnTop={false}
+        closeOnClick={false}
+        transition={Slide}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+    </Elements>
   );
 }
 

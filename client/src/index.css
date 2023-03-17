@@ -35,6 +35,8 @@ ul {
   --success-color: #5cb85c;
   --header-height: 80px;
   --top-slider-height: 32px;
+  --toastify-color-progress-light: linear-gradient(to right, #212121, #373636);
+  --toastify-color-light: #f2f2f2;
 }
 
 @media (max-width: 1600px) {
@@ -100,4 +102,13 @@ ul {
   border: none;
   outline: none;
   cursor: pointer;
+}
+
+.Toastify__toast {
+  padding: 0px !important;
+  border-radius: 2px;
+}
+
+.Toastify__close-button {
+  padding: 6px 6px 6px 5px !important;
 }

@@ -13,6 +13,7 @@ import authRoutes from "./routes/auth.js";
 import productRoutes from "./routes/products.js";
 import cartRoutes from "./routes/cart.js";
 import subscribeRoutes from "./routes/subscribe.js";
+import stripeRoutes from "./routes/stripe.js";
 
 dotenv.config();
 
@@ -27,7 +28,16 @@ const store = new MongoDBStore({
   collection: "sessions",
 });
 
-app.use(express.json());
+app.use(
+  express.json({
+    verify: function (req, res, buf) {
+      var url = req.originalUrl;
+      if (url.startsWith("/stripe/webhook")) {
+        req.rawBody = buf.toString();
+      }
+    },
+  })
+);
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static("puplic"));
 app.use(
@@ -57,12 +67,8 @@ passportConfig(passport);
 app.use("/auth", authRoutes);
 app.use("/products", productRoutes);
 app.use("/cart", cartRoutes);
+app.use("/stripe", stripeRoutes);
 app.use(subscribeRoutes);
-
-app.get("/", (req, res, next) => {
-  console.log(req.isAuthenticated());
-  res.send("<h1>hello world !</h1>");
-});
 
 app.use((error, req, res, next) => {
   console.log(error);

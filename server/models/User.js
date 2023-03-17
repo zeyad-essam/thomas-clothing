@@ -49,12 +49,6 @@ const user = new mongoose.Schema({
       ref: "Order",
     },
   ],
-  wishlist: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Product",
-    },
-  ],
 });
 
 user.methods.addToCart = function (productId, size) {
@@ -93,7 +87,7 @@ user.methods.removeFromCart = async function (productId, size) {
   return this.save();
 };
 
-user.methods.clearCart = function () {
+user.methods.clearCart = async function () {
   this.cart = [];
   return this.save();
 };

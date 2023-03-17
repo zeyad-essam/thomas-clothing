@@ -5,26 +5,35 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../../../redux/cartSlice";
 
 import ClipLoader from "react-spinners/ClipLoader";
+import { toast } from "react-toastify";
+import ProductAddedToast from "./ProductAddedToast";
 
 import classes from "./ProductInfo.module.css";
 
 const ProductInfo = ({ product }) => {
   const [selectedSize, setSelectedSize] = useState(null);
+  const [error, setError] = useState(null);
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
   const selectSizeHandler = (size) => {
+    setError(null);
     setSelectedSize(size);
   };
 
   const addToCartHandler = async () => {
     if (!selectedSize) {
+      setError("Please Select a size.");
       return;
     } else {
       try {
+        toast.dismiss();
         await dispatch(addToCart({ product, size: selectedSize })).unwrap();
+        toast(<ProductAddedToast product={product} size={selectedSize} />, {
+          pauseOnHover: true,
+        });
       } catch (error) {
-        console.log(error);
+        setError(error);
       }
     }
   };
@@ -50,9 +59,16 @@ const ProductInfo = ({ product }) => {
             ))}
           </ul>
         </div>
-        <button onClick={addToCartHandler} disabled={cart.loading}>
-          {cart.loading ? <ClipLoader color="#fff" size={24} /> : "Add to bag"}
-        </button>
+        <div className={classes.button_wrapper}>
+          <button onClick={addToCartHandler} disabled={cart.loading}>
+            {cart.loading ? (
+              <ClipLoader color="#fff" size={24} />
+            ) : (
+              "Add to bag"
+            )}
+          </button>
+          {error && <p className={classes.error}>{error}</p>}
+        </div>
         <div className={classes.product_tabs}>
           <Tab title="Details">
             <p>{product.details}</p>

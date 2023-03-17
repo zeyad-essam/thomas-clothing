@@ -133,7 +133,7 @@ export const addToCart = createAsyncThunk(
         totalPrice,
       };
     } catch (err) {
-      const error = err.response
+      const error = err.response.data.message
         ? err.response.data.message
         : "something went wrong";
       return rejectWithValue(error);

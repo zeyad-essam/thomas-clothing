@@ -56,8 +56,8 @@ router.get(
 );
 
 router.get("/twitter", (req, res) => {
+  req.session.state = req.query.checkout === "true" ? "true" : "false";
   passport.authenticate("twitter", {
-    state: req.query.checkout === "true" ? "true" : "false",
     passReqToCallback: true,
   })(req, res);
 });
@@ -69,9 +69,11 @@ router.get(
     session: true,
   }),
   function (req, res) {
-    const redirectUrl = req.query.state
-      ? `${process.env.REACT_APP_URL}/checkout`
-      : process.env.REACT_APP_URL;
+    const state = req.session.state;
+    const redirectUrl =
+      state === "true"
+        ? `${process.env.REACT_APP_URL}/checkout`
+        : process.env.REACT_APP_URL;
     res.redirect(redirectUrl);
   }
 );
