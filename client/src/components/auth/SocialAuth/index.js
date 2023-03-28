@@ -24,9 +24,12 @@ const SocialAuth = ({ isCheckingOut }) => {
   };
 
   const twitterLogin = () => {
-    window.location.href = `${
-      isDevelopment ? "http://localhost:8000" : ""
-    }/api/auth/twitter${isCheckingOut ? "?checkout=true" : ""}`;
+    window.open(
+      `${isDevelopment ? "http://localhost:8000" : ""}/api/auth/twitter${
+        isCheckingOut ? "?checkout=true" : ""
+      }`,
+      "_self"
+    );
   };
 
   return (
