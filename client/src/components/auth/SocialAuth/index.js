@@ -3,11 +3,9 @@ import React from "react";
 import classes from "./SocialAuth.module.css";
 
 const SocialAuth = ({ isCheckingOut }) => {
-  const isDevelopment = process.env.REACT_APP_ENV === "development";
-
   const googleLogin = () => {
     window.open(
-      `${isDevelopment ? "http://localhost:8000" : ""}/api/auth/google${
+      `${process.env.REACT_APP_URL}/api/auth/google${
         isCheckingOut ? "?checkout=true" : ""
       }`,
       "_self"
@@ -16,7 +14,7 @@ const SocialAuth = ({ isCheckingOut }) => {
 
   const githubLogin = () => {
     window.open(
-      `${isDevelopment ? "http://localhost:8000" : ""}/api/auth/github${
+      `${process.env.REACT_APP_URL}/api/auth/github${
         isCheckingOut ? "?checkout=true" : ""
       }`,
       "_self"
@@ -25,7 +23,7 @@ const SocialAuth = ({ isCheckingOut }) => {
 
   const twitterLogin = () => {
     window.open(
-      `${isDevelopment ? "http://localhost:8000" : ""}/api/auth/twitter${
+      `${process.env.REACT_APP_URL}/api/auth/twitter${
         isCheckingOut ? "?checkout=true" : ""
       }`,
       "_self"
