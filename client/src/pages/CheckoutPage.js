@@ -1,8 +1,14 @@
 import React from "react";
-import CheckoutForm from "../components/checkout/CheckoutForm";
+import CheckoutWrapper from "../components/checkout/CheckoutWrapper";
+import PageHeader from "../components/UI/PageHeader";
 
 const CheckoutPage = () => {
-  return <CheckoutForm />;
+  return (
+    <>
+      <PageHeader title="checkout" />
+      <CheckoutWrapper />
+    </>
+  );
 };
 
 export default CheckoutPage;

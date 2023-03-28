@@ -33,16 +33,16 @@
     <mj-section padding="0" background-color="#1b1b1b" css-class="header">
       <mj-column width="100%">
         <mj-text align="center" padding="0">
-          <span class="logo">SALEHUB</span>
+          <span class="logo">THOMAS</span>
         </mj-text>
       </mj-column>
       <mj-column css-class="navigation" width="100%">
         <mj-navbar css-class="navigation-bar">
-          <mj-navbar-link color="#fff" font-size="12px" padding="10px 7px" href="http://localhost:3000/shop/jackets-and-coats">JACKETS</mj-navbar-link>
-          <mj-navbar-link color="#fff" font-size="12px" padding="10px 7px" href="http://localhost:3000/shop/shirts">SHIRTS</mj-navbar-link>
-          <mj-navbar-link color="#fff" font-size="12px" padding="10px 7px" href="http://localhost:3000/shop/denim">DENIM</mj-navbar-link>
-          <mj-navbar-link color="#fff" font-size="12px" padding="10px 7px" href="http://localhost:3000/shop/sweatshirts">SWEATSHIRTS</mj-navbar-link>
-          <mj-navbar-link color="#fff" font-size="12px" padding="10px 7px" href="http://localhost:3000/shop/blazers-and-suits">SUITS</mj-navbar-link>
+          <mj-navbar-link color="#fff" font-size="12px" padding="10px 7px" href="https://thomas-clothing.onrender.com/products/jackets-and-coats">JACKETS</mj-navbar-link>
+          <mj-navbar-link color="#fff" font-size="12px" padding="10px 7px" href="https://thomas-clothing.onrender.com/products/shirts">SHIRTS</mj-navbar-link>
+          <mj-navbar-link color="#fff" font-size="12px" padding="10px 7px" href="https://thomas-clothing.onrender.com/products/denim">DENIM</mj-navbar-link>
+          <mj-navbar-link color="#fff" font-size="12px" padding="10px 7px" href="https://thomas-clothing.onrender.com/products/sweatshirts">SWEATSHIRTS</mj-navbar-link>
+          <mj-navbar-link color="#fff" font-size="12px" padding="10px 7px" href="https://thomas-clothing.onrender.com/products/blazers-and-suits">SUITS</mj-navbar-link>
         </mj-navbar>
       </mj-column>
     </mj-section>

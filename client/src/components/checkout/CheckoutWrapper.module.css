@@ -1,0 +1,14 @@
+.checkout_wrapper {
+  display: grid;
+  grid-template-columns: 1fr 370px;
+  gap: 24px;
+  max-width: 1200px;
+  margin: auto;
+  padding: 24px;
+}
+
+.checkout_wrapper h2 {
+  font-size: 26px;
+  font-weight: 500;
+  margin-bottom: 25px;
+}

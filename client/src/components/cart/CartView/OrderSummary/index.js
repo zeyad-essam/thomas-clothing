@@ -2,7 +2,7 @@ import React from "react";
 
 import classes from "./CartCheckout.module.css";
 
-const CartCheckout = ({ totalPrice, onCheckout }) => {
+const OrderSummary = ({ totalPrice, onCheckout }) => {
   return (
     <div className={classes.cart_checkout}>
       <h3>ORDER SUMMARY</h3>
@@ -13,12 +13,12 @@ const CartCheckout = ({ totalPrice, onCheckout }) => {
         </div>
         <div className={classes.devide}>
           <span>Estimated Shipping: </span>
-          <span>from $20.00</span>
+          <span>from $0.00</span>
         </div>
       </div>
       <div className={`${classes.order_total} ${classes.devide}`}>
         <span>Estimated Total</span>
-        <span>${(Number(totalPrice) + 20).toFixed(2)}</span>
+        <span>${Number(totalPrice).toFixed(2)}</span>
       </div>
       <button className="btn-primary" onClick={onCheckout}>
         Secure Checkout
@@ -27,4 +27,4 @@ const CartCheckout = ({ totalPrice, onCheckout }) => {
   );
 };
 
-export default CartCheckout;
+export default OrderSummary;

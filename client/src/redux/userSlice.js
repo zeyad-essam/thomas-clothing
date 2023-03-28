@@ -6,12 +6,9 @@ export const getUser = createAsyncThunk(
   "/user/getUser",
   async (__, { rejectWithValue }) => {
     try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/auth/getuser`,
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await axios.get("/api/auth/getuser", {
+        withCredentials: true,
+      });
       return response.data.user;
     } catch (err) {
       const error = err.response
@@ -33,7 +30,7 @@ export const userLogin = createAsyncThunk(
           password: password,
         },
         withCredentials: true,
-        url: `${process.env.REACT_APP_API_URL}/auth/login`,
+        url: "/api/auth/login",
       });
       return response.data.user;
     } catch (err) {
@@ -56,7 +53,7 @@ export const userSignup = createAsyncThunk(
           username: username,
           password: password,
         },
-        url: `${process.env.REACT_APP_API_URL}/auth/signup`,
+        url: "/api/auth/signup",
         withCredentials: true,
       });
       console.log(response.data.user);
@@ -74,12 +71,9 @@ export const userLogout = createAsyncThunk(
   "/user/logout",
   async (__, { rejectWithValue, dispatch }) => {
     try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/auth/logout`,
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await axios.get("/api/auth/logout", {
+        withCredentials: true,
+      });
       dispatch(resetCart());
       return response.data.message;
     } catch (err) {
@@ -94,7 +88,7 @@ export const userLogout = createAsyncThunk(
 const initialState = {
   isAuthenticated: false,
   userData: null,
-  isLoading: false,
+  isLoading: true,
 };
 
 const userSlice = createSlice({

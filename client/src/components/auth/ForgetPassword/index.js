@@ -35,7 +35,7 @@ const ForgetPassword = ({ onCancel }) => {
     try {
       await axios({
         method: "post",
-        url: `${process.env.REACT_APP_API_URL}/auth/reset`,
+        url: "/api/auth/reset",
         data: {
           email: emailValue,
         },

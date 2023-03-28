@@ -66,7 +66,7 @@
         </mj-column>
         <mj-column width="40%">
         	<mj-text padding="0" css-class="mobile-link mobile-only">
-          	<a href="mailto:ziadessam162@gmail.com" style="border-left: none">mail</a>
+          	<a href="mailto:zeyadessam162@gmail.com" style="border-left: none">mail</a>
           </mj-text>
         </mj-column>
         <mj-column width="10%"></mj-column>

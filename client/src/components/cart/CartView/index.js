@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import PageLoading from "../../UI/PageLoading";
 
 import Assistance from "./Assistance";
-import CartCheckout from "./CartCheckout";
+import OrderSummary from "./OrderSummary";
 import CartProducts from "./CartProducts";
 
 import classes from "./CartView.module.css";
@@ -57,7 +57,7 @@ const CartView = () => {
               </div>
             </div>
             <div>
-              <CartCheckout
+              <OrderSummary
                 onCheckout={checkoutHandler}
                 totalPrice={cart.totalPrice}
               />

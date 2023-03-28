@@ -36,7 +36,7 @@ export const sendPasswordReset = async (username, useremail, link) => {
     const resetPasswordHtml = template({ name: username, link: link });
     await transporter.sendMail({
       to: useremail,
-      from: "salehub@ziadessam.com",
+      from: "thomas-clothing@ziadessam.com",
       subject: "Password reset",
       html: resetPasswordHtml,
     });

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import PageLoading from "../../UI/PageLoading";
 
 import axios from "axios";
-
-import classes from "./ProductDetails.module.css";
 import ImageGallery from "./ImageGallery";
 import ProductInfo from "./ProductInfo";
+import GridLoader from "react-spinners/GridLoader";
+
+import classes from "./ProductDetails.module.css";
 
 const ProductDetails = ({ slug }) => {
   const [loading, setLoading] = useState(true);
@@ -15,14 +15,11 @@ const ProductDetails = ({ slug }) => {
   useEffect(() => {
     const fetchProductData = async () => {
       try {
-        const response = await axios.get(
-          `${process.env.REACT_APP_API_URL}/products/product-details`,
-          {
-            params: {
-              slug,
-            },
-          }
-        );
+        const response = await axios.get("/api/products/product-details", {
+          params: {
+            slug,
+          },
+        });
         setProduct(response.data.product);
       } catch (err) {
         setError(true);
@@ -37,7 +34,9 @@ const ProductDetails = ({ slug }) => {
     <div className={classes.product_details_wrapper}>
       {loading && (
         <div className={classes.loading_wrapper}>
-          <PageLoading />
+          <div className={classes.loading_spinner}>
+            <GridLoader size={11} color="#212121" />
+          </div>
         </div>
       )}
       {!loading && error && (

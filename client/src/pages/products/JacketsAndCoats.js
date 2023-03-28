@@ -1,6 +1,6 @@
 import React from "react";
 
-import PageHeader from "../../components/products/PageHeader";
+import PageHeader from "../../components/UI/PageHeader";
 import ProductsView from "../../components/products/ProductsView";
 
 const JacketsAndCoats = () => {

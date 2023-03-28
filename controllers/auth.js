@@ -91,7 +91,7 @@ export const postReset = async (req, res, next) => {
       message:
         "We have sent you a link to update your password. Check your email address",
     });
-    const resetLink = `http://localhost:3000/auth/new-password/${user._id}/${token}`;
+    const resetLink = `https://thomas-clothing.herokuapp.com/auth/new-password/${user._id}/${token}`;
 
     sendPasswordReset(user.username, user.email, resetLink);
   } catch (err) {
@@ -150,11 +150,20 @@ export const postNewPasword = async (req, res, next) => {
   }
 };
 
-export const getUser = (req, res) => {
+export const getUser = async (req, res) => {
   if (req.user) {
+    const user = await req.user.populate("orders");
+    const userOrders = user.orders.map((order) => {
+      return {
+        products: order.products,
+        totalAmount: order.totalAmount,
+        status: order.status,
+      };
+    });
     const userData = {
-      _id: req.user._id,
-      username: req.user.username,
+      _id: user._id,
+      username: user.username,
+      orders: userOrders,
     };
     res.status(200).json({
       success: true,

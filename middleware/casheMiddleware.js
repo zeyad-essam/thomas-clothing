@@ -5,7 +5,6 @@ export const cacheMiddleware = async (req, res, next) => {
   try {
     const data = await redisClient.get(cacheKey);
     if (data !== null) {
-      console.log("returning data from cashe for key:", cacheKey);
       res.json(JSON.parse(data));
     } else {
       next();

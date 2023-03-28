@@ -21,10 +21,12 @@ const ImageModal = ({ images, start, onClose }) => {
       // this equation will make the image exactly in the middle of the images wrapper container
       // the reason I used this method instead of scrollintoview is because scrollintoview doesnt work if you clicked
       // on the image quickly after you were scrolling
-
+      console.log(window.screen.availHeight);
+      console.log(startImageBounding);
       const scrollValue =
         startImageBounding.top -
-        (imagesWrapperBounding.height - startImageBounding.height) / 2 -
+        imagesWrapperBounding.top -
+        (window.screen.availHeight - startImageBounding.height) / 2 +
         imagesWrapperBounding.top;
 
       imagesWrapperRef.current.scrollTo({

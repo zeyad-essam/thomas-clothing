@@ -23,23 +23,23 @@
       </mj-column>
       <mj-column width="100%">
       	<mj-text padding="0" align="center" letter-spacing="1px">
-        	<a href="http://localhost:3000/shop/jackets-and-coats" style="display:block;color:#1b1b1b;text-decoration:none;font-weight:400">JACKETS</a>
+        	<a href="https://thomas-clothing.onrender.com/products/jackets-and-coats" style="display:block;color:#1b1b1b;text-decoration:none;font-weight:400">JACKETS</a>
         </mj-text>
         <mj-spacer height="25px"/>
         <mj-text padding="0" align="center" letter-spacing="1px">
-        	<a href="http://localhost:3000/shop/shirts" style="display:block;color:#1b1b1b;text-decoration:none;font-weight:400">SHIRTS</a>
+        	<a href="https://thomas-clothing.onrender.com/products/shirts" style="display:block;color:#1b1b1b;text-decoration:none;font-weight:400">SHIRTS</a>
         </mj-text>
         <mj-spacer height="25px"/>
         <mj-text padding="0" align="center" letter-spacing="1px">
-        	<a href="http://localhost:3000/shop/denim" style="display:block;color:#1b1b1b;text-decoration:none;font-weight:400">DENIM</a>
+        	<a href="https://thomas-clothing.onrender.com/products/denim" style="display:block;color:#1b1b1b;text-decoration:none;font-weight:400">DENIM</a>
         </mj-text>
         <mj-spacer height="25px"/>
         <mj-text padding="0" align="center" letter-spacing="1px">
-        	<a href="http://localhost:3000/shop/sweatshirts" style="display:block;color:#1b1b1b;text-decoration:none;font-weight:400">SWEATSHIRTS</a>
+        	<a href="https://thomas-clothing.onrender.com/products/sweatshirts" style="display:block;color:#1b1b1b;text-decoration:none;font-weight:400">SWEATSHIRTS</a>
         </mj-text>
         <mj-spacer height="25px"/>
         <mj-text padding="0" align="center" letter-spacing="1px">
-        	<a href="http://localhost:3000/shop/blazers-and-suits" style="display:block;color:#1b1b1b;text-decoration:none;font-weight:400">SUITS</a>
+        	<a href="https://thomas-clothing.onrender.com/products/blazers-and-suits" style="display:block;color:#1b1b1b;text-decoration:none;font-weight:400">SUITS</a>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -47,7 +47,7 @@
       <mj-column>
         <mj-navbar>
           <mj-navbar-link
-            href="http://localhost:3000/"
+            href="https://thomas-clothing.onrender.com/"
             font-size="12px"
             text-transform="capitalize"
             padding="0 8px 0 0"
@@ -55,7 +55,7 @@
             >Home</mj-navbar-link
           >
           <mj-navbar-link
-            href="http://localhost:3000/faqs"
+            href="https://thomas-clothing.onrender.com/faqs"
             font-size="12px"
             text-transform="capitalize"
             padding="0 8px"
@@ -63,7 +63,7 @@
             >FAQS</mj-navbar-link
           >
           <mj-navbar-link
-            href="http://localhost:3000/account"
+            href="https://thomas-clothing.onrender.com/auth/account"
             font-size="12px"
             text-transform="capitalize"
             padding="0 8px"
@@ -71,7 +71,7 @@
             >My Account</mj-navbar-link
           >
           <mj-navbar-link
-            href="http://localhost:3000/contact"
+            href="https://thomas-clothing.onrender.com/contact"
             font-size="12px"
             text-transform="capitalize"
             padding="0 0 0 8px"

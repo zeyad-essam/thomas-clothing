@@ -40,6 +40,10 @@
   padding: 24px 24px;
 }
 
+.products_list_wrapper .products_list.filters_selected {
+  padding-top: 0;
+}
+
 .products_list_wrapper .load_more {
   display: flex;
   justify-content: center;
@@ -98,16 +102,8 @@
     grid-template-columns: 1fr 1fr;
     padding: 16px;
   }
-}
 
-@media (min-width: 768px) {
-  .products_list_wrapper .products_list.filters_selected {
-    padding-top: 0;
-  }
-}
-
-@media (max-width: 767px) {
   .products_list_wrapper .selected_filters {
-    display: none;
+    padding: 10px 16px;
   }
 }

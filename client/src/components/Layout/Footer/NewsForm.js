@@ -34,7 +34,7 @@ const NewsForm = () => {
     try {
       const response = await axios({
         method: "post",
-        url: `${process.env.REACT_APP_API_URL}/news-subscribe`,
+        url: "/api/subscribe/news-subscribe",
         data: {
           email: emailValue,
         },

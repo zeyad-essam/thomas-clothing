@@ -65,7 +65,7 @@ const passportConfig = (passport) => {
       {
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: "/auth/google/callback",
+        callbackURL: "/api/auth/google/callback",
       },
       function (_, __, profile, cb) {
         User.findOne({ googleId: profile.id }, async (err, doc) => {
@@ -104,7 +104,7 @@ const passportConfig = (passport) => {
       {
         consumerKey: process.env.TWITTER_CONSUMER_KEY,
         consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
-        callbackURL: "/auth/twitter/callback",
+        callbackURL: "/api/auth/twitter/callback",
       },
       function (_, __, profile, cb) {
         User.findOne({ twitterId: profile.id }, async (err, doc) => {
@@ -134,7 +134,7 @@ const passportConfig = (passport) => {
       {
         clientID: process.env.GITHUB_CLIENT_ID,
         clientSecret: process.env.GITHUB_CLIENT_SECRET,
-        callbackURL: "/auth/github/callback",
+        callbackURL: "/api/auth/github/callback",
       },
       function (_, __, profile, cb) {
         User.findOne({ githubId: profile.id }, async (err, doc) => {

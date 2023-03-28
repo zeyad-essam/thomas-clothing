@@ -14,6 +14,7 @@ import classes from "./ImageGallery.module.css";
 
 const ImageGallery = ({ images }) => {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [swiper, setSwiper] = useState(null);
   const isMobile = useMediaQuery("(max-width:767px)");
 
   const swiperSettings = {
@@ -23,6 +24,13 @@ const ImageGallery = ({ images }) => {
     grabCursor: false,
     allowTouchMove: true,
     speed: 500,
+    onSwiper: (swiper) => {
+      setSwiper(swiper);
+    },
+  };
+
+  const selectImageHandler = (index) => {
+    setSelectedImage(index);
   };
 
   const resetSelectedImage = () => {
@@ -36,7 +44,7 @@ const ImageGallery = ({ images }) => {
             {images.map((image, index) => (
               <img
                 key={image}
-                onClick={() => setSelectedImage(index)}
+                onClick={() => selectImageHandler(index)}
                 src={image}
                 alt="product"
               />
@@ -45,16 +53,15 @@ const ImageGallery = ({ images }) => {
         )}
         {isMobile && (
           <div className={classes.image_swiper_wrapper}>
-            <Swiper className="image_swiper" {...swiperSettings}>
+            <Swiper
+              onClick={() => selectImageHandler(swiper.activeIndex)}
+              className="image_swiper"
+              {...swiperSettings}
+            >
               {images.map((image, index) => (
                 <SwiperSlide key={image}>
                   <div className={classes.image_wrapper}>
-                    <img
-                      key={image}
-                      onClick={() => setSelectedImage(index)}
-                      src={image}
-                      alt="product"
-                    />
+                    <img key={image} src={image} alt="product" />
                   </div>
                 </SwiperSlide>
               ))}

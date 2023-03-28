@@ -11,10 +11,12 @@
   margin-left: 5px;
   border-radius: 5px;
   overflow: hidden;
+  pointer-events: none;
 }
 
 .product_added_toast .image_wrapper img {
   max-width: 100%;
+  pointer-events: none;
 }
 
 .product_added_toast .text_wrapper {
@@ -22,6 +24,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  pointer-events: none;
+  user-select: none;
 }
 
 .product_added_toast .text_wrapper p {

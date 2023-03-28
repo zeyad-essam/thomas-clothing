@@ -20,12 +20,9 @@ export const getProducts = createAsyncThunk(
       queryObject.category = category;
     }
 
-    const response = await axios.get(
-      `${process.env.REACT_APP_API_URL}/products/get-products/`,
-      {
-        params: queryObject,
-      }
-    );
+    const response = await axios.get("/api/products/get-products/", {
+      params: queryObject,
+    });
 
     if (page === 1) {
       const { products, productsCount, filterData } = response.data;

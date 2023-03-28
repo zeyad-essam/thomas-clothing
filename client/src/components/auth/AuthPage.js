@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import Background from "../../images/background.jpg";
-
 import useInput from "../../utils/hooks/useInput";
 import {
   validateEmail,
@@ -261,7 +259,9 @@ const AuthPage = ({ signup }) => {
         </div>
         <div
           className={classes.image_wrapper}
-          style={{ backgroundImage: `url(${Background})` }}
+          style={{
+            backgroundImage: `url(https://res.cloudinary.com/drru4lsys/image/upload/v1679210313/ui%20images/background.jpg)`,
+          }}
         ></div>
       </div>
       {!signup && showForgetPassword && (

@@ -139,7 +139,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, 50px);
   column-gap: 10px;
-  row-gap: 20px;
+  row-gap: 15px;
   justify-content: space-between;
 }
 
@@ -218,7 +218,6 @@
   .products_filters_wrapper {
     display: flex;
     flex-direction: column;
-    width: 100%;
   }
 
   .products_filters_wrapper::-webkit-scrollbar-thumb {
@@ -235,10 +234,24 @@
 
   .filters_section h3 {
     font-size: 18px;
+    margin-bottom: 14px;
+  }
+
+  .filters_section .sizes_list {
+    grid-template-columns: repeat(auto-fill, 55px);
+  }
+
+  .filters_section .sizes_list li {
+    height: 55px;
+    line-height: 55px;
   }
 }
 
 @media (max-width: 567px) {
+  .products_filters_wrapper {
+    width: 100%;
+  }
+
   .filters_section .slider_wrapper {
     max-width: 100%;
   }

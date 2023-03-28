@@ -5,12 +5,9 @@ export const getUserCart = createAsyncThunk(
   "/cart/getCart",
   async (__, { rejectWithValue }) => {
     try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/cart/get-user-cart`,
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await axios.get("api/cart/get-user-cart", {
+        withCredentials: true,
+      });
       const userCart = response.data.cart;
       const localCart = JSON.parse(localStorage.getItem("cart"));
       const updatedCartItems = [...userCart];
@@ -46,7 +43,7 @@ export const getUserCart = createAsyncThunk(
           };
         });
         await axios({
-          url: `${process.env.REACT_APP_API_URL}/cart/set-user-cart`,
+          url: "api/cart/set-user-cart",
           method: "put",
           withCredentials: true,
           data: { cart: userNewCart },
@@ -78,7 +75,7 @@ export const addToCart = createAsyncThunk(
       const user = getState().user;
       if (user.isAuthenticated) {
         const response = await axios({
-          url: `${process.env.REACT_APP_API_URL}/cart/add-to-cart`,
+          url: "/api/cart/add-to-cart",
           method: "post",
           withCredentials: true,
           data: {
@@ -88,15 +85,12 @@ export const addToCart = createAsyncThunk(
         });
         cartItems = response.data.cart;
       } else {
-        await axios.get(
-          `${process.env.REACT_APP_API_URL}/products/check-availability`,
-          {
-            params: {
-              productId: product._id,
-              size: size,
-            },
-          }
-        );
+        await axios.get("/api/products/check-availability", {
+          params: {
+            productId: product._id,
+            size: size,
+          },
+        });
 
         const localCart = localStorage.getItem("cart")
           ? JSON.parse(localStorage.getItem("cart"))
@@ -149,7 +143,7 @@ export const removeFromCart = createAsyncThunk(
       const { user } = getState();
       if (user.isAuthenticated) {
         const response = await axios({
-          url: `${process.env.REACT_APP_API_URL}/cart/remove-from-cart`,
+          url: "/api/cart/remove-from-cart",
           method: "delete",
           withCredentials: true,
           data: {
