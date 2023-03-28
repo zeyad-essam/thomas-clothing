@@ -104,6 +104,7 @@ export const stripeWebHook = async (request, response) => {
         user.orders.push(order._id);
         await user.save();
       } catch (err) {
+        console.log(err);
         response.status(500).send("something went wrong!");
       }
       break;
