@@ -91,7 +91,7 @@ export const stripeWebHook = async (request, response) => {
       try {
         const paymentIntent = event.data.object;
         const orderDetails = JSON.parse(paymentIntent.metadata.orderDetails);
-        const user = await User.findOne({ _id: paymentIntent.metadata.userId });
+        const user = await User.findById(orderDetails.user);
 
         const order = new Order({
           ...orderDetails,
@@ -104,7 +104,6 @@ export const stripeWebHook = async (request, response) => {
         user.orders.push(order._id);
         await user.save();
       } catch (err) {
-        console.log(err);
         response.status(500).send("something went wrong!");
       }
       break;
