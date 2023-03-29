@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import session from "express-session";
-import connetMongoDbSession from "connect-mongodb-session";
+import connectMongoDbSession from "connect-mongodb-session";
 import compression from "compression";
 import passport from "passport";
 import passportConfig from "./passport.js";
@@ -26,7 +26,7 @@ const app = express();
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
-const MongoDBStore = connetMongoDbSession(session);
+const MongoDBStore = connectMongoDbSession(session);
 
 const store = new MongoDBStore({
   uri: MONGODB_URI,
@@ -69,10 +69,10 @@ app.use(
 app.use(compression());
 
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static("puplic"));
+
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: ["http://localhost:3000", "https://thomas-clothing.herokuapp.com/"],
     credentials: true,
     allowedHeaders: [
       "Origin",
