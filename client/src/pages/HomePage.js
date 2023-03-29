@@ -11,15 +11,22 @@ import {
 
 import { sweatShirtsPoster } from "../utils/UI/productsPoster";
 
+import { Helmet } from "react-helmet";
+
 const HomePage = () => {
   return (
-    <div className="container">
-      <Hero />
-      <ProductHighlights />
-      <CategoryView data={shirtsViewData} />
-      <ProductsPoster data={sweatShirtsPoster} />
-      <CategoryView data={jacketsAndCoatsViewData} reverse />
-    </div>
+    <>
+      <Helmet>
+        <title>Thomas | Home</title>
+      </Helmet>
+      <div className="container">
+        <Hero />
+        <ProductHighlights />
+        <CategoryView data={shirtsViewData} />
+        <ProductsPoster data={sweatShirtsPoster} />
+        <CategoryView data={jacketsAndCoatsViewData} reverse />
+      </div>
+    </>
   );
 };
 
