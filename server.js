@@ -130,6 +130,7 @@ app.use((error, req, res, next) => {
 const host = "0.0.0.0";
 const port = process.env.PORT || 8000;
 
+mongoose.set("strictQuery", false);
 mongoose
   .connect(MONGODB_URI)
   .then(() => {

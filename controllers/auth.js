@@ -178,8 +178,9 @@ export const getUser = async (req, res) => {
 export const getLogout = (req, res, next) => {
   if (req.user) {
     req.session.destroy();
-    req.logout();
-    res.status(200).json({ message: "User logged out successfully." });
+    req.logout(() => {
+      res.status(200).json({ message: "User logged out successfully." });
+    });
   } else {
     res.status(400).json({ message: "No logged in user." });
   }

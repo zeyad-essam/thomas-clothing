@@ -145,8 +145,8 @@ const CheckoutForm = () => {
           setFormError(`Payment failed ${payload.error.message}`);
         }
         if (payload.paymentIntent.status === "succeeded") {
-          // window.location.href = "/";
           cardElement.clear();
+          window.location.href = "/";
         }
       } else {
         const response = await axios({

@@ -66,11 +66,13 @@ router.get(
   "/twitter/callback",
   passport.authenticate("twitter", {
     failureRedirect: process.env.REACT_APP_URL,
+    session: true,
   }),
   function (req, res) {
-    // const state = req.session.state;
+    const state = req.session.state;
     const reactAppUrl = process.env.REACT_APP_URL;
-    const redirectUrl = `${reactAppUrl}/checkout`;
+    const redirectUrl =
+      state === "true" ? `${reactAppUrl}/checkout` : reactAppUrl;
     res.redirect(redirectUrl);
   }
 );
