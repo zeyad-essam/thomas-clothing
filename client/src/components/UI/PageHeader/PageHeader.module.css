@@ -1,12 +1,12 @@
 .page_header {
   background-color: #fafafa;
-  min-height: 190px;
+  height: var(--page-header-height);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 10px;
-  padding: 16px;
+  padding: 0 16px;
 }
 
 .page_header h1 {
@@ -29,10 +29,6 @@
 }
 
 @media (max-width: 991.8px) {
-  .page_header {
-    min-height: auto;
-  }
-
   .page_header h1 {
     font-size: 22px;
   }

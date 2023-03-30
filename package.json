@@ -40,6 +40,11 @@
     "sharp": "^0.31.3",
     "stripe": "^11.14.0"
   },
+  "nodemonConfig": {
+    "ignore": [
+      "client/*"
+    ]
+  },
   "devDependencies": {
     "concurrently": "^7.6.0"
   }

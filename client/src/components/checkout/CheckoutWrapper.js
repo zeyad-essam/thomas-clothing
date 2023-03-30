@@ -1,21 +1,45 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import "react-phone-number-input/style.css";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import PageLoading from "../UI/PageLoading";
 import CheckoutForm from "./CheckoutForm";
 
 import classes from "./CheckoutWrapper.module.css";
 
 const CheckoutWrapper = () => {
-  const userState = useSelector((state) => state.user);
+  const { user: userState, cart: cartState } = useSelector((state) => state);
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (!userState.isLoading && !userState.isAuthenticated) {
       navigate("/", { replace: true });
     }
-  }, [userState, navigate]);
+    if (
+      !userState.isLoading &&
+      !cartState.loading &&
+      cartState.items.length <= 0
+    ) {
+      navigate("/cart", { replace: true });
+    }
+    if (
+      !userState.isLoading &&
+      !cartState.loading &&
+      cartState.items.length > 0
+    ) {
+      setIsLoading(false);
+    }
+  }, [userState, cartState, navigate]);
+
+  if (isLoading) {
+    return (
+      <div className={classes.loading_wrapper}>
+        <PageLoading />
+      </div>
+    );
+  }
 
   return (
     <div className={classes.checkout_wrapper}>

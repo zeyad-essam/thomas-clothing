@@ -54,7 +54,7 @@ const ImageGallery = ({ images }) => {
         {isMobile && (
           <div className={classes.image_swiper_wrapper}>
             <Swiper
-              onClick={() => selectImageHandler(swiper.activeIndex)}
+              onClick={() => selectImageHandler(swiper.realIndex)}
               className="image_swiper"
               {...swiperSettings}
             >

@@ -19,7 +19,7 @@
 .form_control:not(.phone_input) input,
 .form_control .phone_input_wrapper,
 .form_control textarea {
-  border: 2px solid rgb(240, 240, 240);
+  border: 1px solid rgb(223, 223, 223);
   border-radius: 4px;
   font-weight: 500;
   outline: none;
@@ -112,4 +112,21 @@
 
 .checkout_form button {
   border-radius: 4px;
+}
+
+@media (max-width: 767px) {
+  .checkout_form .inputs_wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .checkout_form .form_control label {
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 567px) {
+  .checkout_form .choose_payment {
+    grid-template-columns: 1fr;
+  }
 }

@@ -34,6 +34,7 @@ ul {
   --error-color: #df5858;
   --success-color: #5cb85c;
   --header-height: 80px;
+  --page-header-height: 190px;
   --top-slider-height: 32px;
   --toastify-color-progress-light: linear-gradient(to right, #212121, #373636);
   --toastify-color-light: #f2f2f2;
@@ -48,6 +49,7 @@ ul {
 @media (max-width: 991.98px) {
   :root {
     --header-height: 60px;
+    --page-header-height: 60px;
   }
 }
 
