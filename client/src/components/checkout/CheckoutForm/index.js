@@ -13,7 +13,7 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
 import classes from "./CheckoutForm.module.css";
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ cartState }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [cardIsValid, setCardIsValid] = useState(false);
@@ -292,7 +292,15 @@ const CheckoutForm = () => {
           />
         </div>
       )}
-      <FormButton dark isLoading={isLoading} text="Confirm Order" />
+      <FormButton
+        dark
+        isLoading={isLoading}
+        text={
+          selectedPaymentMethod === "card"
+            ? `Pay $${cartState.totalPrice}`
+            : "Confirm Order"
+        }
+      />
       <div className={classes.notification_wrapper}>
         {formError && <p className="error">{formError}</p>}
       </div>

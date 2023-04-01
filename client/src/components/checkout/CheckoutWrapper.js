@@ -46,11 +46,11 @@ const CheckoutWrapper = () => {
     <div className={classes.checkout_wrapper}>
       <div className={classes.form_wrapper}>
         <h2>Shipping Information</h2>
-        <CheckoutForm />
+        <CheckoutForm cartState={cartState} />
       </div>
       <div className={classes.order_summary}>
         <h2>Order Details</h2>
-        <OrderSummary />
+        <OrderSummary cartState={cartState} />
       </div>
     </div>
   );

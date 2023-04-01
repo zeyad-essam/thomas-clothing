@@ -1,11 +1,8 @@
 import React from "react";
 
-import { useSelector } from "react-redux";
-
 import classes from "./OrderSummary.module.css";
 
-const OrderSummary = () => {
-  const cartState = useSelector((state) => state.cart);
+const OrderSummary = ({ cartState }) => {
   return (
     <div className={classes.order_summary}>
       <h4>Products</h4>
@@ -23,7 +20,7 @@ const OrderSummary = () => {
         ))}
       </ul>
       <div className={`${classes.order_total} ${classes.devide}`}>
-        <span>Estimated Total</span>
+        <span>Order Total</span>
         <span>${Number(cartState.totalPrice).toFixed(2)}</span>
       </div>
     </div>
