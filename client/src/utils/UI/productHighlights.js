@@ -45,15 +45,6 @@ export const productsHighlights = [
     ],
   },
   {
-    title: "MEDUSA LA GRECA OVERSHIRT",
-    slug: "medusa-la-greca-overshirt",
-    price: 737,
-    images: [
-      "https://res.cloudinary.com/drru4lsys/image/upload/v1677627265/products/la-grece-1.webp",
-      "https://res.cloudinary.com/drru4lsys/image/upload/v1677627265/products/la-grece-2.webp",
-    ],
-  },
-  {
     title: "BAROCCO SILHOUETTE SILK SHIRT",
     slug: "barocco-silhouette-silk-shirt",
     price: 1525,

@@ -49,8 +49,7 @@ router.get(
   function (req, res) {
     const state = req.query.state;
     const reactAppUrl = process.env.REACT_APP_URL;
-    const redirectUrl =
-      state === "true" ? `${reactAppUrl}/checkout` : reactAppUrl;
+    const redirectUrl = state === "true" ? `${reactAppUrl}/cart` : reactAppUrl;
     res.redirect(redirectUrl);
   }
 );
@@ -71,8 +70,7 @@ router.get(
   function (req, res) {
     const state = req.session.state;
     const reactAppUrl = process.env.REACT_APP_URL;
-    const redirectUrl =
-      state === "true" ? `${reactAppUrl}/checkout` : reactAppUrl;
+    const redirectUrl = state === "true" ? `${reactAppUrl}/cart` : reactAppUrl;
     res.redirect(redirectUrl);
   }
 );
@@ -93,8 +91,7 @@ router.get(
   function (req, res) {
     const state = req.query.state;
     const reactAppUrl = process.env.REACT_APP_URL;
-    const redirectUrl =
-      state === "true" ? `${reactAppUrl}/checkout` : reactAppUrl;
+    const redirectUrl = state === "true" ? `${reactAppUrl}/cart` : reactAppUrl;
     res.redirect(redirectUrl);
   }
 );

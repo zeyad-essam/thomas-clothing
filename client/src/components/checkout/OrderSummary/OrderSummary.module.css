@@ -1,0 +1,52 @@
+.order_summary {
+  height: fit-content;
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 2px;
+  background: #ffffff;
+  box-shadow: 1px 1px 20px #fcfcfc, -1px -1px 20px #fcfcfc;
+}
+
+.order_summary * {
+  font-family: "Poppins", sans-serif;
+  line-height: 1;
+}
+
+.order_summary h4 {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.order_summary li {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 12px 0;
+  border-bottom: 1px solid #d7d7d7;
+}
+
+.order_summary li .item_details p {
+  font-size: 14px;
+  margin-bottom: 3px;
+  font-weight: 500;
+}
+
+.order_summary li .item_details span {
+  font-size: 14px;
+}
+
+.order_summary li .item_price {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.order_summary .order_total {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-weight: 600;
+  margin-bottom: 10px;
+  padding-top: 15px;
+}

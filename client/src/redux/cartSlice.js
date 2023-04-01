@@ -235,15 +235,9 @@ const cartSlice = createSlice({
       .addCase(addToCart.rejected, (state) => {
         state.loading = false;
       })
-      .addCase(removeFromCart.pending, (state) => {
-        state.loading = true;
-      })
       .addCase(removeFromCart.fulfilled, (state, { payload }) => {
         state.items = payload.items;
         state.totalPrice = payload.totalPrice;
-        state.loading = false;
-      })
-      .addCase(removeFromCart.rejected, (state) => {
         state.loading = false;
       });
   },

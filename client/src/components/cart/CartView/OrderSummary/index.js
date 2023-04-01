@@ -1,6 +1,6 @@
 import React from "react";
 
-import classes from "./CartCheckout.module.css";
+import classes from "./OrderSummary.module.css";
 
 const OrderSummary = ({ totalPrice, onCheckout }) => {
   return (

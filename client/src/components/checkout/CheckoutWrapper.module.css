@@ -20,6 +20,12 @@
   margin-bottom: 25px;
 }
 
+@media (min-width: 992px) {
+  .checkout_wrapper .order_summary h2 {
+    margin-bottom: 47px;
+  }
+}
+
 @media (max-width: 991px) {
   .checkout_wrapper {
     grid-template-columns: 1fr;
@@ -32,7 +38,7 @@
   }
 
   .checkout_wrapper h2 {
-    font-size: 22px;
+    font-size: 20px;
     margin-bottom: 10px;
   }
 }

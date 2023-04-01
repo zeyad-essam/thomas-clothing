@@ -27,7 +27,7 @@ const CartView = () => {
   return (
     <div className={classes.cart_view_wrapper}>
       <div className={classes.cart_view}>
-        {cart.loading && !cart.items.length >= 1 && <PageLoading />}
+        {cart.loading && <PageLoading />}
         {!cart.loading && cart.items.length === 0 && (
           <div className={classes.empty_cart}>
             <div className={classes.actions}>
@@ -43,7 +43,7 @@ const CartView = () => {
             </div>
           </div>
         )}
-        {cart.items.length >= 1 && (
+        {!cart.loading && cart.items.length >= 1 && (
           <div className={classes.cart_details}>
             <div>
               <CartProducts items={cart.items} />

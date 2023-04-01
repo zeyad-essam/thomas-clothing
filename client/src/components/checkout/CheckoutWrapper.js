@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import PageLoading from "../UI/PageLoading";
 import CheckoutForm from "./CheckoutForm";
+import OrderSummary from "./OrderSummary";
 
 import classes from "./CheckoutWrapper.module.css";
 
@@ -49,6 +50,7 @@ const CheckoutWrapper = () => {
       </div>
       <div className={classes.order_summary}>
         <h2>Order Details</h2>
+        <OrderSummary />
       </div>
     </div>
   );
