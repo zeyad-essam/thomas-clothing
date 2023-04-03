@@ -8,7 +8,7 @@ import { getUserCart, setLoading } from "./redux/cartSlice";
 
 import HomePage from "./pages/HomePage";
 import Cart from "./pages/Cart";
-import CheckoutPage from "./pages/CheckoutPage";
+import CheckoutPage from "./pages/checkout/CheckoutPage";
 
 import AuthRoutes from "./routes/AuthRoutes";
 import ProductsRoutes from "./routes/ProductsRoutes";
@@ -18,6 +18,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
+import CheckoutSuccessPage from "./pages/checkout/CheckoutSuccessPage";
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
 
@@ -47,6 +48,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/checkout/success" element={<CheckoutSuccessPage />} />
           <Route path="/auth/*" element={<AuthRoutes />} />
           <Route path="/products/*" element={<ProductsRoutes />} />
         </Routes>

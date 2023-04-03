@@ -146,17 +146,17 @@ const CheckoutForm = ({ cartState }) => {
         }
         if (payload.paymentIntent.status === "succeeded") {
           cardElement.clear();
-          window.location.href = "/";
+          window.location.href = "/checkout/success?type=card";
         }
       } else {
-        const response = await axios({
+        await axios({
           method: "POST",
           url: "/api/checkout/cash-checkout",
           data: {
             shippingInfo,
           },
         });
-        console.log(response);
+        window.location.href = "/checkout/success?type='cash-on-delivery'";
       }
     } catch (err) {
       const error = err.response

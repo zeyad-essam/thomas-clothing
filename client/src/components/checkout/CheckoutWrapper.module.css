@@ -1,8 +1,9 @@
-.loading_wrapper {
+.height_holder {
   height: calc(
     100vh - var(--header-height) - var(--page-header-height) -
       var(--top-slider-height)
   );
+  min-height: 600px;
 }
 
 .checkout_wrapper {

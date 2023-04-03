@@ -8,14 +8,16 @@ const OrderSummary = ({ cartState }) => {
       <h4>Products</h4>
       <ul>
         {cartState.items.map((item) => (
-          <li>
+          <li key={`${item.size}${item.product.slug}`}>
             <div className={classes.item_details}>
               <p>
                 {item.quantity}X {item.product.title}
               </p>
               <span>Size: {item.size}</span>
             </div>
-            <div className={classes.item_price}>${item.product.price}</div>
+            <div className={classes.item_price}>
+              ${parseInt(item.product.price) * parseInt(item.quantity)}
+            </div>
           </li>
         ))}
       </ul>

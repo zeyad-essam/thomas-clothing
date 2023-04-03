@@ -6,9 +6,12 @@ export const getUser = createAsyncThunk(
   "/user/getUser",
   async (__, { rejectWithValue }) => {
     try {
-      const response = await axios.get("/api/auth/getuser", {
-        withCredentials: true,
-      });
+      const response = await axios.get(
+        `${process.env.REACT_APP_URL}/api/auth/getuser`,
+        {
+          withCredentials: true,
+        }
+      );
       return response.data.user;
     } catch (err) {
       const error = err.response

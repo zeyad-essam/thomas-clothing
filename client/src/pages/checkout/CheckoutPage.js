@@ -1,6 +1,6 @@
 import React from "react";
-import CheckoutWrapper from "../components/checkout/CheckoutWrapper";
-import PageHeader from "../components/UI/PageHeader";
+import CheckoutWrapper from "../../components/checkout/CheckoutWrapper";
+import PageHeader from "../../components/UI/PageHeader";
 
 import { Helmet } from "react-helmet";
 

@@ -36,7 +36,7 @@ const CheckoutWrapper = () => {
 
   if (isLoading) {
     return (
-      <div className={classes.loading_wrapper}>
+      <div className={classes.height_holder}>
         <PageLoading />
       </div>
     );

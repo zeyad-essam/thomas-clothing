@@ -56,7 +56,9 @@ const CartItem = ({ item }) => {
           </i>
         </button>
       </div>
-      <div className={classes.product_price}>${item.product.price}</div>
+      <div className={classes.product_price}>
+        ${(parseInt(item.product.price) * parseInt(item.quantity)).toFixed(2)}
+      </div>
     </li>
   );
 };
