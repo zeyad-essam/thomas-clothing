@@ -21,6 +21,7 @@
     "react-google-autocomplete": "^2.7.3",
     "react-helmet": "^6.1.0",
     "react-infinite-scroll-component": "^6.1.0",
+    "react-markdown": "^8.0.6",
     "react-parallax": "^3.5.1",
     "react-phone-number-input": "^3.2.19",
     "react-redux": "^8.0.5",

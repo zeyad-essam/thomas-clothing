@@ -9,6 +9,9 @@ import { getUserCart, setLoading } from "./redux/cartSlice";
 import HomePage from "./pages/HomePage";
 import Cart from "./pages/Cart";
 import CheckoutPage from "./pages/checkout/CheckoutPage";
+import PrivacyPolicy from "./pages/static/PrivacyPolicy";
+import TermsAndConditions from "./pages/static/TermsAndConditions";
+import AboutUs from "./pages/static/AboutUs";
 
 import AuthRoutes from "./routes/AuthRoutes";
 import ProductsRoutes from "./routes/ProductsRoutes";
@@ -51,6 +54,12 @@ function App() {
           <Route path="/checkout/success" element={<CheckoutSuccessPage />} />
           <Route path="/auth/*" element={<AuthRoutes />} />
           <Route path="/products/*" element={<ProductsRoutes />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route
+            path="/terms-and-conditions"
+            element={<TermsAndConditions />}
+          />
+          <Route path="/about-us" element={<AboutUs />} />
         </Routes>
       </Layout>
       <ToastContainer

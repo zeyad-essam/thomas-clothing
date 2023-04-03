@@ -1,0 +1,50 @@
+.height_holder {
+  height: calc(
+    100vh - var(--header-height) - var(--page-header-height) -
+      var(--top-slider-height)
+  );
+  min-height: 600px;
+}
+
+.markdown_wrapper {
+  max-width: 1400px;
+  margin: auto;
+  padding: 16px !important;
+}
+
+.markdown_wrapper h2 {
+  margin: 10px 0;
+  font-weight: 600;
+}
+
+.markdown_wrapper p {
+  font-weight: 500;
+  line-height: 1.7;
+}
+
+.markdown_wrapper ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+.markdown_wrapper ul li {
+  font-weight: 500;
+  line-height: 1.5;
+  margin: 4px 0;
+}
+
+@media (max-width: 567px) {
+  .markdown_wrapper h2 {
+    font-size: 22px;
+  }
+
+  .markdown_wrapper p,
+  .markdown_wrapper ul li {
+    font-size: 15px;
+  }
+}
+
+.markdown_wrapper a {
+  color: rgb(29, 49, 183);
+  text-decoration: underline;
+}
