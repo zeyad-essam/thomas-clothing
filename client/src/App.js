@@ -22,6 +22,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutSuccessPage from "./pages/checkout/CheckoutSuccessPage";
+import ContactPage from "./pages/ContactPage";
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
 
@@ -50,6 +51,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/contact" element={<ContactPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/checkout/success" element={<CheckoutSuccessPage />} />
           <Route path="/auth/*" element={<AuthRoutes />} />
@@ -73,6 +75,7 @@ function App() {
         transition={Slide}
         pauseOnFocusLoss
         draggable
+        draggablePercent={50}
         pauseOnHover
         theme="light"
       />

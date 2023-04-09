@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 import classes from "./Assistance.module.css";
 
-const Assistance = () => {
+const Assistance = ({ center }) => {
   return (
-    <div className={classes.assistance}>
+    <div className={`${classes.assistance} ${center ? classes.center : ""}`}>
       <h4>Need Assistance?</h4>
       <p>Please contact our Customer Care team either</p>
       <p>

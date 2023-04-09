@@ -40,42 +40,8 @@
   /* margin-bottom: 15px; */
 }
 
-.form_Wrapper .form_inner form .form_control {
-  display: flex;
-  flex-direction: column;
-}
-
-.form_Wrapper .form_inner form .form_control label {
-  font-weight: 500;
-  margin-bottom: 8px;
-}
-
-.form_Wrapper .form_inner form .form_control input {
-  padding: 12px 10px;
-  border: 1px solid rgb(223, 223, 223);
-  border-radius: 0px;
-  font-weight: 500;
-  outline: none;
-  transition: all 0.4s ease;
-}
-
-.form_Wrapper .form_inner form .form_control input:focus {
-  border-color: #212121;
-}
-
 .form_Wrapper .form_inner form button {
   background-color: #111727;
-}
-
-.form_Wrapper .form_inner form .notification_wrapper {
-  height: 17px;
-  line-height: 17px;
-  font-size: 13px;
-  font-weight: 500;
-}
-
-.form_Wrapper .form_inner form div:nth-last-child(2) .notification_wrapper {
-  display: none;
 }
 
 .form_Wrapper .form_inner form .forget_password {

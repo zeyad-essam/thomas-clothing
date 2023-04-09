@@ -142,11 +142,7 @@ const AuthPage = ({ signup }) => {
             </p>
             <form onSubmit={formSubmitHandler}>
               {signup && (
-                <div
-                  className={`${classes.form_control} ${
-                    userNameHasError ? classes.has_error : ""
-                  }`}
-                >
+                <div className="form_control">
                   <label htmlFor="username">User name</label>
                   <input
                     type="text"
@@ -158,18 +154,14 @@ const AuthPage = ({ signup }) => {
                     onBlur={userNameBlurHandler}
                     value={userNameValue}
                   />
-                  <div className={classes.notification_wrapper}>
+                  <div className="notification_wrapper">
                     {userNameHasError && (
                       <p className="error">Please enter your full name.</p>
                     )}
                   </div>
                 </div>
               )}
-              <div
-                className={`${classes.form_control} ${
-                  emailHasError ? classes.has_error : ""
-                }`}
-              >
+              <div className="form_control">
                 <label htmlFor="email">Email</label>
                 <input
                   type="email"
@@ -180,17 +172,13 @@ const AuthPage = ({ signup }) => {
                   onBlur={emailBlurHandler}
                   value={emailValue}
                 />
-                <div className={classes.notification_wrapper}>
+                <div className="notification_wrapper">
                   {emailHasError && (
                     <p className="error">Please enter a valid email.</p>
                   )}
                 </div>
               </div>
-              <div
-                className={`${classes.form_control} ${
-                  passwordHasError ? classes.has_error : ""
-                }`}
-              >
+              <div className="form_control">
                 <label htmlFor="password">Password</label>
                 <input
                   type="password"
@@ -203,7 +191,7 @@ const AuthPage = ({ signup }) => {
                   value={passwordValue}
                 />
                 <div
-                  className={classes.notification_wrapper}
+                  className="notification_wrapper"
                   style={{ marginBottom: 4 }}
                 >
                   {passwordHasError && (
@@ -218,7 +206,7 @@ const AuthPage = ({ signup }) => {
                 text={signup ? "Sign Up" : "Log in"}
                 dark
               />
-              <div className={classes.notification_wrapper}>
+              <div className="notification_wrapper">
                 {formError && <p className="error">{formError}</p>}
               </div>
               {!signup && (

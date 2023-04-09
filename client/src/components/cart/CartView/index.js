@@ -5,11 +5,11 @@ import { Link, useNavigate } from "react-router-dom";
 
 import PageLoading from "../../UI/PageLoading";
 
-import Assistance from "./Assistance";
 import OrderSummary from "./OrderSummary";
 import CartProducts from "./CartProducts";
 
 import classes from "./CartView.module.css";
+import Assistance from "../../UI/Assistance";
 
 const CartView = () => {
   const cart = useSelector((state) => state.cart);

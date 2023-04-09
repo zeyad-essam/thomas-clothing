@@ -1,0 +1,37 @@
+.page_wrapper {
+  padding: 38px 16px 0;
+}
+
+.form_wrapper {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.form_wrapper .inputs_wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.form_wrapper textarea {
+  min-height: 220px;
+}
+
+@media (max-width: 767px) {
+  .page_wrapper {
+    padding: 12px 12px 0;
+  }
+
+  .form_wrapper .inputs_wrapper {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .form_wrapper textarea {
+    min-height: 150px;
+  }
+}
+
+.form_wrapper .button_wrapper {
+  margin-top: 8px;
+}

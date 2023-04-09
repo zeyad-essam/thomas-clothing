@@ -114,3 +114,61 @@ ul {
 .Toastify__close-button {
   padding: 6px 6px 6px 5px !important;
 }
+
+/* input styles */
+
+.form_control {
+  display: flex;
+  flex-direction: column;
+}
+
+.form_control label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.form_control:not(.phone_input) input,
+.form_control .phone_input_wrapper,
+.form_control textarea {
+  border: 1px solid rgb(223, 223, 223);
+  border-radius: 2px;
+  font-weight: 500;
+  outline: none;
+  transition: all 0.4s ease;
+  font-family: "Poppins", sans-serif;
+}
+
+.form_control:not(.phone_input) input,
+.form_control .phone_input_wrapper {
+  height: 44px;
+  padding: 0px 16px;
+}
+
+.form_control textarea {
+  padding: 16px;
+  resize: none;
+}
+
+.form_control .phone_input_wrapper input {
+  border: none;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+
+.form_control .phone_input_wrapper option {
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form_control input:focus {
+  border-color: #212121;
+}
+
+.notification_wrapper {
+  height: 17px;
+  line-height: 17px;
+  font-size: 13px;
+  font-weight: 500;
+}

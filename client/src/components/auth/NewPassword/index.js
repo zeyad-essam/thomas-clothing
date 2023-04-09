@@ -36,7 +36,12 @@ const NewPassword = () => {
 
   const formSubmitHandler = async (e) => {
     e.preventDefault();
-    if (!passwordIsValid && !passwordConfirmIsValid) {
+    if (!passwordIsValid) {
+      setError("Please enter valid password");
+      return;
+    }
+    if (!passwordConfirmIsValid) {
+      setError("Passwords have to match");
       return;
     }
     setIsLoading(true);
@@ -72,11 +77,7 @@ const NewPassword = () => {
         <div className={classes.page_inner}>
           <h2>Set new password</h2>
           <form onSubmit={formSubmitHandler}>
-            <div
-              className={`${classes.form_control} ${
-                passwordHasError ? classes.has_error : ""
-              }`}
-            >
+            <div className="form_control">
               <label htmlFor="password">New Password</label>
               <input
                 type="password"
@@ -87,17 +88,13 @@ const NewPassword = () => {
                 onBlur={passwordBlurHandler}
                 value={passwordValue}
               />
-              <div className={classes.notification_wrapper}>
+              <div className="notification_wrapper">
                 {passwordHasError && (
                   <p className="error">Please enter a valid password.</p>
                 )}
               </div>
             </div>
-            <div
-              className={`${classes.form_control} ${
-                passwordConfirmHasError ? classes.has_error : ""
-              }`}
-            >
+            <div className="form_control">
               <label htmlFor="confirm-password">Confirm Password</label>
               <input
                 type="password"
@@ -108,7 +105,7 @@ const NewPassword = () => {
                 onBlur={passwordConfirmBlurHandler}
                 value={passwordConfirmValue}
               />
-              <div className={classes.notification_wrapper}>
+              <div className="notification_wrapper">
                 {passwordConfirmHasError && (
                   <p className="error">Passwords does not match.</p>
                 )}
@@ -117,7 +114,7 @@ const NewPassword = () => {
             <div className={classes.button_wrapper}>
               <FormButton isLoading={isLoading} text="Apply" dark />
             </div>
-            <div className={classes.notification_wrapper}>
+            <div className="notification_wrapper">
               {error && <p className="error">{error}</p>}
             </div>
           </form>

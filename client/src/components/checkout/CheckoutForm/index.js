@@ -171,7 +171,7 @@ const CheckoutForm = ({ cartState }) => {
   return (
     <form className={classes.checkout_form} onSubmit={handleSubmit}>
       <div className={classes.inputs_wrapper}>
-        <div className={`${classes.form_control}`}>
+        <div className="form_control">
           <label htmlFor="email">Email</label>
           <input
             type="email"
@@ -183,16 +183,16 @@ const CheckoutForm = ({ cartState }) => {
             value={emailValue}
             required
           />
-          <div className={classes.notification_wrapper}>
+          <div className="notification_wrapper">
             {emailHasError && (
               <p className="error">Please enter a valid email.</p>
             )}
           </div>
         </div>
-        <div className={`${classes.form_control} ${classes.phone_input}`}>
+        <div className="form_control phone_input">
           <label htmlFor="phone">Phone</label>
           <PhoneInput
-            className={classes.phone_input_wrapper}
+            className="phone_input_wrapper"
             placeholder="Enter phone number"
             value={phoneValue}
             onChange={handlePhoneChange}
@@ -202,13 +202,13 @@ const CheckoutForm = ({ cartState }) => {
             international
             addInternationalOption={false}
           />
-          <div className={classes.notification_wrapper}>
+          <div className="notification_wrapper">
             {!phoneIsValid && phoneInputTouched && (
               <p className="error">Please enter a valid phone number.</p>
             )}
           </div>
         </div>
-        <div className={`${classes.form_control}`}>
+        <div className="form_control">
           <label htmlFor="country">Country</label>
           <input
             type="text"
@@ -219,13 +219,13 @@ const CheckoutForm = ({ cartState }) => {
             value={countryValue}
             required
           />
-          <div className={classes.notification_wrapper}>
+          <div className="notification_wrapper">
             {countryHasError && (
               <p className="error">Please enter your country.</p>
             )}
           </div>
         </div>
-        <div className={`${classes.form_control}`}>
+        <div className="form_control">
           <label htmlFor="city">City</label>
           <input
             type="text"
@@ -236,12 +236,12 @@ const CheckoutForm = ({ cartState }) => {
             value={cityValue}
             required
           />
-          <div className={classes.notification_wrapper}>
+          <div className="notification_wrapper">
             {cityHasError && <p className="error">Please enter your city.</p>}
           </div>
         </div>
       </div>
-      <div className={`${classes.form_control}`}>
+      <div className="form_control">
         <label htmlFor="address">Address</label>
         <textarea
           id="address"
@@ -252,7 +252,7 @@ const CheckoutForm = ({ cartState }) => {
           rows={4}
           required
         />
-        <div className={classes.notification_wrapper}>
+        <div className="notification_wrapper">
           {addressHasError && (
             <p className="error">
               Your address must be between 15 to 150 characters.
@@ -301,7 +301,7 @@ const CheckoutForm = ({ cartState }) => {
             : "Confirm Order"
         }
       />
-      <div className={classes.notification_wrapper}>
+      <div className="notification_wrapper">
         {formError && <p className="error">{formError}</p>}
       </div>
     </form>

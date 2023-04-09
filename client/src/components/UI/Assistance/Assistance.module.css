@@ -4,6 +4,10 @@
   margin: auto;
 }
 
+.assistance.center {
+  text-align: center;
+}
+
 .assistance h4 {
   font-size: 14px;
   margin-bottom: 14px;
