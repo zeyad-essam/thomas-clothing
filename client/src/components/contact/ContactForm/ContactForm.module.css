@@ -32,6 +32,6 @@
   }
 }
 
-.form_wrapper .button_wrapper {
-  margin-top: 8px;
+.form_wrapper .button_wrapper button {
+  margin: 4px 0;
 }

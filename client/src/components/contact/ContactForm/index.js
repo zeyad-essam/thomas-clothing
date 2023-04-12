@@ -5,6 +5,8 @@ import useInput from "../../../utils/hooks/useInput";
 import { validateEmail, validateUserName } from "../../../utils/auth";
 import Assistance from "../../UI/Assistance";
 
+import axios from "axios";
+
 const ContactForm = () => {
   const {
     value: nameValue,
@@ -44,12 +46,60 @@ const ContactForm = () => {
     (value) => value.trim().length >= 15 && value.trim().length <= 1500
   );
 
-  const [formError, setFormError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [formStatus, setFormStatus] = useState(null);
+
+  const formSubmitHandler = async (e) => {
+    e.preventDefault();
+
+    if (!nameIsValid || !emailIsValid || !objectIsValid || !messageIsValid) {
+      setFormStatus({
+        type: "error",
+        message: "Please enter valid information.",
+      });
+      return;
+    }
+    setFormStatus(null);
+    setIsLoading(true);
+    try {
+      const result = await axios({
+        method: "POST",
+        url: `${process.env.REACT_APP_URL}/api/message/post-contact-message`,
+        data: {
+          email: emailValue,
+          userName: nameValue,
+          object: objectValue,
+          message: messageValue,
+        },
+      });
+
+      if (result.data.success) {
+        emailReset();
+        nameReset();
+        objectReset();
+        messageReset();
+        setFormStatus({
+          type: "success",
+          message:
+            "Thank you for contacting us! We have received your message and will get back to you soon.",
+        });
+      } else {
+        setFormStatus({ type: "error", message: "something went wrong" });
+      }
+    } catch (err) {
+      const error = err.response
+        ? err.response.data.message
+        : "something went wrong";
+      setFormStatus({ type: "error", message: error });
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className={classes.page_wrapper}>
       <div className={classes.form_wrapper}>
-        <form>
+        <form onSubmit={formSubmitHandler}>
           <div className={classes.inputs_wrapper}>
             <div className="form_control">
               <label htmlFor="name">User name</label>
@@ -124,13 +174,15 @@ const ContactForm = () => {
             </div>
           </div>
           <div className={classes.button_wrapper}>
-            <FormButton
-              dark
-              // isLoading={isLoading}
-              text="Send Message"
-            />
+            <FormButton dark isLoading={isLoading} text="Send Message" />
             <div className="notification_wrapper">
-              {formError && <p className="error">test</p>}
+              {formStatus !== null && (
+                <p
+                  className={formStatus.type === "error" ? "error" : "success"}
+                >
+                  {formStatus.message}
+                </p>
+              )}
             </div>
           </div>
         </form>

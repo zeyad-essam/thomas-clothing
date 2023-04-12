@@ -11,7 +11,10 @@ const ContactPage = () => {
       <Helmet>
         <title>Thomas | Contact</title>
       </Helmet>
-      <PageHeader title="Contact Us" />
+      <PageHeader
+        title="Contact Us"
+        text="We'd love to hear from you! Reach out to us with any questions, comments, or concerns."
+      />
       <ContactForm />
     </>
   );

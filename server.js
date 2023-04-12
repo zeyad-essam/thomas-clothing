@@ -16,6 +16,7 @@ import cartRoutes from "./routes/cart.js";
 import subscribeRoutes from "./routes/subscribe.js";
 import checkoutRoutes from "./routes/checkout.js";
 import markdownRoutes from "./routes/markdown.js";
+import messagesRoutes from "./routes/messages.js";
 
 import path from "path";
 import * as url from "url";
@@ -110,6 +111,7 @@ app.use("/api/products", productRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/checkout", checkoutRoutes);
 app.use("/api/subscribe", subscribeRoutes);
+app.use("/api/message", messagesRoutes);
 app.use("/api", markdownRoutes);
 
 if (

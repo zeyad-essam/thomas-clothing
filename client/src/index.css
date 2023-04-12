@@ -32,7 +32,7 @@ ul {
 
 :root {
   --error-color: #df5858;
-  --success-color: #5cb85c;
+  --success-color: #50a550;
   --header-height: 80px;
   --page-header-height: 190px;
   --top-slider-height: 32px;
@@ -167,7 +167,7 @@ ul {
 }
 
 .notification_wrapper {
-  height: 17px;
+  min-height: 17px;
   line-height: 17px;
   font-size: 13px;
   font-weight: 500;
