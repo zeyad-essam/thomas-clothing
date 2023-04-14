@@ -1,0 +1,46 @@
+.faqs_wrapper {
+  padding: 35px 16px;
+  max-width: 1220px;
+  margin: auto;
+}
+
+.faqs_wrapper h1 {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.faqs_wrapper > p {
+  font-size: 15px;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  line-height: 1.7;
+  color: #3a3a3a;
+  margin-bottom: 25px;
+}
+
+.faqs_wrapper p a {
+  color: rgb(29, 49, 183);
+  text-decoration: underline;
+}
+
+.faqs_wrapper .tabs_wrapper p {
+  font-size: 15px;
+  line-height: 1.7;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+
+@media (max-width: 767px) {
+  .faqs_wrapper {
+    padding: 20px 16px;
+  }
+
+  .faqs_wrapper h1 {
+    font-size: 18px;
+  }
+
+  .faqs_wrapper > p {
+    font-size: 14px;
+  }
+}

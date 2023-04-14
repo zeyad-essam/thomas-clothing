@@ -12,6 +12,9 @@ import CheckoutPage from "./pages/checkout/CheckoutPage";
 import PrivacyPolicy from "./pages/static/PrivacyPolicy";
 import TermsAndConditions from "./pages/static/TermsAndConditions";
 import AboutUs from "./pages/static/AboutUs";
+import CheckoutSuccessPage from "./pages/checkout/CheckoutSuccessPage";
+import ContactPage from "./pages/ContactPage";
+import FaqsPage from "./pages/FaqsPage";
 
 import AuthRoutes from "./routes/AuthRoutes";
 import ProductsRoutes from "./routes/ProductsRoutes";
@@ -21,8 +24,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
-import CheckoutSuccessPage from "./pages/checkout/CheckoutSuccessPage";
-import ContactPage from "./pages/ContactPage";
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
 
@@ -62,6 +63,7 @@ function App() {
             element={<TermsAndConditions />}
           />
           <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/faq" element={<FaqsPage />} />
         </Routes>
       </Layout>
       <ToastContainer
