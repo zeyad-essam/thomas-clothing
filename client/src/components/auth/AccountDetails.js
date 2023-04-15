@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import classes from "./AccountDetails.module.css";
 import { Link } from "react-router-dom";
 import PageLoading from "../UI/PageLoading";
+import Assistance from "../UI/Assistance";
 
 const AccountDetails = () => {
   const { user: userState, cart: cartState } = useSelector((state) => state);
@@ -40,34 +41,37 @@ const AccountDetails = () => {
 
   return (
     <div className={classes.account_details_wrapper}>
-      <div>
-        <p>You have ({cartItemsQuantity}) Items in your cart</p>
-        <div className={classes.link_wrapper}>
-          {cartIsEmpty ? (
-            <Link className="btn-primary" to="/">
-              Go Shopping
-            </Link>
-          ) : (
-            <Link className="btn-primary" to="/cart">
-              View Cart
-            </Link>
-          )}
+      <div className={classes.cart_and_orders}>
+        <div>
+          <p>You have ({cartItemsQuantity}) Items in your cart</p>
+          <div className={classes.link_wrapper}>
+            {cartIsEmpty ? (
+              <Link className="btn-primary" to="/">
+                Go Shopping
+              </Link>
+            ) : (
+              <Link className="btn-primary" to="/cart">
+                View Cart
+              </Link>
+            )}
+          </div>
+        </div>
+        <div>
+          <p>You have ({ordersCount}) orders in total</p>
+          <div className={classes.link_wrapper}>
+            {hasOrders ? (
+              <Link className="btn-primary" to="/auth/account/orders">
+                View Orders
+              </Link>
+            ) : (
+              <Link className="btn-primary" to="/">
+                Go Shopping
+              </Link>
+            )}
+          </div>
         </div>
       </div>
-      <div>
-        <p>You have ({ordersCount}) orders in total</p>
-        <div className={classes.link_wrapper}>
-          {hasOrders ? (
-            <Link className="btn-primary" to="/auth/account/orders">
-              View Orders
-            </Link>
-          ) : (
-            <Link className="btn-primary" to="/">
-              Go Shopping
-            </Link>
-          )}
-        </div>
-      </div>
+      <Assistance center />
     </div>
   );
 };

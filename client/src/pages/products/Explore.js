@@ -8,7 +8,7 @@ const Explore = () => {
   return (
     <>
       <Helmet>
-        <title>Thomas | Denim</title>
+        <title>Thomas | Explore</title>
       </Helmet>
       <PageHeader
         title="Products Explore"

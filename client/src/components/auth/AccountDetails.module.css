@@ -8,19 +8,17 @@
 
 .account_details_wrapper {
   margin: 25px;
+}
+
+.account_details_wrapper .cart_and_orders {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 25px;
+  margin-bottom: 15px;
 }
 
-@media (max-width: 767px) {
-  .account_details_wrapper {
-    grid-template-columns: 1fr;
-  }
-}
-
-.account_details_wrapper > div {
-  height: 600px;
+.account_details_wrapper .cart_and_orders > div {
+  height: 300px;
   padding: 16px;
   display: flex;
   justify-content: center;
@@ -30,9 +28,19 @@
   background-color: #fafafa;
 }
 
-@media (max-width: 991.8px) {
-  .account_details_wrapper > div {
-    height: 400px;
+.account_details_wrapper .cart_and_orders p {
+  font-size: 15px;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+}
+
+.account_details_wrapper .cart_and_orders .link_wrapper {
+  width: 200px;
+}
+
+@media (max-width: 767px) {
+  .account_details_wrapper .cart_and_orders {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -41,17 +49,7 @@
     margin: 16px;
   }
 
-  .account_details_wrapper > div {
-    height: 250px;
+  .account_details_wrapper .cart_and_orders > div {
+    height: 200px;
   }
-}
-
-.account_details_wrapper p {
-  font-size: 15px;
-  font-weight: 500;
-  font-family: "Poppins", sans-serif;
-}
-
-.account_details_wrapper .link_wrapper {
-  width: 200px;
 }
