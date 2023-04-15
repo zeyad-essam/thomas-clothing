@@ -46,9 +46,6 @@
   margin-bottom: 20px;
 }
 
-.footer .footer_section a:hover {
-  color: #707070;
-}
 .footer .footer_copyright {
   border-top: 1px solid #424242;
   margin: 0 16px;
@@ -61,6 +58,12 @@
   line-height: 21px;
   margin: 0;
   color: #e0e0e0;
+}
+
+@media (min-width: 992px) {
+  .footer .footer_section a:hover {
+    color: #707070;
+  }
 }
 
 @media (max-width: 991.98px) {

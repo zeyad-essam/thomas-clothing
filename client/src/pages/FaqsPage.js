@@ -9,7 +9,7 @@ const FaqsPage = () => {
   return (
     <>
       <Helmet>
-        <title>Thomas | Contact</title>
+        <title>Thomas | FAQS</title>
       </Helmet>
       <PageHeader title="Faqs" />
       <FaqsView />

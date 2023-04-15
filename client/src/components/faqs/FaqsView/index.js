@@ -9,7 +9,7 @@ import Tab from "../../UI/Tab";
 const FaqsView = () => {
   return (
     <div className={classes.faqs_wrapper}>
-      <h1>Frequantly asked Question?</h1>
+      <h1>Frequantly asked Questions?</h1>
       <p>
         Welcome to our FAQ page! We understand that you may have questions or
         concerns about our products, services, or policies. That's why we've

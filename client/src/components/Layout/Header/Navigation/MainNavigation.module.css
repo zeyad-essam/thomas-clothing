@@ -24,11 +24,11 @@
 
 @media (max-width: 1199.98px) {
   .main_navigation {
-    padding-left: 25px;
+    padding-left: 20px;
   }
 
   .main_navigation ul li a {
-    padding: 20px 10px;
+    padding: 20px 8px;
   }
 }
 

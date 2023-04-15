@@ -52,10 +52,6 @@
   .header {
     padding: 0 16px;
   }
-
-  .header .header_left .logo a {
-    width: 160px;
-  }
 }
 
 @media (min-width: 992px) {

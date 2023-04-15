@@ -12,6 +12,7 @@ export const getUser = createAsyncThunk(
           withCredentials: true,
         }
       );
+      console.log(response.data.user);
       return response.data.user;
     } catch (err) {
       const error = err.response

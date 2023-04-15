@@ -19,4 +19,8 @@ export const navLinks = [
     text: "Blazers & Suits",
     path: "/products/blazers-and-suits",
   },
+  {
+    text: "Explore",
+    path: "/products/explore",
+  },
 ];

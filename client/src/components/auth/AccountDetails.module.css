@@ -1,0 +1,57 @@
+.height_holder {
+  height: calc(
+    100vh - var(--header-height) - var(--page-header-height) -
+      var(--top-slider-height)
+  );
+  min-height: 600px;
+}
+
+.account_details_wrapper {
+  margin: 25px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+@media (max-width: 767px) {
+  .account_details_wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+.account_details_wrapper > div {
+  height: 600px;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #fafafa;
+}
+
+@media (max-width: 991.8px) {
+  .account_details_wrapper > div {
+    height: 400px;
+  }
+}
+
+@media (max-width: 567px) {
+  .account_details_wrapper {
+    margin: 16px;
+  }
+
+  .account_details_wrapper > div {
+    height: 250px;
+  }
+}
+
+.account_details_wrapper p {
+  font-size: 15px;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+}
+
+.account_details_wrapper .link_wrapper {
+  width: 200px;
+}

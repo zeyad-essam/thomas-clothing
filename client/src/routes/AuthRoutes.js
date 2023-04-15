@@ -7,6 +7,7 @@ import LoginPage from "../pages/auth/LoginPage";
 import SignupPage from "../pages/auth/SignupPage";
 import NewPasswordPage from "../pages/auth/NewPasswordPage";
 import PasswordChangedPage from "../pages/auth/PasswordChangedPage";
+import AccountPage from "../pages/auth/AccountPage";
 
 const AuthRoutes = () => {
   const userState = useSelector((state) => state.user);
@@ -25,6 +26,7 @@ const AuthRoutes = () => {
       />
       <Route path="login" element={<LoginPage />} />
       <Route path="signup" element={<SignupPage />} />
+      <Route path="account" element={<AccountPage />} />
       <Route
         path="new-password/:userId/:passwordToken"
         element={

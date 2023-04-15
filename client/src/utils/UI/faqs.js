@@ -17,7 +17,7 @@ const faqs = [
   {
     question: "What is your return policy?",
     answer:
-      "We offer a 30-day return policy for all of our products. If you're not satisfied with your purchase, you can return it for a full refund or exchange it for a different item.",
+      "We offer a 14-days return policy for all of our products. If you're not satisfied with your purchase, you can return it for a full refund or exchange it for a different item.",
   },
   {
     question: "How long does shipping take?",
