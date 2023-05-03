@@ -7,14 +7,13 @@
 }
 
 .account_details_wrapper {
-  margin: 25px;
+  margin: 25px 25px 0;
 }
 
 .account_details_wrapper .cart_and_orders {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 25px;
-  margin-bottom: 15px;
 }
 
 .account_details_wrapper .cart_and_orders > div {
@@ -46,7 +45,7 @@
 
 @media (max-width: 567px) {
   .account_details_wrapper {
-    margin: 16px;
+    margin: 16px 16px 0;
   }
 
   .account_details_wrapper .cart_and_orders > div {

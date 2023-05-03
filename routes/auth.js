@@ -32,12 +32,12 @@ router.put(
 
 router.post("/login", authController.postLogin);
 
-router.get("/google", (req, res) => {
+router.get("/google", (req, res, next) => {
   passport.authenticate("google", {
     scope: ["profile", "email"],
     passReqToCallback: true,
     state: req.query.checkout === "true" ? "true" : "false",
-  })(req, res);
+  })(req, res, next);
 });
 
 router.get(
@@ -54,11 +54,11 @@ router.get(
   }
 );
 
-router.get("/twitter", (req, res) => {
+router.get("/twitter", (req, res, next) => {
   req.session.state = req.query.checkout === "true" ? "true" : "false";
   passport.authenticate("twitter", {
     passReqToCallback: true,
-  })(req, res);
+  })(req, res, next);
 });
 
 router.get(
@@ -75,11 +75,11 @@ router.get(
   }
 );
 
-router.get("/github", (req, res) => {
+router.get("/github", (req, res, next) => {
   passport.authenticate("github", {
     state: req.query.checkout === "true" ? "true" : "false",
     passReqToCallback: true,
-  })(req, res);
+  })(req, res, next);
 });
 
 router.get(
