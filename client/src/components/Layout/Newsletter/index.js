@@ -74,7 +74,7 @@ const Newsletter = () => {
               onChange={emailChangeHandler}
               onBlur={emailBlurHandler}
             />
-            <button>
+            <button type="submit" aria-label="Subscribe to newsletter">
               {isLoading ? (
                 <ClipLoader color="#212121" size={17} />
               ) : (

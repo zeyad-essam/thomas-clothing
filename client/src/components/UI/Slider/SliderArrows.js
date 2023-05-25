@@ -7,6 +7,7 @@ export const SliderArrowNext = ({ onClick }) => {
   return (
     <button
       className={`${classes.slider_arrow} ${classes.next_arrow}`}
+      aria-label="Navigate to next slide"
       onClick={onClick}
     >
       <EastIcon style={{ fontSize: 18 }} />
@@ -16,7 +17,11 @@ export const SliderArrowNext = ({ onClick }) => {
 
 export const SliderArrowPrev = ({ onClick }) => {
   return (
-    <button className={classes.slider_arrow} onClick={onClick}>
+    <button
+      className={classes.slider_arrow}
+      aria-label="Navigate to previous slide"
+      onClick={onClick}
+    >
       <WestIcon style={{ fontSize: 18 }} />
     </button>
   );

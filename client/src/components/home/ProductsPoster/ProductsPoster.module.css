@@ -1,6 +1,7 @@
 .ProductsPoster {
   position: relative;
   margin: 0 0 30px;
+  background-color: #000;
 }
 
 .ProductsPoster .image_wrapper picture {

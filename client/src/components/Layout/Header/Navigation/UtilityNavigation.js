@@ -46,6 +46,7 @@ const UtilityNavigation = () => {
             to={`${
               userState.isAuthenticated ? "/auth/account" : "/auth/login"
             }`}
+            aria-label="Profile page"
           >
             <PersonOutlineOutlinedIcon style={{ fontSize: 22 }} />
             {userState.isAuthenticated && (
@@ -64,7 +65,7 @@ const UtilityNavigation = () => {
           </li>
         )}
         <li className={classes.cart_icon}>
-          <Link to="/cart">
+          <Link to="/cart" aria-label="Cart page">
             <ShoppingBagOutlinedIcon fontSize="small" />
             {cartHasItems && !cart.loading && <span>{cartItemsQuantity}</span>}
           </Link>

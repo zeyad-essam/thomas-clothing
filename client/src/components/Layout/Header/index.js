@@ -65,7 +65,7 @@ const Header = () => {
             <MenuSharpIcon style={{ fontSize: 30 }} />
           </button>
           <div className={classes.logo}>
-            <Link to="/">
+            <Link to="/" aria-label="Home page">
               <BlackLogo />
             </Link>
           </div>
